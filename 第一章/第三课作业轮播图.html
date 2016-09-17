@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 600px;
+				height: 260px;
+				position: relative;
+				margin: 0 auto;
+			}
+			#box img {
+				width: 100%;
+				height: 100%;
+			}
+			a {
+				text-decoration: none;
+			}
+			#a-left,
+			#a-right {
+				width: 40px;
+				height: 40px;
+				font: 30px/40px "微软雅黑";
+				color: white;
+				background: rgba(0, 0, 0, 0.4);
+				position: absolute;
+				top: calc(50% - 20px);
+				text-align: center;
+			}
+			#a-left {
+				left: 3px;
+			}
+			#a-right {
+				right: 3px;
+			}
+			#describe_bottom,
+			#describe_top {
+				width: 100%;
+				height: 40px;
+				position: absolute;
+				left: 0;
+				background: rgba(0, 0, 0, 0.4);
+				text-align: center;
+				color: white;
+				font: 30px/40px "微软雅黑";
+			}
+			#describe_top {
+				top: 0;
+			}	
+			#describe_bottom {
+				bottom: 0;
+			}
+			form {
+				width: 600px;
+				margin: 0 auto;
+				border-top: 1px solid brown;
+				padding-top: 20px;
+				padding-bottom: 20px;
+			}
+			#btn1 {
+				margin-left: 220px;
+			}
+			#property {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<form class="header">
+			<input type="button" value="循环切换" id="btn1" />
+			<input type="button" value="顺序切换" id="btn2" />
+			<p id="property"></p>
+		</form>
+		<div id="box">
+			<img src="img/图片1.jpg" id="boximg" />
+			<a href="javascript:;" id="a-left"><</a>
+			<a href="javascript:;" id="a-right">></a>
+			<span id="describe_top">轮播图1/4</span>
+			<span id="describe_bottom">SNH48代言</span>
+		</div>
+		<script>
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var boximg = document.getElementById('boximg');
+			var left = document.getElementById('a-left');
+			var right = document.getElementById('a-right');
+			var describe_top = document.getElementById('describe_top');
+			var describe_bottom = document.getElementById('describe_bottom');
+			var arr1 = ['图片1.jpg', '图片2.jpg', '图片3.jpg', '图片4.jpg'];
+			var arr2 = ['SNH48代言', '不限号测试', '赏金活动', '释FUN你的不安分'];
+			var num = 0;
+			function fn() {
+				right.onclick = function() {
+					num++;
+					if (num > arr1.length - 1) {
+						num = 0;
+					}
+					describe_bottom.innerHTML = arr2[num];
+					boximg.src = 'img/' + arr1[num];
+					describe_top.innerHTML = '轮播图' + (num + 1)+'/'+arr1.length;
+				}
+				left.onclick = function() {
+					num--;
+					if (num < 0) {
+						num = 3;
+					}
+					describe_bottom.innerHTML = arr2[num];
+					boximg.src = 'img/' + arr1[num];
+					describe_top.innerHTML = '轮播图' + (num + 1)+'/'+arr1.length;
+				}
+			}
+			function fn2() {
+				right.onclick = function() {
+					num++;
+					if (num > arr1.length - 1) {
+						alert('不能继续了');
+						num = arr1.length - 1;
+					}
+					describe_bottom.innerHTML = arr2[num];
+					boximg.src = 'img/' + arr1[num];
+					describe_top.innerHTML = '轮播图' + (num + 1)+'/'+arr1.length;
+				}
+				left.onclick = function() {
+					num--;
+					if (num < 0) {
+						alert('不能继续了');
+						num = 0;
+					}
+					describe_bottom.innerHTML = arr2[num];
+					boximg.src = 'img/' + arr1[num];
+					describe_top.innerHTML = '轮播图' + (num + 1)+'/'+arr1.length;
+				}
+			}
+			fn();
+			btn1.onclick = fn;
+			btn2.onclick = fn2;
+		</script>
+	</body>
+</html>

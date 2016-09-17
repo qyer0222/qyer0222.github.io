@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 60px;
+				height: 60px;
+				position: absolute;
+				text-align: center;
+				line-height: 60px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮">
+		<script>
+			var btn=document.getElementById('btn');
+			var str='';
+			btn.onclick=function(){
+				for(var i=0;i<100;i++){
+					str+='<div style="left:'+i%10*70+'px;top:'+~~(i/10)*70+'px;"></div>';	
+				}
+//			用~~位操作符相当于取整数
+				document.body.innerHTML=str;
+			};
+			btn.onclick=function(){
+				for(var i=0;i<100;i++){
+					str+='<div style="left:'+i%10*70+'px;top:'+Math.floor(i/10)*70+'px;"></div>';	
+				}
+//			Math.floor 向下取整
+				document.body.innerHTML=str;
+			};
+		</script>
+	</body>
+</html>

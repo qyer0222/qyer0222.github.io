@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<style>
+			#box{
+				width: 237px;
+				height: 420px;
+				position: absolute;
+				top: 89px;
+				left: 34px;
+			}
+			#box_top{
+				height: 370px;
+				width: 230px;
+				overflow: auto;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			#box_bottom{
+				width: 230px;
+				height: 41px;
+				border-top: 1px solid #bdcec6;
+				border-bottom: 1px solid #bdcec6;
+				padding-top: 7px;
+				margin-left: 10px;
+			}
+			#text_area{
+				width: 140px;
+				height: 30px;
+				border: 1px solid #ded6e7;
+				outline: none;
+				line-height: 30px;
+				font-size: 20px;
+			}
+			#box_bottom span{
+				float: left;
+				padding: 3px 5px;
+				border: 1px solid #ded6e7;
+				margin-left: 3px;
+				margin-right: 5px;
+			}
+			#enter{
+				line-height: 35px;
+				font-size: 16px;
+				color:black;
+				margin-left: 5px;
+				text-decoration: none;
+				font-weight: bold;
+			}
+			.imgleft,.left,.speakleft{
+				float: left;
+			}
+			.speakleft,.speakright{
+				background: gray;
+				font-size: 15px;
+				line-height: 24px;
+				word-break: break-all;
+				max-width: 150px;
+				border-radius: 5px;
+				height: 24px;
+			}
+			.speakright{
+				background:#ded6e7 ;
+			}
+			
+			.imgright,.right,.speakright,#enter{
+				float: right;
+			}
+			.speakright{
+				text-align: right;
+			}
+			.left,.right{
+				width: 100%;
+				margin-top: 3px;
+			}
+			.left{
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box_top">
+				<!--<div class="left">
+					<img src="img/img1.jpg" class="imgleft"/>
+					<span class="speakleft">3333</span>
+				</div>
+				<div class="right">
+					<img src="img/img2.jpg"  class="imgright"/>
+					<span class="speakright">111</p>
+				</div>-->
+			</div>
+			<div id="box_bottom">
+				<span>
+					<img src="img/img1.jpg" id="face"/>
+				</span>
+				<input type="text" id="text_area" class="fl">
+				<a href="javascript:;" class="fr" id="enter">发送</a>
+			</div>
+		</div>
+		<div>
+			<img src="img/mode.jpg" />
+		</div>
+		<script>
+			var textarea=document.getElementById('text_area');
+			var enter=document.getElementById('enter');
+			var face=document.getElementById('face');
+			var box_top=document.getElementById('box_top');
+			var onff=true;
+			
+			face.onclick=function(){
+				if(onff){
+					face.src="img/img2.jpg";
+					onff=false;
+				}else{
+					face.src="img/img1.jpg";
+					onff=true;
+				}
+				
+			};
+			enter.onclick=function(){
+				if(onff){
+					box_top.innerHTML='<div class="left"><img class="imgleft" src="img/img1.jpg" /><span class="speakleft">'+textarea.value+'</span></div>'+box_top.innerHTML;
+				textarea.value='';
+				}else{
+									box_top.innerHTML='<div class="right"><img class="imgright" src="img/img2.jpg" /><span class="speakright">'+textarea.value+'</span></div>'+box_top.innerHTML;
+				textarea.value='';
+				}
+			};
+		</script>
+	</body>
+</html>

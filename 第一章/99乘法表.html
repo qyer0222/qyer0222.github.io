@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 40px;
+				height: 40px;
+				background: black;
+				position: absolute;
+				color: white;
+				text-align: center;
+				font-size: 16px;
+				line-height: 40px;
+			}
+			
+			#mode {
+				width: 1000px;
+				height: 1000px;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="button" value="正三角" id="btn" />
+		<input type="button" value="倒三角" id="btn2" />
+		<section id="mode"></section>
+
+		<script>
+			var divs = document.getElementsByTagName('div');
+			var btn = document.getElementById('btn');
+			var con = '';
+			btn.onclick = function() {
+				con = '';
+				for (var i = 9; i > 0; i--) {
+					//				定义left的数值从1-10
+					for (var j = 9; j >= i; j--)
+					//				定义top的数值从1-10;但是要随着i的数值进行变化
+						con += '<div style=left:' + i * 50 + 'px;top:' + j * 50 + 'px>' + i + '*' + j + '=' + i * j + '</div>';
+				};
+				//				        	
+				mode.innerHTML = con;
+			};
+			btn2.onclick = function() {
+				con = '';
+				for (i = 1; i < 10; i++) {
+					for (j = 1; j <= i; j++) {
+						con += '<div style=left:' + i * 50 + 'px;top:' + j * 50 + 'px>' + i + '*' + j + '=' + i * j + '</div>';
+					}
+					mode.innerHTML = con;
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background: white;
+				border: 1px solid black;
+				transition: 0.3s;
+				perspective: 50px;
+			}
+			
+			#div2 {
+				width: 300px;
+				height: 320px;
+				background: white;
+				border: 3px solid black;
+				position: absolute;
+				top: calc(50% - 150px);
+				left: calc(50% - 160px);
+				display: none;
+				box-shadow: 0 0 5px 0 green;
+			}
+			
+			#div2 div {
+				height: 80px;
+				margin-top: 10px;
+			}
+			
+			#div2 span {
+				width: 50px;
+				height: 50px;
+				display: inline-block;
+				line-height: 50px;
+				text-align: center;
+			}
+			
+			#div2 div:nth-of-type(1) span:nth-of-type(1) {
+				background: orange
+			}
+			
+			#div2 div:nth-of-type(1) span:nth-of-type(2) {
+				background: pink;
+			}
+			
+			#div2 div:nth-of-type(1) span:nth-of-type(3) {
+				background: bisque;
+			}
+			
+			#div2 div:nth-of-type(2) span,
+			#div2 div:nth-of-type(3) span {
+				background: gray;
+			}
+			
+			#div2 input {
+				width: 50px;
+				height: 30px;
+				background: pink;
+				font-size: 20px;
+			}
+			
+			#div2 input:nth-of-type(1) {
+				margin-left: 100px;
+			}
+			
+			#div2 div:nth-of-type(1) span:nth-of-type(1):hover {
+				background: red;
+			}
+			
+			#div2 div:nth-of-type(1) span:nth-of-type(2):hover {
+				background: yellow;
+			}
+			
+			#div2 div:nth-of-type(1) span:nth-of-type(3):hover {
+				background: blue;
+			}
+			
+			#div2 div:nth-of-type(2) span:hover,
+			#div2 div:nth-of-type(3) span:hover {
+				background: gainsboro;
+			}
+			
+			#box {
+				position: relative;
+				background: rgba(255, 255, 102, 0.4);
+				width: 100%;
+				height: 800px;
+			}
+			
+			#btn {
+				width: 50px;
+				height: 30px;
+			}
+			#div_bo{
+				width: 100%;
+				height: 100%;
+				background: rgba(255, 255, 102, 0.4);
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<span>请为下面的DIV设置一个样式好吗？</span>
+			<input type="button" value="可以" id="btn" />
+			<div id="div1"></div>
+			<div id="div_bo">
+				<div id="div2">
+					<div>
+						请选择背景颜色:
+						<span id="red">红</span>
+						<span id="yellow">黄</span>
+						<span id="blue">蓝</span>
+					</div>
+					<div>
+						请选择宽（px）:
+						<span id="w200">200</span>
+						<span id="w300">300</span>
+						<span id="w400">400</span>
+					</div>
+					<div>
+						请选择高（px）:
+						<span id="h200">200</span>
+						<span id="h300">300</span>
+						<span id="h400">400</span>
+					</div>
+					<input type="button" value="恢复" id="reset_1" />
+					<input type="button" value="确定" id="sure" />
+				</div>
+			</div>
+		</div>
+		<script>
+			var oBtn = document.getElementById('btn');
+			var oDiv2 = document.getElementById('div2');
+			var oDiv1 = document.getElementById('div1');
+			var oBox = document.getElementById('box');
+			var oRed = document.getElementById('red');
+			var oYellow = document.getElementById('yellow');
+			var oBlue = document.getElementById('blue');
+			var oW200 = document.getElementById('w200');
+			var oW300 = document.getElementById('w300');
+			var oW400 = document.getElementById('w400');
+			var oH200 = document.getElementById('h200');
+			var oH300 = document.getElementById('h300');
+			var oH400 = document.getElementById('h400');
+			var oresert = document.getElementById('reset_1');
+			var osure = document.getElementById('sure');
+			var divBo=document.getElementById('div_bo');
+			btn.onclick = function() {
+				oDiv2.style.display = 'block';
+				oBox.style.background = 'gray';
+				divBo.style.display = 'block';
+			};
+			oRed.onclick = function() {
+				oDiv1.style.background = 'red';
+			};
+			oYellow.onclick = function() {
+				oDiv1.style.background = 'yellow';
+			};
+			oBlue.onclick = function() {
+				oDiv1.style.background = 'blue';
+			};
+			oW200.onclick = function() {
+				oDiv1.style.width = '200px';
+			};
+			oW300.onclick = function() {
+				oDiv1.style.width = '300px';
+			};
+			oW400.onclick = function() {
+				oDiv1.style.width = '400px';
+			};
+			oH200.onclick = function() {
+				oDiv1.style.height = '200px';
+			};
+			oH300.onclick = function() {
+				oDiv1.style.height = '300px';
+			};
+			oH400.onclick = function() {
+				oDiv1.style.height = '400px';
+			};
+			osure.onclick = function() {
+				oDiv2.style.display = 'none';
+				oBox.style.background = 'gray';
+				divBo.style.display = 'none';
+			};
+			oresert.onclick = function() {
+				oDiv1.style.width = '200px';
+				oDiv1.style.height = '200px';
+				oDiv1.style['background-color'] = 'white';
+				
+			};
+		</script>
+	</body>
+
+</html>

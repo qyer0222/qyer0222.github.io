@@ -1,0 +1,168 @@
+<!DOCTYPE html >
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<style type="text/css">
+			ul,
+			ol {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				color: black;
+				width: 100%;
+				text-align: center;
+			}
+			
+			h2 {
+				margin: 0;
+				background: url(img/right.gif) no-repeat 10px center #63F7FF;
+				padding-left: 20px;
+				line-height: 30px;
+			}
+			
+			ul {
+				border: 1px solid black;
+				width: 150px;
+			}
+			
+			ol {
+				display: none;
+			}
+			
+			ol li {
+				line-height: 20px;
+				border-top: 1px solid black;
+				text-align: center;
+				display: block;
+				cursor: pointer;
+			}
+			
+			ol li:nth-child(1) {
+				border: none;
+			}
+			
+			ol li.active {
+				background-color: #63F7FF;
+			}
+			
+			ol li.ac {
+				background-color: red;
+			}
+			
+			h2.active {
+				background: url(img/down.gif) no-repeat 8px center #F7F794;
+			}
+			
+			h2.active+ol {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="list">
+			<li>
+				<h2><a href="javascript:;">我的好友</a></h2>
+				<ol>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+					<li>张三</li>
+				</ol>
+			</li>
+			<li>
+				<h2><a href="javascript:;">企业好友</a></h2>
+				<ol>
+					<li>李四</li>
+					<li>李四</li>
+					<li>李四</li>
+					<li>李四</li>
+					<li>李四</li>
+				</ol>
+			</li>
+			<li>
+				<h2><a href="javascript:;">黑名单</a></h2>
+				<ol>
+					<li>钟毅</li>
+					<li>钟毅</li>
+					<li>钟毅</li>
+				</ol>
+			</li>
+		</ul>
+		<script>
+			var h2s = document.getElementsByTagName('h2');
+			//			选中所有的h2
+			var str = h2s[0];
+			//			初始化str的属性值,如果设置为null的话下面判断str的属性要外套一个
+			//			例如 var str=null;
+			//			if(str){
+			//			if(this!=str){
+			//						str.className='';
+			//						str.onff=true;
+			//					}	
+			//			}
+			var ols = document.getElementsByTagName('ol');
+			for (var i = 0; i < h2s.length; i++) {
+				//				选中所有的h2
+				h2s[i].onff = true;
+				//				自定义属性,onff为true
+				h2s[i].onclick = function() {
+					if (this.onff) {
+						this.className = 'active';
+						this.onff = false;
+					} else {
+						this.className = '';
+						this.onff = true;
+					}
+					//					点击同一个操作栏,可以进行开关操作
+					if (this != str) {
+						str.className = '';
+						str.onff = true;
+					}
+					//					判断当前点击的属性值和之前点击的是否是同一个值,不是的话重置开关,并清空
+					str = this;
+					//					当前点击的等于str,下次点击的时候和这次的点击进行判断
+				}
+			}
+			for (var i = 0; i < ols.length; i++) {
+//				选中所有的ol
+				var lis = ols[i].getElementsByTagName('li');
+//				选中所有的li
+				var strs = lis[0];
+//				初始化strs的属性值
+				for (var j = 0; j < lis.length; j++) {
+					lis[j].onf = true;
+//					自定义属性为true
+					lis[j].onclick = function() {
+						if (this.onf) {
+							this.className = 'active';
+							this.onf = false;
+						} else {
+							this.className = '';
+							this.onf = true;
+						}
+//						if和else用控制点击同一个按钮的状态
+						if(strs!=this){
+							strs.className = '';
+							strs.onf = true;
+						}
+//						当前点击的和之前点击的不是同一个值的话,清空classname,并重置onf的属性值
+						strs = this;
+//						将当前点击的属性值附给strs用来比较下一次点击是否等于下一次点击的上一次点击
+					};
+				}
+			}
+			
+		</script>
+	</body>
+
+</html>

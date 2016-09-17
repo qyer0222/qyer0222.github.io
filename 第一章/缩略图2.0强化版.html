@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 500px;
+				height: 250px;
+				margin: 0 auto;
+				position: relative;
+			}
+			img{
+			width: 100%;
+			height: 100%;	
+			}
+			a{
+				height: 50px;
+				width: 50px;
+				background: rgba(33,33,33,0.4);
+				position: absolute;
+				text-decoration: none;
+				font:20px/50px "宋体";
+				color: white;
+				text-align: center;
+				top: calc(50% - 25px);
+			}
+			#a_left{
+				left: 10px;
+			}
+			#a_right{
+				right: 10px;
+			}
+			ul{
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				bottom: 10px;
+				width: 300px;
+				display: flex;
+				justify-content: center;
+				width: 100%;
+			}
+			li{
+				margin: 0;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: pink;
+				list-style: none;
+				position: relative;
+				float: left;
+				margin-right: 10px;
+				
+			}
+			.active{
+				background-color: gray;
+			}
+			li div{
+				border: 10px solid  transparent ;
+				border-top-color: black;
+				width: 0;
+				height: 0;
+				position: absolute;
+				top: -10px;
+				left: 10px;
+			}
+			#uls img{
+				width: 100px;
+				height: 70px;
+				position: absolute;
+				top: -80px;
+				left: -30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="img/0.jpg" id="img1"/>
+			<a href="javascript:;" id="a_left"><</a>
+			<a href="javascript:;" id="a_right">></a>
+			<ul id="uls">
+				<!--<li>
+				<img src="img/0.jpg" id="img1"/>
+					<div></div>
+				</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				先写的css样式，然后注释掉，用来自动生成
+				-->
+			</ul>
+		</div>
+		<script>
+		var lis=document.getElementsByTagName('li');
+		var arr1 = ['0.jpg', '1.jpg', '2.jpg', '3.jpg'];
+		var str='';	
+		var aLeft=document.getElementById('a_left');
+		var aRight=document.getElementById('a_right');
+		var uls=document.getElementById('uls');
+		var img1=uls.getElementsByTagName('img');
+		var img2=document.getElementById('img1');
+		var num=0;
+//		声明变量
+			for(var i=0;i<arr1.length;i++){
+				str+='<li style="left:'+6*i+'px;"></li>';
+			}
+			uls.innerHTML=str;
+//				根据数组长度生成li
+			for(var i=0;i<arr1.length;i++){
+//				选择所有的li
+				lis[i].index=i;
+//				自定义li的属性index
+				lis[0].style['background-color']='gray';	
+				lis[i].onclick=function(){
+					for(var i=0;i<arr1.length;i++){
+					lis[i].style['background-color']='';
+					}
+					lis[num].className='';
+					this.style['background-color']='gray';
+					img2.src='img/'+arr1[this.index];
+					num=this.index;
+				}
+//				点击li的时候,li当前的颜色进行改变需要定义行间样式防止ommouseover的className覆盖
+//				num等于this.index,点击li的时候,就会显示当前图片
+				
+				lis[i].onmouseover=function(){
+					this.className='active';
+					this.innerHTML='<img src="img/'+arr1[this.index]+'"/><div></div>';
+				}
+//				鼠标移入的时候自动生成img和小箭头
+				lis[i].onmouseout=function(){
+					this.className='';
+					this.innerHTML='';
+				}
+//				鼠标移除的时候清除样式
+			}
+			aRight.onclick=function(){
+				lis[num].style['background-color']='';
+				lis[num].className='';
+				num++;
+				if(num>arr1.length-1){
+					num=0;
+				}
+				img2.src='img/'+arr1[num];
+				lis[num].className='active';
+//				点击右面按钮的时候,清空原来的样式,num++,num对应img2的数组内容
+//				点击的li的className等于active
+			}
+			aLeft.onclick=function(){
+				lis[num].style['background-color']='';
+				lis[num].className='';
+				num--;
+				if(num<0){
+					num=arr1.length-1;
+				}
+				img2.src='img/'+arr1[num];
+				lis[num].className='active';
+			}
+		</script>
+	</body>
+</html>

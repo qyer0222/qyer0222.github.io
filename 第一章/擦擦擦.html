@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+				div{
+					width: 50px;
+					height: 50px;
+					background-color: beige;
+					position: absolute;
+					background-repeat:no-repeat ;
+				}
+				.active{
+					background-image: url(img/pic.jpg);
+				}
+				/*定义背景图片*/
+		</style>
+	</head>
+
+	<body>
+		<script>
+			var str = '';
+			var num = 0;
+			var divs =document.getElementsByTagName('div');
+			for (var i = 0; i < 100; i++){
+				if(i%10==0){
+					num++
+				}
+//				生成100个div
+			str+='<div style="top:'+num*52+'px;left:'+i%10*52+'px;background-position-x:'+-(i%10*50)+'px;background-position-y:'+-(num*50)+'px"></div>';
+			}
+			document.body.innerHTML=str;
+			for (var i = 0; i < 100; i++){
+				divs[i].onmouseover=function(){
+					this.className='active';
+				}
+			}
+//			鼠标移入后会修改当前的背景图片
+		</script>
+	</body>
+
+</html>

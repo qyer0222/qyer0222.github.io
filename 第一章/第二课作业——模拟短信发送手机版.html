@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<style>
+			#box {
+				width: 237px;
+				height: 420px;
+				background-color: white;
+				margin: 0 auto;
+				z-index: 10;
+				position: absolute;
+				top: 90px;
+				left: 34px;
+			}
+			
+			#con {
+				height: 370px;
+				width: 237px;
+				overflow: auto;
+			}
+			
+			#user_bottom {
+				width: 237px;
+				height: 42px;
+				border-bottom: 1px solid #bdcec6;
+				border-top: 1px solid #BDCEC6;
+				padding-top: 7px;
+			}
+			
+			#face {
+				border: 1px solid #ded6e7;
+				float: left;
+				margin-left: 3px;
+				padding: 3px 5px;
+			}
+			
+			#textarea {
+				width: 139px;
+				height: 30px;
+				border: 1px solid #ded6e7;
+				margin-left: 5px;
+				float: left;
+				font: 15px/30px "微软雅黑";
+				outline: none;
+			}
+			
+			#sure {
+				color: #a0a0a4;
+				font-size: 21px;
+				line-height: 30px;
+				float: left;
+				margin-left: 5px;
+			}
+			
+			.speak1 {
+				background: #ded6e7;
+				line-height: 30px;
+				color: white;
+				float: left;
+				max-width: 150px;
+				word-break: break-all;
+				word-wrap: break-word;
+				margin-top: 5px;
+				/*文字折行*/
+			}
+			
+			.speak2 {
+				background: #21c618;
+				text-align: right;
+				line-height: 30px;
+				float: right;
+				color: white;
+				max-width: 150px;
+				word-break: break-all;
+				word-wrap: break-word;
+				margin-top: 5px;
+				/*文字折行*/
+			}
+			
+			.user1 {
+				width: 100%;
+				clear: both;
+			}
+			
+			.user2 {
+				width: 100%;
+				clear: both;
+			}
+			
+			.user_1 img {
+				float: left;
+			}
+			
+			.img2 {
+				float: right;
+				margin-left: 3px;
+				margin-top: 5px;
+			}
+			
+			.img1 {
+				float: left;
+				margin-right: 3px;
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="con">
+				<!--<div class="user1">
+					<img src="img/img1.jpg" class="img1"/>
+					<span class="speak1">xxxxxx</span>
+				</div>
+				<div class="user2">
+					<img src="img/img2.jpg" class="img2"/>
+					<span class="speak2">xxx1111111</span>
+				</div>-->
+				<!--con中里面的两个div提前写出来，最后注释掉-->
+			</div>
+			<div id="user_bottom" class="clearfix">
+				<div id="face">
+					<img src="img/img2.jpg" id="faces" />
+				</div>
+				<input type="text" id="textarea" />
+				<a href="javascript:;" id="sure">发送</a>
+			</div>
+		</div>
+		<div id="mode">
+			<img src="img/mode.jpg" />
+		</div>
+		<script>
+			var face = document.getElementById('face');
+			var sure = document.getElementById('sure');
+			var faces = document.getElementById('faces');
+			var textarea = document.getElementById('textarea');
+			var con = document.getElementById('con');
+			var speak1 = document.getElementById('speak1');
+			var speak2 = document.getElementById('speak2');
+			var onOff = true;
+			//声明变量
+			face.onclick = function() {
+				if (onOff) {
+					faces.src = 'img/img1.jpg';
+					onOff = false;
+				} else {
+					faces.src = 'img/img2.jpg';
+					onOff = true;
+				}
+			};
+				//点击图片可以切换图片
+			sure.onclick = function() {
+				if (onOff) {
+					con.innerHTML = '<div class="user1"><img class="img1" src="img/img2.jpg"><span class="speak1">' + '说：' + textarea.value + '</span></div>' + con.innerHTML;
+					//字符串连接：'<div></div>'+xxxx.inner.HTML+'<span></span>'+xxxx.value;
+					textarea.value = '';//点击按钮后重置输入框里面的内容
+				} else {
+					con.innerHTML = '<div class="user2"><img class="img2" src="img/img1.jpg"><span class="speak2">' + '说:' + textarea.value + '</span></div>' + con.innerHTML;
+					textarea.value = '';
+				}
+			}
+			//点击按钮给con里面添加内容
+		</script>
+	</body>
+
+</html>

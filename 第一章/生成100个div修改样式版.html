@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 40px;
+				height:40px;
+				position: absolute;
+				text-align: center;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="button" id="btn" value="按钮">
+
+		<script>
+			var divs = document.getElementsByTagName('div');
+			var btn = document.getElementById('btn');
+			var con = '';
+			var arr=['red','yellow','orange','green','pink'];
+			btn.onclick = function() {
+					for (var i = 0; i < 100; i++) {
+						con += '<div>'+(i+1)+'</div>';
+					};
+//					100个div
+					document.body.innerHTML = con;
+					var j=0;
+					for (var i = 0; i < 100; i++) {
+						if (i % 10 == 0) {
+							j++;
+						}
+						if(i%4==0){
+					divs[i].style.background=arr[0];	
+						}
+						if(i%4==1){
+					divs[i].style.background=arr[1];	
+						}
+						if(i%4==2){
+					divs[i].style.background=arr[2];	
+						}
+						if(i%4==3){
+					divs[i].style.background=arr[3];	
+						}
+						
+//						求模逢10折行
+						divs[i].style.left = i%10 * 45 + 'px';
+						
+//						一排显示多少个div
+						divs[i].style.top = j * 45 + 'px';
+					};
+				};
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 875px;
+				height: 553px;
+				background: url(img/bg.png);
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.header {
+				position: absolute;
+				top: 56px;
+				left: 22px;
+			}
+			
+			a {
+				width: 68px;
+				height: 20px;
+				float: left;
+				margin-right: 6px;
+			}
+			
+			#footer {
+				position: absolute;
+				top: 114px;
+				left: 49px;
+				width: 759px;
+				height: 245px;
+			}
+			
+			#div1 {
+				width: 448px;
+				height: 245px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			
+			#div2 {
+				height: 245px;
+				width: 248px;
+				position: absolute;
+				top: 0px;
+				left: 510px;
+			}
+			
+			img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			div p:nth-of-type(1) {
+				text-align: center;
+			}
+			
+			div p:nth-of-type(2) {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="header">
+				<a href="javascript:;" id="btn1"></a>
+				<a href="javascript:;" id="btn2"></a>
+			</div>
+			<div id="footer">
+				<div id="div1">
+					<img />
+					<p></p>
+					<span></span>
+				</div>
+				<div id="div2">
+					<img />
+					<p></p>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<script>
+			var str = '';
+			var ps1 = document.getElementsByTagName('p')[0];
+			var ps2 = document.getElementsByTagName('p')[1];
+			var spans1 = document.getElementsByTagName('span')[0];
+			var spans2 = document.getElementsByTagName('span')[1];
+			var btn1 = document.getElementsByTagName('a')[0];
+			var btn2 = document.getElementsByTagName('a')[1];
+			var imgs1 = document.getElementsByTagName('img')[0];
+			var imgs2 = document.getElementsByTagName('img')[1];
+			var arr1=['0.jpg','1.jpg','2.jpg','3.jpg','4.jpg'];
+			var arr2=['0.jpg','1.jpg','2.jpg','3.jpg'];
+			var arr3=['第一张','第二张','第三张','第四张','第五张'];
+			var arr4=['第一张','第二张','第三张','第四张'];
+//			初始化变量
+			imgs1.num=0;
+			imgs2.num=0;
+//			给imgs1和imgs2.num初始化为0
+			var fn1=function(){
+				if(imgs1.num>=arr1.length){
+					imgs1.num=0;
+				}
+				if(imgs1.num<0){
+					imgs1.num=arr1.length-1;
+				}
+				imgs1.src='img/'+arr1[imgs1.num];
+				ps1.innerHTML=arr3[imgs1.num];
+				spans1.innerHTML=(imgs1.num+1)+'/5';
+			}
+		/*	定义函数fn1,并对他进行判断,超过或超出数组的长度,自动初始化
+			定义img的地址和ps以及span的内容用imgs1.num控制即可*/
+			fn1();
+//			初始化最开始显示的图片
+			function fn2(){
+				if(imgs2.num>=arr2.length){
+					imgs2.num=0;
+				}
+				if(imgs2.num<0){
+					imgs2.num=arr2.length-1;
+				}
+				imgs2.src='img/'+arr2[imgs2.num];
+				ps2.innerHTML=arr4[imgs2.num];
+				spans2.innerHTML=(imgs2.num+1)+'/5';
+			}
+		/*	定义函数fn2,并对他进行判断,超过或超出数组的长度,自动初始化
+			定义img的地址和ps以及span的内容用imgs2.num控制即可*/	
+			fn2();
+//			初始化最开始显示的图片
+			imgs1.onclick=function(){
+				imgs1.num++;
+				fn1();
+			}
+//			点击imgs1,进行imgs.num++
+			imgs2.onclick=function(){
+				imgs2.num++;
+				fn2();
+			}
+			btn1.onclick=function(){
+				imgs2.num--;
+				imgs1.num--;
+				fn1();
+				fn2();
+			}
+//			点击按钮1,让imgs2.num--;imgs1.num--;
+			btn2.onclick=function(){
+				imgs2.num++;
+				imgs1.num++;
+				fn1();
+				fn2();
+			}
+		</script>
+	</body>
+</html>

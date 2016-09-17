@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box {
+				width: 875px;
+				height: 553px;
+				background: url(img/bg.png);
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.header {
+				position: absolute;
+				top: 56px;
+				left: 22px;
+			}
+			
+			a {
+				width: 68px;
+				height: 20px;
+				float: left;
+				margin-right: 6px;
+			}
+			
+			#footer {
+				position: absolute;
+				top: 114px;
+				left: 49px;
+				width: 759px;
+				height: 245px;
+			}
+			
+			#div1 {
+				width: 448px;
+				height: 245px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}
+			
+			#div2 {
+				height: 245px;
+				width: 248px;
+				position: absolute;
+				top: 0px;
+				left: 510px;
+			}
+			
+			img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			div p:nth-of-type(1) {
+				text-align: center;
+			}
+			
+			div p:nth-of-type(2) {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="header">
+				<a href="javascript:;" id="btn1"></a>
+				<a href="javascript:;" id="btn2"></a>
+			</div>
+			<div id="footer">
+				<div id="div1">
+					<img src="img/0.jpg" id="img1">
+					<p id="tp1">第1张</p>
+					<p id="tp2">1/5</p>
+				</div>
+				<div id="div2">
+					<img src="img/0.jpg" id="img2">
+					<p id="bp1">第1张</p>
+					<p id="bp2">1/5</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			var str = '';
+			var footer = document.getElementById('footer');
+			var divs = footer.getElementsByTagName('div');
+			var num = 0;
+			var num2 = 0;
+			var tp1 = document.getElementById('tp1');
+			var tp2 = document.getElementById('tp2');
+			var bp1 = document.getElementById('bp1');
+			var bp2 = document.getElementById('bp2');
+			var btn1 = document.getElementById('btn1');
+			var btn2 = document.getElementById('btn2');
+			var img1 = document.getElementById('img1');
+			var img2 = document.getElementById('img2');
+			var arr1 = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+			divs[0].onclick = function() {
+					num++;
+					if (num > arr1.length - 1) {
+						num = 0;
+					}
+					img1.src = 'img/' + arr1[num];
+					tp1.innerHTML = '第' + (num + 1) + '张';
+					tp2.innerHTML = (num + 1) + '/5';
+				}
+				//			点击div的时候往div里面添加内容，内容的数量根据num来定
+			divs[1].onclick = function() {
+					num2++;
+					if (num2 > arr1.length - 1) {
+						num2 = 0;
+					}
+					img2.src = 'img/' + arr1[num2];
+					bp1.innerHTML = '第' + (num2 + 1) + '张';
+					bp2.innerHTML = (num2 + 1) + '/5';
+				}
+				//			点击div2的时候往div2里面添加内容，内容的数量根据num来定
+			btn1.onclick = function() {
+					num--;
+					num2--;
+					if (num < 0) {
+						num = 3;
+					}
+					if (num2 < 0) {
+						num2 = 3;
+					}
+					img2.src = 'img/' + arr1[num2];
+					bp1.innerHTML = '第' + (num + 1) + '张';
+					bp2.innerHTML = (num + 1) + '/5';
+					img1.src = 'img/' + arr1[num];
+					tp1.innerHTML = '第' + (num2 + 1) + '张';
+					tp2.innerHTML = (num2 + 1) + '/5';
+				}
+				//			点击按钮的时候往用num控制所有内容，内容的数量根据num来定					
+			btn2.onclick = function() {
+					num++;
+					num2++;
+					if (num > arr1.length - 1) {
+						num = 0;
+					}
+					if (num2 > arr1.length - 1) {
+						num2 = 0;
+					}
+					img2.src = 'img/' + arr1[num2];
+					bp1.innerHTML = '第' + (num + 1) + '张';
+					bp2.innerHTML = (num + 1) + '/5';
+					img1.src = 'img/' + arr1[num];
+					tp1.innerHTML = '第' + (num2 + 1) + '张';
+					tp2.innerHTML = (num2 + 1) + '/5';
+				}
+				//			点击按钮的时候往用num控制所有内容，内容的数量根据num来定
+		</script>
+	</body>
+
+</html>

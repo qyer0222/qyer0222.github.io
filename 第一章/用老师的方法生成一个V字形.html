@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				background: black;
+			}
+			#mode{
+				width: 800px;
+				height: 800px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮">
+		<section id="mode"></section>
+		<script>
+			var divs = document.getElementsByTagName('div');
+			var btn = document.getElementById('btn');
+			var mode=document.getElementById('mode');
+			var str = '';
+			var num = 7;
+			btn.onclick=function(){
+				for(var i=0;i<num;i++){
+					if(i<num/2){
+					str+='<div style="left:'+i*60+'px;top:'+60*i+'px;"></div>';	
+					}else{
+					str+='<div style="left:'+i*60+'px;top:'+(num-1-i)*60+'px;"></div>';	
+					}
+					
+				}
+			
+				mode.innerHTML=str;
+			};
+		</script>
+	</body>
+</html>
