@@ -10,7 +10,6 @@
 	var Outerwidth;
 	var sUrl;
 	var loader;
-	var iPage;
 	var onOff;
 	var fn;
 	var len = 0;
@@ -25,7 +24,6 @@
 		space = 10;//空格间距
 		cell = 0;//设置列数
 		Outerwidth = Width+space;//单个图片包括间距的宽度
-//		sUrl = 'http://www.wookmark.com/api/json/popular?callback=fn';//图片的地址
 		loader = $('#loader');
 		iPage = 0;
 		onOff = true;
@@ -35,15 +33,6 @@
 		waterfall();
 
 	}
-	
-	/*function create(){
-		for(var i=0;i<20;i++){
-			num++;
-			str+='<li><a href="#"><div style="display:none"><span>_</span><h2>CERVEJA ZEIT</h2><p style="width: 230px;">JANEIRO 2016</p><h3></h3><p style="width: 230px;"></p></div><img src=img/'+num+'.png></a></li>'
-		}
-		$('#con_body')[0].innerHTML = str;
-	}*/
-	
 	function followfix(){
 		var height = $('#con_head').offset().top;
 		window.onscroll = function(){
@@ -88,7 +77,6 @@
 			cell = Math.floor(window.innerWidth/Outerwidth);
 			con_body.css('width',cell*Outerwidth-10);
 		}
-		
 		for(var i=0;i<cell;i++){
 			arrT[i] = 0;//记录图片高度
 			arrL[i] = Outerwidth * i;//记录图片的宽度
@@ -96,14 +84,13 @@
 		getdata();
 	}
 	var fn=function (data){
-
 		loader.show();
 				//下面是用for循环遍历的函数生成的图片
 				for(var i=0;i<7;i++){
 					read(datad[i+len]);
 				}
 				len+=7;
-				 function read(data) {
+				function read(data) {
 					var Img = $('<img />');
 					//obj里面的属性是图片的高度，用这个高度乘以当前图片的宽度除以obj属性里面的图片宽度，经过比例的换算就会求出当前所有图片的height
 					var Height = data.height * (Width / data.width);
@@ -135,24 +122,11 @@
 				};
 		}
 	function getdata(){
-			/*$.getJSON( url ,[ data ] ,[ success(data, textStatus, jqXHR) ] )
-			url是必选参数，表示json数据的地址；
-			data是可选参数，用于请求数据时发送数据参数；
-			success是可参数，这是一个回调函数，用于处理请求到的数据。
-			function(data)是获取到的数据*/
 			if(!onOff){
 				return
 			}
-//			iPage++;
 			onOff = false;
 			fn();
-//			var xhr = new XMLHttpRequest();
-//			xhr.open('get',sUrl+'&page='+iPage,true);
-//			xhr.onload = function(data){
-//			
-//			};
-//			xhr.send();
-			
 		}
 
 		function short(){
@@ -162,7 +136,6 @@
 				if(arrT[i]<mark){
 					mark = arrT[i];
 					index = i;
-//					console.log(i)
 				}
 			}
 			return index;
