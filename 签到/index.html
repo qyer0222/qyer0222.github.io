@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="js/tween.js"></script>
+		<script type="text/javascript" src="js/mTween.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</head>
+	<body>
+		<div id="page">
+			
+			<div id="wrap">
+				<div id="banner">
+					<img src="images/qiandao_banner.jpg" />
+				</div>
+				<div id="content" class="clearfix">
+					<div class="con_left fl">
+						<div class="con_left_top clearfix">
+							<div class="time">
+								<ul>
+									<li>
+										<div><img src="images/0.jpg" alt=""></div>
+									</li>
+									<li>
+										<div><img src="images/0.jpg" alt=""></div>
+									</li>
+									<li>
+										<img src="images/colon.jpg" alt="">
+									</li>
+									<li>
+										<div><img src="images/0.jpg" alt=""></div>
+									</li>
+									<li>
+										<div><img src="images/0.jpg" alt=""></div>
+									</li>
+									<li>
+										<img src="images/colon.jpg" alt="">
+									</li>
+									<li>
+										<div><img src="images/0.jpg" alt=""></div>
+									</li>
+									<li>
+										<div><img src="images/0.jpg" alt=""></div>
+									</li>
+								</ul>
+							</div>
+							<div class="mysign">
+								我的签到
+							</div>
+						</div>
+						<div class="calendar">
+							<div class="year_month">
+								
+							</div>
+							<ul id="creatdata">
+								<!--<li>1</li>
+								<li>2</li>
+								<li>3</li>
+								<li>4</li>
+								<li>5</li>
+								<li>6</li>
+								<li>7</li>
+								<li>8</li>
+								<li>9</li>
+								<li>10</li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>-->
+							</ul>
+						</div>
+					</div>
+					<div class="con_right fr">
+						<div class="con_right_top">
+							 <div class="sing_now"></div>
+							 <p class="notice">今日已领<span>0.05</span>元，请明日继续签到</p>
+						</div>
+						<div class="con_right_bottom">
+							<div class="rule">
+								<h4>签到规则</h4>
+								<p>首次签到获得0.05元现金奖励</p>
+								<p>连续签到每天增加0.01元现金奖励</p>
+								<p>连续签到16天及以上每天获得0.2元现金奖励</p>
+							</div>
+							<div class="explain">
+								<h4>其他说明</h4>
+								<p>如果中间有一天间断未签到的，重先开始计算连续签到时间。</p>
+								<p>连续签到获得奖励后分享到QQ空间、微信朋友圈后再获得一次奖励，每天只限分享一次。</p>
+								<p>获得的奖励不能直接提现，只能投资后转让变现。</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="qiandao_pro">
+			<div id="qiandao">
+				<a href="#" id="close"></a>
+				<div class="alerdy">
+					<em></em>
+					您已经连续签到<span>1</span>天
+				</div>
+				<div class="money">
+					<span>0.55元</span>
+				</div>
+				<a href="#" class="share">分享获取双倍收益</a>
+			</div>
+			<div class="qiandao_bg"></div>
+		</div>
+		<div id="my_sign_pro">
+			<div id="my_sign">
+				<a href="#" id="close2"></a>
+				<ul class="my_sign_top clearfix">
+				<li>
+					<p>连续签到</p>
+					<p>1</p>
+				</li>
+				<li>
+					<p>本月签到</p>
+					<p>1</p>
+				</li>
+				<li>
+					<p>总共签到</p>
+					<p>12</p>
+				</li>
+				<li>
+					<p>累计奖励</p>
+					<p>30</p>
+				</li>
+				</ul>
+				<table>
+					<thead>
+						<tr>
+                            <th>签到日期</th>
+                            <th>奖励</th>
+                            <th>说明</th>
+                        </tr>
+					</thead>
+					<tbody>
+						<tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>分享奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                    </tbody>
+					
+				</table>
+			</div>
+			<div class="qiandao_bg"></div>
+		</div>
+		<script>
+			var year_month= document.querySelector('.year_month');
+			var data = document.querySelectorAll('.data');
+			var divs = document.querySelectorAll('.time div');
+			var imgs = document.querySelectorAll('.time li>img');
+			var img = document.querySelectorAll('.time li div img');
+			var creatdata = document.getElementById('creatdata');
+			var sing_now = document.querySelector('.sing_now');
+			var qiandao_pro = document.getElementById('qiandao_pro');
+			var close = document.getElementById('close');
+			var close2 = document.getElementById('close2');
+			var mysign = document.querySelector('.mysign');
+			var my_sign_pro = document.getElementById('my_sign_pro');
+			int(data,divs,imgs,img,creatdata,sing_now,qiandao_pro,close,year_month,mysign,my_sign_pro, close2);
+		</script>
+	</body>
+</html>
