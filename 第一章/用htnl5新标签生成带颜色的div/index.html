@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 50px;
+				height: 50px;
+				position: absolute;
+			}
+			#div1{
+				width: 500px;
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="color" />
+		<input type="button"  value="确定"/>
+		<div id="div1"></div>
+		<input type="number">
+		<script>
+			var colors=document.querySelector('input[type=color]');
+			var btns=document.querySelector('input[type=button]');
+//			用新选择器选择元素,只能在ie9以上才能使用
+			var div1=document.getElementById('div1');
+			var inps=document.querySelector('input[type=number]');
+//			点击后修改div的样式
+			var str='';
+			var p=0;
+			
+			function fn(num,cols,len){
+				for(var i=0;i<len;i++){
+					str+='<div style="top:'+i*60+'px;left:'+num+'px;background:'+cols+';"></div>';	
+				}
+				div1.innerHTML=str;	
+			}
+/*			colors.oninput=function(){
+				fn(p*60,this.value);
+				p++;
+			}*/
+//			用oninput事件获取color的当前属性，该事件在input的value发生变化的时候触发。  
+		/*	btns.onclick=function(){
+				p++;
+				fn(p*60,colors.value);
+//				colors.value是获取<input type="color" />的颜色值
+			}*/
+			inps.oninput=function(){
+				if(this.value>10){
+					this.value=10;
+				}
+				if(this.value<0){
+					this.value=0;
+				}
+				str='';
+				console.log(str)
+				fn(0,colors.value,this.value);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a{
+				text-decoration: none;
+				font-size: 50px;	
+			}
+		</style>
+	</head>
+	<body>
+		<a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a><a href="javascript:;">★</a>
+		<script>
+			function $(tag){
+				return document.getElementsByTagName(tag);
+			}
+			var as = $('a');
+			var num;//不能有数值，否则会默认选择第一个
+			for(var i=0;i<as.length;i++){
+				as[i].index=i;
+//				点击之后将点击的状态记录给num
+				as[i].onclick = function(){
+					num=this.index;
+				};
+				if(i<2){
+//					鼠标再次移入后清空
+					as[i].onmouseover = function(){
+						for(var i=0;i<as.length;i++){
+							as[i].style.color='';
+						}
+//						鼠标移入后如果是前两个则是红色
+						for(var i=0;i<=this.index;i++){
+							as[i].style.color='red';
+						}
+					};
+				}else{
+					as[i].onmouseover = function(){
+						for(var i=0;i<as.length;i++){
+							as[i].style.color='';
+						}
+						for(var i=0;i<=this.index;i++){
+							as[i].style.color='green';
+						}
+					};
+				}
+				as[i].onmouseout = function(){
+//					鼠标移除后清空内容
+					for(var i=0;i<as.length;i++){
+							as[i].style.color='';
+						}
+//					进行判断如果num<2,则是红色,大于2则是绿色
+					if(num<2){
+						for(var j=0;j<=num;j++){
+							as[j].style.color='red';	
+						}	
+					}else{
+						for(var j=0;j<=num;j++){
+							as[j].style.color='green';	
+						}
+					}
+				};
+			}
+		</script>	
+		<!--总结：1、看清需求很重要
+				2、将点击状态给num，onmouseout后才修改样式
+		-->
+	</body>
+</html>

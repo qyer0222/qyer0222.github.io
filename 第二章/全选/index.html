@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		ul{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			margin: 0;
+			list-style: none;
+			width: 300px;
+			height: 50px;
+			background: blue;
+			border-bottom: 1px solid black;
+		}
+		li:nth-of-type(2n){
+			background: orange;
+		}
+		#body .active{
+			background: black;
+		}
+		</style>
+	</head>
+	<body id='body'></body>
+	<script>
+/*	思路:1.先写样式
+	    2.写onclick事件根据老师提示consloe.log一下input,找一下checked
+        3.再写onmouseover,最后写全选*/
+		function $(tag){
+			return document.getElementsByTagName(tag);
+		}
+//		封装tagName函数
+		var str='';
+		var len=5;
+		str='<ul>';
+		for(var i=0;i<len;i++){
+			str+='<li><input type="checkbox"/></li>';
+		}
+		str+='</ul><p><input type="checkbox"/>全选</p>';
+		body.innerHTML=str;
+		var lis=$('li');
+		var inps=$('input');
+		var inpss=$('p')[0].getElementsByTagName('input')[0];//最后一个全选
+		for(var i=0;i<lis.length;i++){
+			inps[i].index=i;//关联点击按钮li的效果
+			lis[i].inp=i;//关联移入移出
+			inps[i].onclick=function(){
+				if(inps[this.index].checked==true){
+					lis[this.index].style.background='green';
+				}
+				else{
+					lis[this.index].style.background='';
+				}
+				inpss.checked=fn();	
+			}//点击按钮
+			lis[i].onmouseover=function(){
+				lis[this.inp].className='active';
+			}//移入给class属性
+			lis[i].onmouseout=function(){
+				lis[this.inp].className='';
+			}//移出清除class属性
+//			判断按钮0-4的状态
+		}		
+		function fn(){
+			for(var i=0;i<lis.length;i++){
+				if(!inps[i].checked){
+					return false;
+				}
+			}
+			return true;
+		}
+//		判断.checked中是否是false,有的话就输出false,没有的话就true;
+		inpss.onclick=function(){
+			if(inpss.checked){
+				for(var i=0;i<lis.length;i++){
+					inps[i].checked=true;
+					lis[i].style.background='green';
+				}//点击全选按钮后，改变li的样式和所有input的checked
+			}else{
+				for(var i=0;i<lis.length;i++){
+					inps[i].checked=false;
+					lis[i].style.background='';
+				}//清空
+			}
+		}
+//		总结:解题的关键应该在最后一步上，判断所有的inps，如果有一个是假的就弹出假，之前比较笨的方法见老版
+	</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			div {
+				width: 60px;
+				height: 60px;
+				background: red;
+				position: absolute;
+				top: 0;
+			}
+		</style>
+		<script type="text/javascript" src="tween.js"></script>
+		<script type="text/javascript" src="mTween.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var str = '';
+	var len = 15;
+	var target = 200;
+	var timer = null;
+	var n = -1;
+	for (var i = 0; i < len; i++) {
+		str += '<div style="left:' + i * 70 + 'px"></div>';
+	}
+	document.body.innerHTML = str;//生成div
+	var divs = document.getElementsByTagName('div');//找到页面所有的div
+	var num = -1;//定义计时器
+	var onff = true;
+	document.onclick = function(){
+		//点击的时候让div的top变为300；
+		if(onff==false){
+			return
+		}
+		onff = false;
+		n = -1;//初始化计数器用来控制最后一个div落下
+		 timer = setInterval(fn1,300);
+		function fn1(){
+			num++;
+			mTween(divs[num],'top',target,20,'linear',function(){
+				n++;//每次循环加一
+				if(n==divs.length-1){
+					onff=true;
+				}//如果n等于最后一个数，那么打开计数器
+			})
+			if(num>=len-1){
+				num = -1;//防止num超出
+				if (target = 200) {
+						target = 0;//如果等于200则，让其为0
+				} else {
+						target = 200;
+				}
+				clearInterval(timer);//停止计数器
+			}
+		}
+	}
+</script>

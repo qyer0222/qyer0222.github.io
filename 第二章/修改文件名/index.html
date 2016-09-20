@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			header{
+				width: 260px;
+				height: 50px;
+				background-color: olive;
+				color: white;
+				line-height: 50px;
+				text-align: center;
+			}
+			ul{
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				margin-top: 20px;
+			}
+			li{
+				height: 30px;
+				width: 260px;
+				text-align: center;
+			}
+			p{
+				height: 30px;
+				line-height: 30px;
+				width: 132px;
+				margin: 0 auto;
+			}
+			a{
+				text-decoration: none;
+				color: gray;
+				margin-left: 10px;
+				font-weight: bold;
+			}
+			i{
+				position: absolute;
+				top: 10px;
+				left: 20px;
+				background-color: red;
+				color: white;
+				width: 50px;
+				height: 20px;
+				font-size: 10px;
+				line-height: 20px;
+				display: none;
+			}
+			img{
+				width: 100%;
+			}
+			span+span{
+				width: 15px;
+				height: 16px;
+				float: left;
+				position: relative;
+				margin-left: 5px;
+				top: 2px;
+			}
+			div{
+				display: none;
+				height: 31px;
+				line-height: 31px;
+			}
+			.trigger p{
+				display: none;
+			}
+			.trigger div{
+				display: block;
+			}
+			p span:nth-of-type(1){
+				float: left;
+			}
+			#text{
+				height: 24px;
+				line-height: 24px;
+				width: 106px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>老司机开车带带我</header>
+		<ul>
+			<!--<li>
+				<p>
+					<span>采蘑菇的小姑娘</span>
+					<span><img src="images/pen.png" />
+					<i>点击编辑</i>
+					</span>
+				</p>
+				<div>
+					<input type="text" id="text"/>
+					<a href="javascript:;">确定</a>
+					<a href="javascript:;">取消</a>
+				</div>
+			</li>
+			<li>
+				<p>
+					<span>采蘑菇的小姑娘</span>
+					<span><img src="images/pen.png" />
+					<i>点击编辑</i>
+					</span>
+				</p>
+				<div>
+					<input type="text" id="text"/>
+					<a href="javascript:;">确定</a>
+					<a href="javascript:;">取消</a>
+				</div>
+			</li>-->
+		</ul>
+		<script>
+			var uls=document.getElementsByTagName('ul');
+			var len=6;
+			var str='';
+			var clean=null;
+			for(var i=0;i<len;i++){
+				str+='<li><p><span>采蘑菇的小姑娘</span><span><img src="images/pen.png" /><i>点击编辑</i></span></p><div><input type="text" id="text"/><a href="javascript:;">确定</a><a href="javascript:;">取消</a></div></li>';
+			}
+			uls[0].innerHTML=str;
+			for(var i=0;i<len;i++){
+				fn(i);
+			}
+			function fn(obj){
+			var lis=uls[0].getElementsByTagName('li')[obj];
+			var imgs=lis.getElementsByTagName('img');
+			var divs=lis.getElementsByTagName('div')[0];
+			var as=lis.getElementsByTagName('a');
+			var inps=lis.getElementsByTagName('input');
+			var spans=lis.getElementsByTagName('span');
+			var is=lis.getElementsByTagName('i');
+			imgs[0].onclick=function(){
+				lis.className='trigger';
+				inps[0].value=spans[0].innerHTML;
+				inps[0].select();
+//				点击后焦点选择全部
+				if(clean){
+					clean.className='';
+				}
+				clean=this;
+//				问题1：无法关联li和img（用css方法）
+//				问题2:用js方法关联
+			}
+			as[0].onclick=function(){
+				if(inps[0].value!=''){
+				spans[0].innerHTML=inps[0].value;
+				}	
+				lis.className='';
+			}
+//			点击确定按钮，要进行判断，里面的内容如果是空的话就不能保存
+			as[1].onclick=function(){
+				lis.className='';
+			}
+//			点击取消按钮
+			imgs[0].onmouseover=function(){
+				is[0].style.display='block';
+			}
+//			鼠标移入的时候显示的点击编辑状态
+			imgs[0].onmouseout=function(){
+				is[0].style.display='none';
+			}	
+			}
+			
+		</script>
+	</body>
+</html>

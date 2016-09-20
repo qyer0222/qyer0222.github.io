@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li {
+				list-style: none;
+			}
+			
+			#hj {
+				margin-top: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="list">
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" /> 单价:
+				<em>12.5</em>元 小计:
+				<span>0</span>元
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" /> 单价:
+				<em>10.5</em>元 小计:
+				<span>0</span>元
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" /> 单价:
+				<em>8.5</em>元 小计:
+				<span>0</span>元
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" /> 单价:
+				<em>8</em>元 小计:
+				<span>0</span>元
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" /> 单价:
+				<em>14.5</em>元 小计:
+				<span>0</span>元
+			</li>
+		</ul>
+		<div id="box">
+			商品合计共:<span>0件</span> ,共花费了:<span>0元</span> 其中最贵的商品单价是:
+			<span>0元</span>
+		</div>
+
+		</ul>
+		<script type="text/javascript">
+			/*
+				1、商品数量加减操作的实现。
+				2、算出小计。
+				3、商品合计，消费总数，最贵商品单价
+				4、利用传参实现多个。
+
+									*/
+			var list = document.getElementById('list');
+			var liss = document.getElementsByTagName('li');
+			var lis = list.getElementsByTagName('li');
+			var price = [12.5, 10.5, 8.5, 8, 14.5];
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].num = 0;
+				lis[i].sum = 0;
+			}
+//			给每个li里面的属性都设置为0,不设置数字将找不到数值也就是undefined
+			for (var i = 0; i < price.length; i++) {
+				fn(i);
+			}
+			function fn(obj) {
+				var inps = lis[obj].getElementsByTagName('input');//加号和减号
+				var strongs = lis[obj].getElementsByTagName('strong')[0]; //	计价器
+				var spans = lis[obj].getElementsByTagName('span')[0];//小计
+				var box = document.getElementById('box');//大盒子
+				var spanss = box.getElementsByTagName('span');//商品合计，共花费，最贵单价，
+				
+				function fnn(){
+					strongs.innerHTML = lis[obj].num; //计价器
+						spans.innerHTML = lis[obj].sum = price[obj] * lis[obj].num;
+						var num = 0;
+						var sum = 0;
+						var con = 0;
+//						赋值初始化,每次点击的时候都可以清空一下样式,否则会累加之前的数值
+						for (var i = 0; i < lis.length; i++) {
+							num += lis[i].num; //计数
+							sum += lis[i].sum; //小计
+							console.log(lis[i].num)
+							if (lis[i].num>0&&price[i]>con) {
+								
+								con = price[i];
+							}
+						}
+						spanss[0].innerHTML = num;
+						spanss[1].innerHTML = sum;
+						spanss[2].innerHTML = con;
+				}
+				inps[0].onclick = function() {
+						if (lis[obj].num == 0) {
+							lis[obj].num = 1;
+						}
+						lis[obj].num--;
+						fnn();
+					}
+					//			减号
+				inps[1].onclick = function() {
+					lis[obj].num++;
+					fnn();
+				}
+			}
+		</script>
+		<!--注意
+		1.var lis = list.getElementsByTagName('li');
+		2.从页面获取的innerhtml元素只是用来赋值的，其他没有任何操作。
+		3.赋值初始化,每次点击的时候都可以清空一下样式,否则会累加之前的数值
+		-->
+	</body>
+
+</html>
