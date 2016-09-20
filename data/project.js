@@ -33,7 +33,7 @@ var projects = [
 		},
 		{
 			projectName:"CV",
-			projectWebsite:"https://qyer0222.github.io/CV/",
+			projectWebsite:"https://qyer0222.github.io/CV",
 		    startTime:"2016.01.01",
 			endTime:"至今",
 			projectExplain:"用户观看页面的图片，其大部分内容是通过JS加载的。为了提高性能，采用了延迟加载、延迟渲染、事件代理等优化方式。此外，还通过监听页面的window.onchang事件对图片进行动态。",
