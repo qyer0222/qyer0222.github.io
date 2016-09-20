@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.gray{
+				background:gray;
+			}
+			.white{
+				background: white;
+			}
+			strong{
+				background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" name="form" id="form">
+    <p>
+        姓名:<input type="text" name="username"/>
+    </p>
+    <p>
+        年龄:<input type="text" name="age"/>
+    </p>
+    <p>
+        性别: <select name="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </p>
+    <p>
+    <select name="content">
+		<option value="num" name="num">编号</option>
+		<option value="age">年龄</option>
+	</select>
+	<select name="sequence">
+		<option value="up">升序</option>
+		<option value="down">降序</option>
+	</select>
+	<input type="button" name="btn1" value="提交"></input>
+    <br><br>
+	</p>
+	<p>
+    搜索：
+    <input type="text" name="searchLabel">
+    <input type="button"value="提交" name="search"></input>
+    <br>
+    <br>
+    </p>
+    <p>
+        <input type="button" value="添加" name="add"/>
+    </p>
+</form>
+    <input type="button" value="反选" id="contrast" class="btn">
+    <input type="button" value="批量删除"class="btn" id="allDelete"> 
+    <table id="tab1" width="100%" border="1">
+
+        <thead>
+        <tr>
+            <th>
+                <input id="checkAll" type="checkbox" /> 全选
+            </th>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody>
+             <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>1</td>
+                <td>css</td>
+                <td>13</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>3</td>
+                <td>js</td>
+                <td>14</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> 
+             <tr>
+                <td>
+                    <input type="checkbox"/>
+                </td>
+                <td>2</td>
+                <td>html</td>
+                <td>15</td>
+                <td>男</td>
+                <td>
+                    <a href="javascript:;">上移</a> |
+                    <a href="javascript:;">下移</a> |
+                    <a href="javascript:;">删除</a>
+                </td>
+            </tr> 
+        </tbody>
+
+    </table>
+	</body>
+</html>
+<script>
+	var tab = document.getElementsByTagName('table')[0];
+	var body = tab.tBodies[0];
+	var bodyRows = body.rows;//获取body里面的行
+	var bodyCells = body.rows[0].cells[0];
+	var inps = body.getElementsByTagName('input');//获取下面的单选
+	var checkAll = document.getElementById('checkAll');//获取全选
+	var arr = ['gray','white'];
+	var form = document.getElementById('form');
+	var con='';
+	form.btn1.onclick = function(){
+		var arr1 = Array.from(body.rows);
+		if(form.content.value==form.content.children[0].value){
+		//降序
+			if(form.sequence.value==form.sequence.children[0].value){
+				arr1.sort(function(a,b){
+					return a.cells[1].innerHTML-b.cells[1].innerHTML;
+				})
+				body.innerHTML = '';
+				for(var i=0;i<arr1.length;i++){
+					body.innerHTML+=arr1[i].innerHTML;
+				}
+				
+			}else{
+				arr1.sort(function(a,b){
+					return b.cells[1].innerHTML-a.cells[1].innerHTML;
+				})
+				body.innerHTML = '';
+				for(var i=0;i<arr1.length;i++){
+					body.innerHTML+=arr1[i].innerHTML;
+				}
+			}
+		}else{
+			if(form.sequence.value==form.sequence.children[0].value){
+				arr1.sort(function(a,b){
+					return a.cells[3].innerHTML-b.cells[3].innerHTML;
+				})
+				body.innerHTML = '';
+				for(var i=0;i<arr1.length;i++){
+					body.innerHTML+=arr1[i].innerHTML;
+				}
+			}else{
+				arr1.sort(function(a,b){
+					return b.cells[3].innerHTML-a.cells[3].innerHTML;
+				})
+				body.innerHTML = '';
+				for(var i=0;i<arr1.length;i++){
+					body.innerHTML+=arr1[i].innerHTML;
+				}
+			}
+		}
+		checkAlls();
+		changeColor();
+		Color();
+		upmove();
+		downmove();
+		dele();
+	};
+	//生成当前行的颜色
+	Color();
+	function Color(){
+		var bodyRows = body.rows;
+		for(var i=0;i<bodyRows.length;i++){
+			bodyRows[i].className = arr[i%2];
+		}
+	}
+	//逐行点击改变颜色
+	changeColor();
+	function changeColor(){
+		for(var i=0;i<inps.length;i++){
+			inps[i].index = i;
+			inps[i].onclick = function(){
+				if(this.checked){
+					bodyRows[this.index].style.background ='pink'; 
+				}else{
+					bodyRows[this.index].style.background ='';
+				}
+				checkAll.checked = true;
+				//当所有选择都为true的时候，全选按钮触发；
+				for(var i=0;i<bodyRows.length;i++){
+					if(!inps[i].checked){
+					checkAll.checked = false;
+					}
+				}
+			}
+		}
+		
+	}
+	//全选
+	checkAlls();
+	function checkAlls(){
+		//控制当前点击的全选状态
+		checkAll.onclick=function(){
+			if(this.checked){
+				for(var i=0;i<bodyRows.length;i++){
+					inps[i].checked = true;
+					bodyRows[i].style.background ='pink'; 
+				}
+			}else{
+				for(var i=0;i<bodyRows.length;i++){
+					inps[i].checked = false;
+					bodyRows[i].style.background =''; 
+				}
+			}
+		}
+		if(inps[0]===undefined){
+			checkAll.checked=false;
+		}
+		for(var i=0;i<bodyRows.length;i++){
+			if(!inps[i].checked){
+				checkAll.checked = false;
+			}
+		}
+		Color();
+		changeColor();
+
+	};
+	//添加功能
+	form.add.onclick = function(){
+		var clone = document.createElement('tr');
+		//生成一个clone
+		clone.innerHTML = '<td><input type="checkbox"/></td><td>1</td><td>LEO</td><td>13</td><td>男</td><td><a href="javascript:;">上移</a> | <a href="javascript:;">下移</a> | <a href="javascript:;">删除</a></td>';
+		var con = 0;
+		//找ID里面的最大值
+		for(var i=0;i<body.rows.length;i++){
+			if(Number(body.rows[i].cells[1].innerHTML)>con){
+				con = Number(body.rows[i].cells[1].innerHTML);
+			}
+		}
+		//修改里面的样式
+		clone.style.background ='';
+		clone.children[1].innerHTML = con+1;
+		clone.children[2].innerHTML = form.username.value;
+		clone.children[3].innerHTML = form.age.value;
+		clone.children[4].innerHTML = form.sex.value;
+		body.appendChild(clone);
+		checkAlls();
+		upmove();
+		downmove();
+		dele();
+		allDeletes();
+		Color();
+		changeColor();
+	}
+	//上移功能
+	upmove();
+	function upmove(){
+		var as = document.getElementsByTagName('a');
+		for(var i=0;i<as.length;i=i+3){
+			as[i].onclick = function(){
+				if(this.parentNode.parentNode.previousElementSibling){
+						body.insertBefore(this.parentNode.parentNode,this.parentNode.parentNode.previousElementSibling);
+					}else{
+						return
+				}
+				Color();
+				changeColor();
+			}
+		}
+	}
+	//下移功能
+	downmove();
+	function downmove(){
+		var as = document.getElementsByTagName('a');
+		for(var i=1;i<as.length;i=i+3){
+			as[i].onclick = function(){
+				if(this.parentNode.parentNode.nextElementSibling){
+						body.insertBefore(this.parentNode.parentNode.nextElementSibling,this.parentNode.parentNode);
+					}else{
+						return
+				}
+				Color();
+				changeColor();
+			}
+		}
+	}
+	//删除功能
+	dele();
+	function dele(){
+		var as = document.getElementsByTagName('a');
+		for(var i=2;i<as.length;i=i+3){
+			as[i].onclick = function(){
+				body.removeChild(this.parentNode.parentNode);//删除当前行
+				checkAlls();
+				upmove();
+				downmove();
+				dele();
+				allDeletes();
+				Color();
+				changeColor();
+			}
+		}
+	}
+	//反选功能
+	contrasts();
+	function contrasts(){
+		var contrast = document.getElementById('contrast');
+		contrast.onclick = function(){
+			checkAll.checked = true;
+			for(var i=0;i<bodyRows.length;i++){
+				if(inps[i].checked){
+					inps[i].checked = false;
+					bodyRows[i].style.background =''; 
+				}else{
+					inps[i].checked = true;
+					bodyRows[i].style.background ='pink'; 
+				}
+				//当所有选择都为true的时候，全选按钮触发；
+				if(!inps[i].checked){
+					checkAll.checked = false;
+				}
+			}
+			allDeletes();
+		}
+	}
+	//批量删除
+	allDeletes();
+	function allDeletes(){
+		var allDelete = document.getElementById('allDelete');
+		allDelete.onclick = function(){
+			for(var i=0;i<bodyRows.length;i++){
+				if(inps[i].checked){
+					body.removeChild(inps[i].parentNode.parentNode);
+					i--;//删除之后要进行--
+				}
+			}
+			Color();
+			checkAlls();
+			changeColor();
+		};
+	}
+	form.search.onclick = Search;//搜索点击事件
+	//搜索函数
+	function Search(){	
+		var values = form.searchLabel.value;
+		for(var i=0;i<body.rows.length;i++){
+			for(var j=0;j<body.rows[i].children.length;j++){
+				var arrs = body.rows[i].children[j].innerHTML.split(values);
+				var arrs = arrs.join('<strong>'+values+'</strong>');
+				body.rows[i].children[j].innerHTML = arrs;
+			}
+		}
+		checkAlls();
+		upmove();
+		downmove();
+		dele();
+		allDeletes();
+		Color();
+		changeColor();
+	}
+</script>

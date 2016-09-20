@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		
+			#div{
+				width: 100px;
+				height: 100px;
+				background-color: black;
+				position: absolute;
+			}
+			#border{
+				width: 100px;
+				height: 100px;	
+				border: 1px solid black;
+				position: absolute;
+				display: none;
+			}
+			#btn{
+				margin-bottom: 50px;
+				width: 50px;
+				height: 20px;
+				border: 1px solid gray;
+				border-radius: 5px;
+				box-shadow: 0 0 2px 2px #25992e;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="back" id="btn"/>
+		<div id="div"></div>
+		<div id="border"></div>
+		
+		<script>
+			var border = document.getElementById('border');//移动的边框
+			var div = document.getElementById('div');//红色的div
+			var arr = [];
+			var btn = document.getElementById('btn');
+			var timer;
+			var onff = true;
+			div.onmousedown = function(ev){
+//				arr.push({x:this.offsetTop,y:this.offsetLeft});
+				var Top = ev.clientY-this.offsetTop+1;
+				var Left = ev.clientX-this.offsetLeft+1;
+				border.style.top = this.offsetTop-1+'px';//点击之后获取当前边框的位置，由于他是覆盖在红色div上面的，定位的话，会多余1像素
+				border.style.left = this.offsetLeft-1+'px';
+				border.style.display = 'block';//边框显示
+				//鼠标移动的时候随时记录边框的位置
+				document.onmousemove = function(ev){
+					var x = ev.clientX-Left;
+					var y = ev.clientY-Top;
+					var obj = {x:x,y:y};
+					arr.push(obj);
+					border.style.left =x +'px';
+					border.style.top =y +'px';
+					
+				}
+				document.onmouseup = function(){
+				 document.onmousemove = null;
+				 document.onmouseup = null;
+				div.style.top = border.offsetTop+1+'px';//之前计算的时候top减了1像素，运动距离一样，所以如果想要border位置和div的位置对应应该+1像素
+				div.style.left = border.offsetLeft+1+'px';
+				border.style.display = '';//这个要放在div选位置的后面否则会没有变化，因为border的位置归0了
+			}
+			}
+			//鼠标抬起后将border隐藏，让红色div的位置进行改变
+			
+			
+			btn.onclick = function(){
+				if(!onff)return;
+				onff = false;
+				timer = setInterval(function(){
+					var obj = arr.pop();
+					
+					if(!obj){
+						clearInterval(timer);
+						onff = true;
+						return;
+					}
+					 div.style.left = obj.x+'px';//之前计算的时候top减了1像素，运动距离一样，所以如果想要border位置和div的位置对应应该+1像素
+					 div.style.top = obj.y+'px';
+				},40)
+			}
+		</script>
+	</body>
+</html>

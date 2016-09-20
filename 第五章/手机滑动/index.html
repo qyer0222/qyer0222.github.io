@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		#box{
+			width: 500px;
+			height: 250px;
+			margin: 50px auto;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			position: relative;
+			width: 500px;
+			height: 250px;
+			overflow: hidden;
+		}
+		li{
+			width: 500px;
+			height: 250px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			list-style: none;
+		}
+		img{
+			width: 100%;
+			height: 100%;
+		}
+		.now{
+			z-index: 10;
+		}
+		.next{
+			z-index: 5;
+		}
+		</style>
+		<script type="text/javascript" src="js/mTween.js"></script>
+	<script type="text/javascript" src="js/tween.js"></script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li class="now">
+					<img src="img/img1.gif"/>
+				</li>
+				<li class="next">
+					<img src="img/img2.gif"/>
+				</li>
+				<li>
+					<img src="img/img3.gif"/>
+				</li>
+				<li>
+					<img src="img/img4.gif"/>
+				</li>
+				<li>
+					<img src="img/img5.gif"/>
+				</li>
+			</ul>
+		</div>
+		<script>
+			var box = document.getElementById('box');
+			var lis = document.getElementsByTagName('li');
+			var leftdown,topdown;
+			var num = 0;//改变now和next
+			var onff = true;
+			//鼠标按下后，获取当前的坐标值
+			box.onmousedown = function(ev){
+				 leftdown = ev.clientX;
+				 topdown = ev.clientY;
+				return false;
+			};
+			//鼠标抬起后获取当前的坐标值和按下后的坐标值进行比较，
+			box.onmouseup = function(ev){
+				var leftup = Math.abs(ev.clientX - leftdown);
+				var topup = Math.abs(ev.clientY - topdown);
+				//控制左右
+				if(leftup>topup){
+					//控制右
+					if(ev.clientX - leftdown>0){
+						fn('left',500);
+					}else{
+						fn('left',-500);
+					}
+					//控制上下
+				}else{
+					//控制下
+					if(ev.clientY - topdown>0){
+						fn('top',500);
+					}else{
+						fn('top',-500);
+					}
+				}
+			};
+			//键盘事件
+			document.onkeydown = function(ev){
+				if(!onff)return;
+				onff=false;
+				switch(ev.keyCode){
+					case 37://左
+					fn('left',-500);
+					break;
+					case 38://上
+					fn('top',-500);
+					break;
+					case 39://右
+					fn('left',500);
+					break;
+					case 40://下
+					fn('top',500);
+					break;
+				}
+			};
+			
+			//封装改变方向的函数，封装的函数值为方向和数值
+			function fn(direction,value){
+				if(num==lis.length-1){
+					num=-1;
+				}
+				num++;
+				var nows = document.getElementsByClassName('now')[0];
+				//滑动之后进行运动
+				mTween(nows,direction,value,200,'linear',function(){
+				//清空class名为now的属性
+				nows.className = '';
+				nows.style[direction] = '0';//偏移量恢复为0
+				lis[num].className = 'now';//运动结束后，下一个li就是now
+				lis[(num+1)%lis.length].className = 'next';//下一个的下一个li是next；
+				onff = true;//控制键盘事件多次点击时候的冲突
+				});
+			}
+		</script>
+	</body>
+</html>

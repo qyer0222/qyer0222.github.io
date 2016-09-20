@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				position: absolute;
+				left: 0;;
+			}
+			ul{
+				position: relative;
+			}
+		</style>
+		<script src="js/mTween.js" type="text/javascript"></script>
+		<script src="js/tween.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<ul>
+			<li style="top:0px">
+				0
+				<input type="button" value="上移" name="btn1"/>
+				<input type="button" value="下移"name="btn2"/>
+			</li>
+			<li style="top:20px">
+				1
+				<input type="button" value="上移"name="btn3"/>
+				<input type="button" value="下移"name="btn4"/>
+			</li>
+			<li style="top:40px">
+				2
+				<input type="button" value="上移"name="btn5"/>
+				<input type="button" value="下移"name="btn6"/>
+			</li>
+			<li style="top:60px">
+				3
+				<input type="button" value="上移"name="btn7"/>
+				<input type="button" value="下移"name="btn8"/>
+			</li>
+		</ul>
+	</body>
+</html>
+<script>
+//	var str = '<ul>'; 
+//	var num = 0;
+//	for(var i=0;i<4;i++){
+//		num++;
+//		str+='<li style="top:'+num*60+'px">'+num+'<input type="button" value="上移" name="btn1"/><input type="button" value="下移"name="btn2"/></li>';
+//	}
+//	str+='</ul>';
+//	document.body.innerHTML = str;
+	var uls =document.getElementsByTagName('ul')[0];
+	var inps = document.getElementsByTagName('input');
+	//下移
+	for(var i=1;i<inps.length;i=i+2){
+		inps[i].onclick =function(){
+			//如果当前点击的li的下一个兄弟存在的话
+			if(this.parentNode.nextElementSibling){
+				//让当前点击的li的top值等于当前点击的下一个li的top数值
+				mTween(this.parentNode,'top',this.parentNode.nextElementSibling.offsetTop,200,'linear');
+				//让当前点击的li的top值等于当前点击的上一个li的top数值
+				mTween(this.parentNode.nextElementSibling,'top',this.parentNode.offsetTop,200,'linear');
+				//将当前点击的li的内容插入到li的下一个的前面
+				uls.insertBefore(this.parentNode.nextElementSibling,this.parentNode);
+			}else{
+				return
+			}
+		}
+	}
+	//上移
+	for(var i=0;i<inps.length;i=i+2){
+		inps[i].onclick =function(){
+			if(this.parentNode.previousElementSibling){
+				mTween(this.parentNode,'top',this.parentNode.previousElementSibling.offsetTop,200,'linear');
+				mTween(this.parentNode.previousElementSibling,'top',this.parentNode.offsetTop,200,'linear');
+				uls.insertBefore(this.parentNode,this.parentNode.previousElementSibling);
+			}else{
+				return;
+			}
+		}
+	}
+</script>

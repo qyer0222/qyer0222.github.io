@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 600px;
+				margin: 0 auto;
+				position: relative;
+				height: 400px;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			#prev,#next{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: gray;
+				position: absolute;
+				top: 50px;
+				line-height: 50px;
+				font-size: 20px;
+				color: gold;
+				text-align: center;
+				top:50%;
+				transform: translateY(-50%);
+				cursor:pointer;
+			}
+			#prev{
+				left: 20px;
+			}
+			#next{
+				right: 20px;
+			}
+			li{
+				width: 30px;
+				height: 30px;
+				background: #E7E7E7;
+				position: relative;
+				float: left;
+				margin: 0;
+				list-style: none;
+				border-radius: 50%;
+/*				cursor:pointer;*/
+			}
+			ul{
+				padding: 0;
+				margin:0;
+				width: 300px;
+				height: 30px;
+				position: absolute;
+				bottom: 20px;
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="image/0.jpg" />
+			<span id="prev"><</span>
+			<span id="next">></span>
+			<ul>
+				<!--<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>-->
+			</ul>
+		</div>
+		<script>
+			function $(getname,id){
+				return (id||document).getElementsByTagName(getname);
+			}
+			var imgs = $('img')[0];
+			var spans = $('span');
+			var num = 0;
+			var arr = ['0.jpg','1.jpg','2.jpg','3.jpg','4.jpg','5.jpg']
+			var ul = $('ul')[0];
+			var lis = $('li');
+			var str = '';
+			var timer = '';
+			for(var i=0;i<arr.length;i++){
+				str += '<li style="left:'+i*60+'px;"></li>';
+			}
+			ul.innerHTML = str;
+			lis[0].style.background='rgb(147, 207, 216)';
+			spans[0].onclick = function(){
+				if(num <= 0){
+					num = arr.length;
+				}
+				num--;
+				imgs.src = 'image/'+arr[num];
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.background = '';
+				}
+				lis[num].style.background = 'rgb(147, 207, 216)';
+			};
+			spans[1].onclick=function(){
+				if(num >= arr.length-1){
+					num=-1;
+				}
+				num++;
+				imgs.src = 'image/'+arr[num];
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.background = '';
+				}
+				lis[num].style.background = 'rgb(147, 207, 216)';
+			};
+			fn();
+			box.onmouseover=function(){
+				clearInterval(timer)
+			}
+			box.onmouseout=function(){
+				fn();
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].index = i;
+				lis[i].onclick=function(){
+					num = this.index;
+					for(var i=0;i<lis.length;i++){
+						lis[i].style.background = '';
+					}
+					lis[this.index].style.background = 'rgb(147, 207, 216)';
+					imgs.src = 'image/'+arr[this.index];
+				}
+			}
+			function fn(){
+				timer=setInterval(playauto,1000)
+				function playauto(){
+					if(num >= arr.length-1){
+						num=-1;
+					}
+					num++;
+					imgs.src = 'image/'+arr[num];
+					for(var i=0;i<lis.length;i++){
+						lis[i].style.background = '';
+					}
+					lis[num].style.background = 'rgb(147, 207, 216)';
+				}
+			}
+		</script>
+	</body>
+</html>

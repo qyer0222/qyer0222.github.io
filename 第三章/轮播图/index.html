@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>带详情的轮播</title>
+		<style type="text/css">
+			#box {
+				width: 510px;
+				height: 454px;
+				margin: 0 auto;
+				border: 5px solid #ccc;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 90px;
+			}
+			
+			li {
+				list-style-type: none;
+				width: 100%;
+				height: 90px;
+				position: absolute;
+				top: 90px;
+				background-color: black;
+				opacity: .7;
+				color: white;
+			}
+			
+			h4 {
+				margin: 0;
+				line-height: 40px;
+			}
+			
+			p {
+				margin: 0;
+				line-height: 50px;
+			}
+			
+			img {
+				float: left;
+				width: 510px;
+				height: 454px;
+			}
+			
+			#imgs {
+				position: absolute;
+				left: 0;
+				width: 3060px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div id="imgs">
+				<img src="image/1.jpg" alt="1">
+				<img src="image/2.jpg" alt="2">
+				<img src="image/3.jpg" alt="3">
+				<img src="image/4.jpg" alt="4">
+				<img src="image/5.jpg" alt="5">
+			</div>
+			<ul id="info">
+				<li style="top:0px;">
+					<h4>一些javascript基础书籍</h4>
+					<p>《DOM的编程艺术》</p>
+				</li>
+				<li>
+					<h4>一些javascript基础书籍</h4>
+					<p>《javascript高级编程设计》</p>
+				</li>
+				<li>
+					<h4>一些javascript晋升书籍</h4>
+					<p>《javascript语言精粹》</p>
+				</li>
+				<li>
+					<h4>一些javascript晋升书籍</h4>
+					<p>《javascript忍者秘籍》</p>
+				</li>
+				<li>
+					<h4>一些javascript晋升书籍</h4>
+					<p>《你所不知道的javascript上卷》</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="tween.js"></script>
+<script type="text/javascript" src="mTween.js"></script>
+<script>
+//	思路:
+//		一、li的top为0的时候,会显示出来,先让它下去,随后图片变换,再让他上来。
+//		二、开启定时器无限循环
+	
+	var imgs = document.getElementById('imgs');
+	var lis = document.getElementsByTagName('li');
+	var box = document.getElementById('box');
+	var num = -1;
+	var timer = null;
+	fn();
+	timer = setInterval(fn,4000)
+	function fn(){
+		num++;
+	setTimeout(function(){
+			mTween(lis[num],'top',90,1000,'linear',function(){
+//			图片超出后，自动返回
+			if(num==4){
+				num=-1;
+				mTween(imgs,'left',0,1000,'linear',function(){
+					mTween(lis[num+1],'top',0,1000,'linear')
+				})
+			}
+			//自动播放
+			if(num<=4){
+				mTween(imgs,'left',-510*(num+1),1000,'linear',function(){
+					mTween(lis[num+1],'top',0,1000,'linear')
+				})
+			}
+		})
+		},1000)
+	}
+</script>
+<!--总结：主要找好谁先走，谁后走，谁在谁的后面走-->

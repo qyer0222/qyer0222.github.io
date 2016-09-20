@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta charset = 'utf-8' />
+  <style>
+    ul {width: 250px;text-align: center;}
+    ul li {color: #666;background-color: #eee;font-weight:bold; font-size: 14px; height: 30px; line-height: 30px; padding: 0 20px;list-style:none;}
+    ul .focus {font-size: 18px; background-color: #555;color:#fff;}
+    ul .near {font-size:18px; background-color: #ccc;color:blue;}
+    ul .none {background:#333;color:#fff;}
+    ul .side {background:orange;}
+  </style>
+ </head>
+
+ <body>
+
+  <ul id="ul1">
+    <li class="none">这是首行</li>
+    <li>Head first HTML CSS</li>
+	<li>CSS权威指南（第三版）</li>
+	<li>精通CSS</li>
+	<li>JavaScript语言精粹</li>
+	<li>JavaScript设计模式</li>
+	<li>锋利的jQuery</li>
+	<li>JavaScript编程精解</li>
+	<li>JavaScript启示录</li>
+	<li>JavaScript权威指南</li>
+    <li class="none">这是末行</li>
+  </ul>
+
+ </body>
+</html>
+
+<script src="miaov.js"></script>
+<script>
+
+var uls = document.getElementById('ul1');
+//先判断移入、移除第一个和最后一个的状态
+for(var i=0;i<uls.children.length;i++){
+	if(uls.children[i] == uls.firstElementChild){
+		uls.children[i].onmouseover =function(){
+		this.className = 'side';
+		}
+		uls.children[i].onmouseout =function(){
+		this.className = 'none';
+		}
+	}else if(uls.children[i] == uls.lastElementChild){
+		uls.children[i].onmouseover =function(){
+		this.className = 'side';
+		}
+		uls.children[i].onmouseout =function(){
+		this.className = 'none';
+		}
+	}else{
+		//如果是倒数第二个和倒数第一个移入的话会执行下面的命令
+		if(uls.children[i]==uls.firstElementChild.nextElementSibling){
+			uls.children[i].onmouseover =function(){
+			this.className = 'focus';
+			this.nextElementSibling.className ='near';
+			this.previousElementSibling.className ='side'; 
+			}	 
+		}else if(uls.children[i]==uls.lastElementChild.previousElementSibling){
+			uls.children[i].onmouseover =function(){
+			this.className = 'focus';
+			this.previousElementSibling.className ='near';
+			this.nextElementSibling.className ='side'; 
+			}
+		}else{
+			uls.children[i].onmouseover =function(){
+			this.className = 'focus';
+			this.nextElementSibling.className ='near';
+			this.previousElementSibling.className ='near'; 
+			}	
+		}
+		//移除的话会统一执行下面的命令
+		uls.children[i].onmouseout =function(){
+			this.className = '';
+			this.nextElementSibling.className =''; 
+			this.previousElementSibling.className =''; 
+			uls.firstElementChild.className = 'none';
+			uls.lastElementChild.className = 'none';
+		}
+	}
+	
+}
+</script>

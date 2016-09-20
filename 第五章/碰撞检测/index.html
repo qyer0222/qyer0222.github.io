@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin: 0;
+			}
+			.div1{
+				width: 100px;
+				height: 100px;
+				background: black;
+				position: absolute;
+				top: 200px;
+				left: 200px;
+			}
+			.div2{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				top: 400px;
+				left: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<div class="div2"></div>
+		<script>
+			var divs = document.getElementsByTagName('div')[0];
+			var divs2 = document.getElementsByTagName('div')[1];
+			divs.onmousedown = function(ev){
+				var Left = ev.clientX-divs.offsetLeft;//获取当前点击位置-divs的left值求边框
+				var Top = ev.clientY-divs.offsetTop;
+				document.onmousemove = function(ev){
+					var x = ev.clientX - Left;
+					var y = ev.clientY - Top;
+					var max_x = window.innerWidth-divs.offsetWidth;
+					var max_y = window.innerHeight-divs.offsetHeight;
+				//吸附效果
+					if(x<50){
+						x=0;
+					}
+					if(y<50){
+						y=0;
+					}
+					if(x>max_x){
+						x = max_x;
+					}
+					if(y>max_y){
+						y = max_y;
+					}
+//					if(x<50&&y<50){
+//						x=0;
+//						y=0;
+//					}
+					divs.style.left = x+'px';
+					divs.style.top = y+'px';
+					
+					if(CollisionTest(divs,divs2)){
+						divs2.style.background = 'red';
+//						document.onmousemove = null;
+					}else{
+						divs2.style.background = '';
+					}
+					
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+			//obj1：移动的div1，obj2:被碰撞的div2
+			function CollisionTest(obj1,obj2){
+				var pos1 = obj1.getBoundingClientRect();
+				var pos2 = obj2.getBoundingClientRect();
+//				if(pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom||pos1.right<pos2.left){
+//					return false;//没有碰撞到
+//				}else{
+//					return true;
+//				}
+				return !(pos1.bottom<pos2.top||pos1.left>pos2.right||pos1.top>pos2.bottom||pos1.right<pos2.left)
+			}
+		</script>
+	</body>
+</html>

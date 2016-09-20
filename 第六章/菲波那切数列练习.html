@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		
+			//第一种方法
+			/*function abs(){
+				let [a,b] =[0,1];
+				for(var i=0;i<100;i++){
+					[a,b] = [b,a+b]
+					console.log(b)
+				}
+			}
+			abs();*/
+			
+			
+			//第二种方法
+			/*function* fibonacci() {
+			  let [prev, curr] = [0, 1];
+			  for (;;) {
+			    [prev, curr] = [curr, prev + curr];
+			    yield curr;
+			  }
+			}
+
+			for (let n of fibonacci()) {
+			  if (n > 1000) break;
+			  console.log(n);
+			}*/
+		</script>
+	</body>
+</html>

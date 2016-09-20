@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		#wrap{
+			height: 50px;
+			border: 5px solid yellow;
+			position: relative;
+			text-align: center;
+			line-height: 50px;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		#bar{
+			height: 100%;
+			width: 0;
+			background: green;
+			position: absolute;
+			left: 0;
+			z-index: -1;
+		}
+		</style>
+	</head>
+	<body>
+		<input type="file" name="" id="file">
+		<div id="wrap">
+			<div id="bar"></div>
+			<span>0%</span>
+		</div>
+		<script>
+			var file = document.getElementById('file');
+			var bar = document.getElementById('bar');//变化的颜色条
+			var wrap = document.getElementById('wrap');//长条
+			var span = document.getElementsByTagName('span')[0];//百分之几
+			var maxWidth = wrap.clientWidth;//长条宽度，最后颜色铺满
+			file.onchange = function(){
+				var f = file.files[0];//找到files【0】保存上传文件
+				var xhr = new XMLHttpRequest();//创建ajax对象
+				//填写请求信息
+				xhr.open('post','php/post_file.php',true);
+				//监控请求
+				xhr.onload = function(){
+					console.log(this.responseText)
+				}
+				//当上传的时候触发函数
+				xhr.upload.onprogress = function(ev){
+					//ev.loaded：是当前上传的进度，ev.total：上传总进度
+					var scale = ev.loaded/ev.total;  
+					span.innerHTML = (scale*100).toFixed(2)+'%';//求span的宽度，取前小数点后前两位使用toFixed(2)
+					bar.style.width = maxWidth*scale+'px';//求当前的宽度
+				}
+				var fd = new FormData();//转换二进制
+				fd.append('file',f);//在fd中插入数据（第一个参数是php里面的文件名，后面的是要传入的内容）
+				//发送请求，传入数据
+				xhr.send(fd);
+			}
+		</script>
+	</body>
+</html>

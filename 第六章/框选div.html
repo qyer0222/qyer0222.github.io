@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		#div1{
+			position: absolute;
+			border: 1px solid black;
+			display: none;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+		<script>
+			$(document).mousedown(function(ev){
+				var disx = ev.clientX;
+				var disy = ev.clientY;
+				$('#div1').css({
+					left:disx,
+					top:disy
+				}).show();
+				$(document).mousemove(function(ev){
+					var width = Math.abs(ev.clientX - disx);
+					var height = Math.abs(ev.clientY - disy);
+					var x = disx - width;//求top数值
+					var y = disy - height;//求left数值
+					if(ev.clientX<disx){
+						$('#div1').css('left',x)
+					}
+					
+					if(ev.clientY<disy){
+						$('#div1').css('top',y);
+					}
+					$('#div1').css({
+						width: width,
+						height: height
+					})
+				})
+				$(document).mouseup(function(ev){
+					$('#div1').hide().css({
+						width:0,
+						height:0
+					});
+				$(this).off('mousemove mouseup');
+				})
+			})
+		</script>
+	</body>
+</html>

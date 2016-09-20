@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,p,h2 {
+				margin: 0;
+			}
+			
+			#box {
+				width: 1000px;
+				margin: 30px auto;
+			}
+			
+			.top {
+				text-align: center;
+				line-height: 45px;
+			}
+			
+			.boxB {
+				width: 1000px;
+				height: 450px;
+			}
+			
+			.left {
+				width: 80px;
+				float: left;
+				border: 1px solid gray;
+				line-height: 35px;
+				background: orange;
+				color: #fff;
+				margin-right: 10px;
+				font-size: 20px;
+			}
+			
+			.right {
+				width: 850px;
+				height: 450px;
+				left: 100px;
+				border: 1px solid gray;
+				position: relative;
+				top: 0;
+			}
+			
+			.right img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: pointer;
+			}
+		</style>
+		<script src="js/mQuery.js" type="text/jscript"></script>
+		<script src="js/mTween.js" type="text/jscript"></script>
+		<script src="js/tween.js" type="text/jscript"></script>
+		<script src="js/rock.js" type="text/jscript"></script>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="top">
+				<h2>你的鼠标有多快？</h2>
+				<p>游戏说明：点击“开始游戏”，随机掉下QQ表情，点中它，千万别让它掉下去!!</p>
+				<input type="button" value="开始游戏" style="cursor: pointer;" id="btn">
+			</div>
+			<div class="boxB">
+				<div class="left">
+					<p>得分:<span id="score">0分</span></p>
+					<p>失分:<span id="lost">0分</span></p>
+				</div>
+				<div class="right" id="rock_box">
+					<img src="" />
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<!--需求：点击开始按钮，表情开始下落，下落是随机的，表情可能会不同，点击表情后会产生消除影响，点击成功后得1分
+落下到最后面丢失1分-->
+<script>
+function $$(ID){
+	return document.getElementById(ID);
+}
+	var imgs = $('img')[0];//表情地址
+	var btn = $$('btn');//开始按钮
+	var timer;//定时器管理
+	var score = $$('score');//得分
+	var lost = $$('lost');//负分
+	var rock_box = $$('rock_box');//抖动栏
+	console.log(rock_box)
+	var onff = true;
+	btn.onclick = fn;//点击开始
+	lost.lose = 0;//控制负分
+	score.win = 0;//自定义属性控制得分
+	//点击开始
+	function fn(){
+		if(!onff){
+			return;
+		}
+		onff = false;
+		imgs.src = 'imgs/'+Math.floor(Math.random()*10)+'.png';//表情自动变化
+		var num = 0;
+		imgs.style.left = Math.floor(Math.random()*700)+'px';//让表情随机跑
+		auto();
+		timer = setInterval(auto,600);
+		function auto(){
+			if(num>9){
+				imgs.src = '';
+				clearInterval(timer);
+				lost.lose++;
+				lost.innerHTML = lost.lose+'分';
+				onff = true;
+				rock(rock_box,'left',function(){
+					fn();
+				});//回调点击按钮的函数
+			}else{
+				imgs.style.top = 45*num+'px';//让表情每次下落一定距离
+//				mTween(imgs,'top',450,800,'linear',function(){
+//					imgs.style.top = '0';
+//				})
+			}
+			num++;
+		}
+		//控制分数结果
+		if(score.win>=10){
+			alert('恭喜获胜');
+			score.win = 0;
+			score.innerHTML = score.win+'分';
+			imgs.src = '';
+			clearInterval(timer);
+			onff = true;
+		}
+	}
+	//点击表情
+	imgs.onclick = function(){
+		clearInterval(timer);
+		imgs.src = 'imgs/qq.png';
+		score.win++;
+		score.innerHTML = score.win+'分';
+		onff = true;
+		rock(imgs,'left',function(){
+			fn();
+		});
+	};
+</script>
+<!--总结有bug，表情可以多次点击，由于点击关联的是循环，所以多次点击分数会叠加也会产生再次开启游戏的bug，代码糅杂需要简化-->

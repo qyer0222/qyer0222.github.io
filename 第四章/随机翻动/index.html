@@ -1,0 +1,93 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	ul{
+		margin: 20px auto 0;
+		padding: 0;
+		width: 600px;
+	}
+	li{
+		list-style-type: none;
+		float: left;
+		width: 280px;
+		margin: 0 10px;
+		position: relative;
+		height: 120px;
+		overflow: hidden;
+	}
+	img{
+		height: 120px;
+		width: 280px;
+		vertical-align: top;
+	}
+	div{
+		position: absolute;
+		top:0;
+	}
+</style>
+</head>
+
+<body>
+	<ul>
+		<li>
+			<div><img src="img/1.jpg" alt=""><img src="img/2.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/3.jpg" alt=""><img src="img/4.jpg" alt=""><img src="img/6.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/5.jpg" alt=""><img src="img/6.jpg" alt=""><img src="img/7.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/7.jpg" alt=""><img src="img/8.jpg" alt=""><img src="img/5.jpg" alt=""><img src="img/1.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/2.jpg" alt=""><img src="img/1.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/4.jpg" alt=""><img src="img/3.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/8.jpg" alt=""><img src="img/7.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/6.jpg" alt=""><img src="img/5.jpg" alt=""></div>
+		</li>
+	</ul>
+</body>
+</html>
+<script type="text/javascript" src="js/mTween.js"></script>
+<script type="text/javascript" src="js/tween.js"></script>
+<script type="text/javascript">
+
+var divs = document.getElementsByTagName('div');
+for(var i=0;i<divs.length;i++){
+	fns(i);
+}
+function fns(i){
+var divs = document.getElementsByTagName('div')[i];//父级
+var imgs = divs.getElementsByTagName('img');
+var height = parseInt(getComputedStyle(imgs[0]).height);
+var len = imgs.length;
+var num = 0;
+var n =1;
+fn();
+function fn(){
+	setTimeout(function(){
+		if(num==len-1){
+			n = -1;
+		}//数量超出后设置为-1
+		if(num==0){
+			n = 1;
+		}//数量减少到0的时候设置为1
+		num+=n;
+		mTween(divs,'top',-height*num,300,'linear');
+		fn();
+	},Math.random()*2000+1000);
+}
+
+}
+</script>

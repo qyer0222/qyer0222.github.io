@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../作业/mTween.js"></script>
+		<script type="text/javascript" src="../作业/tween.js"></script>
+		<style>
+			ul{
+			margin: 0;
+			padding: 0;
+			}
+			li{
+				list-style: none;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+		<li>
+			<div><img src="img/0.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/0.jpg" alt=""></div>
+		</li>
+		<li>
+			<img src="img/c.jpg" alt="">
+		</li>
+		<li>
+			<div><img src="img/0.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/0.jpg" alt=""></div>
+		</li>
+		<li>
+			<img src="img/c.jpg" alt="">
+		</li>
+		<li>
+			<div><img src="img/0.jpg" alt=""></div>
+		</li>
+		<li>
+			<div><img src="img/0.jpg" alt=""></div>
+		</li>
+	</ul>
+		<script>
+//			var date = new Date();
+//			var year = date.getFullYear();
+//			var month = date.getMonth();
+//			var d = date.getDate();
+//			var day = date.getDay();
+//			var h = date.getHours();
+//			var m = date.getMinutes();
+//			var s = date.getSeconds();
+//			var ms = date.getMilliseconds();
+//			var week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+//			function toTwo(n){
+//				if(n>=10){
+//					return ''+n;
+//				}else{
+//					return '0'+n;
+//				}
+//			}
+////			var time = '今年是:'+year+'年'+month+'月'+d+'号'+h+':'+min+':'+se;
+//			var time = toTwo(h)+toTwo(m)+toTwo(s);
+//			var n=3;
+//			console.log(n>2? 1:2)
+
+			//图片时钟
+			setInterval(fn,200)
+			function fn(){
+				var date = new Date();
+				var h = date.getHours();
+				var min = date.getMinutes();
+				var s = date.getSeconds();
+				var time = toTwo(h)+toTwo(min)+toTwo(s);
+				var str = '';
+				var img = document.querySelectorAll('div img');
+	//			img[0].src = 'img/'+time[0]+'.jpg';
+	//			img[1].src = 'img/'+time[1]+'.jpg';
+				for(var i=0;i<img.length;i++){
+					img[i].src = 'img/'+time[i]+'.jpg';
+				}
+				function toTwo(n){
+					if(n<10){
+						return '0'+n;
+					}else{
+						return ''+n;
+					}
+				}
+			}
+			
+		
+		</script>
+	</body>
+</html>

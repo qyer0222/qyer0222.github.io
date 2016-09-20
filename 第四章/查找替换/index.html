@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#box{
+			width: 500px;
+			height: 500px;
+			background:rgb(147, 207, 216);
+			margin: 0 auto;
+			position: relative;
+			text-align: center;
+		}
+		p{
+			line-height: 20px;
+			float: left;
+			margin: 70px;
+			border: 1px solid beige;
+			width: 350px;
+			height: 250px;
+			overflow: auto;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			display: none;
+			background: blue;
+		}
+		li{
+			list-style: none;
+			margin: 0;
+			width: 50px;
+			height: 60px;
+			line-height: 60px;
+			color: white;
+		}
+		a{
+			width: 50px;
+			height: 60px;
+			display: block;
+			text-decoration: none;
+			background: blueviolet;
+			line-height: 60px;
+			color: white;
+			box-shadow: 0 0 0 4px #006666 inset;
+			}
+		#open{
+			position: absolute;
+			top: 50px;
+			right: 10px;
+		}
+		#Balloon{
+			width: 400px;
+			height: 100px;
+			position: absolute;
+			bottom: 30px;
+			left: 50px;
+			box-shadow: 0 0 3px 4px green; 
+			display: none;
+		}
+		span{
+			width: 40px;
+			height: 10px;
+			background:white;
+			padding: 5px;
+			border-radius: 8px;
+		}
+		.package{
+			height: 30px;
+			margin-top: 5px;
+			padding-top: 10px;
+		}
+		input[type="text"]{
+			width: 150px;
+			height: 25px;
+		}
+		input[type="button"]{
+			width: 50px;
+			height: 25px;
+			border-radius: 3px;
+		}
+		#search,#replace{
+			display: none;
+		}
+		strong{
+			color: white;
+		}
+		li:hover{
+			background-color: orange;
+		}
+		span:hover{
+			background-color: orange;
+		}
+	</style>
+	<script type="text/javascript" src="js/replace.js"></script>
+	<body>
+		<div id="box">
+			<p>JavaScript，一种高级编程语言，通过解释执行，是一门动态类型，面向对象（基于原型）的直译语言[4]。它已经由ECMA（欧洲电脑制造商协会）通过ECMAScript实现语言的标准化[4]。它被世界上的绝大多数网站所使用，也被世界主流浏览器（Chrome、IE、FireFox、Safari、Opera）支持。JavaScript是一门基于原型、函数先行的语言[5]，是一门多范式的语言，它支持面向对象编程，命令式编程，以及函数式编程。它提供语法来操控文本，数组，日期以及正则表达式等，不支持I/O，比如网络，存储和图形等，但这些都可以由它的宿主环境提供支持。</p>
+			<div id="open">
+				<a href="javascript:;">展开</a>
+				<ul>
+					<li>查找</li>
+					<li>替换</li>
+				</ul>
+			</div>
+			<div id="Balloon">
+				<div class="package">
+					<span>查找</span>
+					<span>替换</span>
+				</div>
+				<div id="search">
+					<input type="text" />
+					<input type="button" value="查找"/>
+				</div>
+				<div id="replace">
+					<input type="text" />
+					<input type="text" />
+					<input type="button" value="替换"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	/*
+        1、列表的显示隐藏
+        2、显示查找或者替换的功能项
+        3、上边列表选项和下边选项的关联
+        4、功能项自身选项切换
+        5、实现查找功能
+        6、实现替换功能、删除功能
+        7、检查
+        confirm('提示的内容') 带确定和取消的提示框
+
+        点击确定返回true，取消返回false
+    */
+   function $(Id){
+   	return document.getElementById(Id);
+   }
+   function $$(tagName,context){
+   	return (context||document).getElementsByTagName(tagName);
+   }
+   var expansion = $$('a')[0];
+   var list = $$('ul')[0];
+   var lis = $$('li',list);
+   var Balloon = $('Balloon');
+   var search = $('search');
+   var replace = $('replace');
+   var spans = $$('span',$('package'))
+   var searchBtn = $$('input',search);//最小的按钮查找
+   var ps = $$('p',$('box'))[0];//文字
+   var replay = $$('input',replace);//最小的按钮替换
+  init(expansion,list,lis,Balloon,search,replace,spans,searchBtn,ps,replay);
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin: 0;
+			}
+			div{
+				width: 50px;
+				height: 50px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+			}
+		</style>
+		<script src="js/mTween.js" type="text/javascript"></script>
+		<script src="js/tween.js" type="text/javascript"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var str = '';
+	var len = 16;//div的个数
+	var num = 0;
+	for(var i=0;i<len;i++){
+		str+='<div style="left:'+60*num+'px"></div>';
+		num++;
+	}
+	document.body.innerHTML = str;//生成div
+	var divs = document.getElementsByTagName('div');
+	var nums;
+	var n;
+	var timer1;//运动1
+	var timer2;//运动2
+	var onff = true;
+	var target = 300;//设置距离
+	for(var i=0;i<len;i++){
+		divs[i].index = i;
+		divs[i].onclick = function(){
+			if(!onff){
+				return;
+			}
+			onff = false;
+			nums = this.index;//nums存储当前点击的状态
+			var pos = divs[this.index].offsetTop;
+			if(pos<100){
+				target = 300;
+			}else{
+				target = 0;
+			}
+
+			timer1 = setInterval(function(){
+				mTween(divs[nums],'top',target,1000,'linear',function(){
+					if(nums>=len){
+						clearInterval(timer1);
+						nums=15;
+					}//当nums》len的时候清理定时器
+					if(nums==15&&n==0){
+						onff = true;
+					}
+				});
+				nums++;
+				
+			},200);
+			n = this.index;
+			timer2 = setInterval(function(){	
+				mTween(divs[n],'top',target,1000,'linear',function(){
+					if(n==-1){
+						clearInterval(timer2);
+						n=0;
+					}
+					if(nums==15&&n==0){
+						onff=true;
+					}
+				});
+				n--;
+			},200);
+			
+		}
+	}
+</script>

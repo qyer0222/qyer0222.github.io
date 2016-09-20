@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{
+				width: 60px;
+				height: 50px;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			p{
+				width: 60px;
+				height: 20px;
+				font-size: 10px;
+				margin: 0;
+				margin-left: 10px;
+			}
+			li{
+				width: 80px;
+				height: 70px;
+				position: relative;
+				float: left;
+				margin-right: 10px;
+				list-style: none;
+			}
+			input[type="checkbox"]{
+				position: absolute;
+				top:10px;
+				left: 10px;
+				display: none;
+			}
+			ul{
+				margin-top: 30px;
+			}
+			ul .active{
+				display: block;
+			}
+			.show{
+				background-color:aquamarine;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="新建文件夹"/>
+		<input type="button" value="删除文件夹"/>
+		<ul>
+			<!--<li>
+				<img src="img/img1.gif">
+				<p>新建文件夹</p>
+				<input type="checkbox">
+			</li>-->
+		</ul>
+	</body>
+</html>
+<script>
+	var uls = document.getElementsByTagName('ul')[0];
+	var btn = document.getElementsByTagName('input');
+	var li = document.getElementsByTagName('li');
+	var inputs = uls.getElementsByTagName('input');
+	//新建文件夹
+	btn[0].onclick=function(){
+		var lis = document.createElement('li');
+		lis.innerHTML = '<img src="img/file.gif"><input type="checkbox">';
+		uls.appendChild(lis);
+		status();
+	}
+	function status(){
+		for(var i=0;i<li.length;i++){
+			li[i].index = i;
+			//鼠标移入
+			li[i].onmouseover =function(){
+				this.className = 'show';
+				inputs[this.index].className = 'active';
+			}
+			//鼠标点击整个文件的时候
+			li[i].onclick =function(){
+				if(inputs[this.index].checked){
+					inputs[this.index].checked = false;
+					this.style.background = '';
+					inputs[this.index].style.display = '';
+				}else{
+					inputs[this.index].checked = true;
+					this.style.background = 'gray';
+					inputs[this.index].style.display = 'block';
+				}
+			}
+			inputs[i].num=i;
+			//点击左上角选择框的时候
+			inputs[i].onclick =function(){
+				if(this.checked){
+					this.checked = false;
+					li[this.num].style.background = '';
+					this.style.display = '';
+				}else{
+					this.checked = true;
+					li[this.num].style.background = 'gray';
+					this.style.display = 'block';
+				}
+			}
+			//离开整个文件的时候
+			li[i].onmouseout =function(){
+				this.className = '';
+				inputs[this.index].className = '';
+			}		
+		}
+	}
+	btn[1].onclick = function(){
+		for(var i=0;i<uls.children.length;i++){
+			if(inputs[i].checked==true){
+				uls.removeChild(li[i]);
+				i--;
+			}
+		}
+		status();
+	}
+	
+</script>

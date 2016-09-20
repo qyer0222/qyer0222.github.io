@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		p,ul{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		div{
+			float:left;
+		}
+		#left,#right{
+			width: 300px;
+			height: 150px;
+			padding: 20px;
+			border: 5px solid #940032;
+			border-radius: 15px;
+			position: relative;
+		}
+		#right{
+			border-color: #4169E1;
+		}
+		#left span,#right span{
+			width: 80px;
+			height: 40px;
+			border-radius: 5px;
+			background-color: #4169E1;
+			position: absolute;
+			bottom: 5px;
+			left: 50%;
+			margin-left: -40px; 
+			line-height: 40px;
+			text-align: center;
+			color: white;
+		}
+		#right span{
+			background-color: #940032;
+		}
+		#center{
+			width: 70px;
+			height: 100px;
+			padding: 30px;
+			position: relative;
+		}
+		#center a{
+			width: 70px;
+			height: 20px;
+			background-color: #EF3163;
+			line-height: 20px;
+			text-align: center;
+			display: block;
+			margin-top: 15px;
+			border-radius: 5px;
+			color: white;
+		}
+		#center ul{
+			position: absolute;
+			bottom: 0px;
+		}
+		#center li{
+			width: 10px;
+			height: 10px;
+			background-color: #808080;
+			float: left;
+			margin: 0 3px;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div id="left">
+		<p></p>
+		<span></span>
+	</div>
+	<div id="center">
+		<a href="javascript:;" id="toLeft">←</a>
+		<a href="javascript:;" id="toRight">→</a>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div id="right">
+		<p>拍碎双玉斗，慷慨一何多。满腔都是血泪，无处着悲歌。三百年来王气，满目山河依旧，人事竟如何？百户尚牛酒，四塞已干戈。千金剑，万言策，两蹉跎。醉中呵壁自语，醒后一滂沱。不恨年华去也，只恐少年心事，强半为销磨。愿替众生病，稽首礼维摩。</p>
+		<span></span>
+	</div>
+	<script type="text/javascript">
+		function $(tagName,context){
+			return (context||document).getElementsByTagName(tagName);
+		}
+		function $$(id){
+			return document.getElementById(id);
+		}
+		var left = $$('left');
+		var center = $$('center');
+		var right = $$('right');
+		var toLeft = $$('toLeft');//去左
+		var toRight = $$('toRight');//去右
+		var psL = $('p',left)[0];
+		var psR = $('p',right)[0];
+		var num = -1;
+		var timer = null;
+		var lis = $('li');
+		var spans = $('span');
+		var onff = true;//开关控制能否点击
+		var len = psR.innerHTML.length;
+		lis[0].style.background = 'blue';//初始化
+		toLeft.onclick=function(){
+			pps = psL.innerHTML;//需要重新获取当前页面元素
+			ppss = psR.innerHTML;
+			fns(ppss,psR,psL,spans[0],spans[1]);
+		};
+		toRight.onclick=function(){
+			pps = psL.innerHTML;
+			ppss = psR.innerHTML;
+			fns(pps,psL,psR,spans[1],spans[0]);
+		};
+		function fns(text1,ps1,ps2,span0,span1){
+			//控制开关
+			if(onff==false){
+				return;
+			}
+			//判断是否为空,为空则跳出
+			if(text1==''){
+				alert('已经是空了');
+				return;
+			}
+			onff = false;
+			num = -1;
+			timer = setInterval(fn,50);
+			function fn(){
+				if(num==len-1){
+					onff = true;
+					clearInterval(timer)
+				}
+				num++;
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.background = '';
+				}
+				lis[(num+1)%lis.length].style.background = 'blue';
+				ps1.innerHTML = text1.substring(num,text1.length);//当前页面的内容逐渐少字
+				ps2.innerHTML = text1.substring(0,num);//另一面内容逐渐加字
+				span0.innerHTML = num+'/'+len;//控制下面总字数的显示
+				span1.innerHTML = (len-num)+'/'+len;//左右数字是相反的
+			}
+		}
+	</script>
+</body>
+</html>
