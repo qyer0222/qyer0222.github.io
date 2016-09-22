@@ -21,7 +21,7 @@
 
 var userInfo = {
     userName: "陈磊" , 
-    userPortrait:"images/icon/intro_03.jpg",
+    userPortrait:"images/icon/intro_03.png",
     jobWant:  "WEB前端开发工程师",
     userQQ:  "474142609",
     userEmail:   "474142609@qq.com",
