@@ -59,6 +59,15 @@ var projects = [
 			projectThumbnail:"images/icon/CV.png"
 		},
 		{
+			projectName:"京东移动端",
+			projectWebsite:"https://qyer0222.github.io/jingdong_moblie",
+		    startTime:"2016.03.22",
+			endTime:"至今",
+			projectExplain:"主要应用：移动端布局/rem计算。",
+			projectLabel:["html","css3"],
+			projectThumbnail:"images/icon/jingdong-moblie.png"
+		},
+		{
 			projectName:"签到送礼",
 			projectWebsite:"https://qyer0222.github.io/签到/",
 		    startTime:"2016.05.01",
