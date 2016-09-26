@@ -65,7 +65,7 @@ var projects = [
 			endTime:"至今",
 			projectExplain:"主要应用：移动端布局/rem计算。",
 			projectLabel:["html","css3"],
-			projectThumbnail:"images/icon/jingdong-moblie.png"
+			projectThumbnail:"images/icon/jingdong_mobile.png"
 		},
 		{
 			projectName:"签到送礼",
