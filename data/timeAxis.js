@@ -27,7 +27,7 @@ var timeAxisArr = [
 		},
 		{
 		    startTime:"2014/08",
-			endTime:"2016.03.05",
+			endTime:"2016/03",
 			companyLogo:'images/icon/expre_logo2.png',
 			companyNam:"明顺物流",
 			companyWebsite:"http://www.miaov.com",
