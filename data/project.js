@@ -29,7 +29,7 @@ var projects = [
 			endTime:"至今",
 			projectExplain:"主要应用：响应式布局",
 			projectLabel:["html","css3","css"],
-			projectThumbnail:"images/icon/jquery.PNG"
+			projectThumbnail:"images/icon/jquerys.png"
 		},
 		{
 			projectName:"firmorama",
