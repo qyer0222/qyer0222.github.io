@@ -1,0 +1,86 @@
+.banner-R{
+	float: none;
+	width: 90%;
+	margin: 0 auto;
+}
+.banner_R span:first-of-type{
+	margin-left: 40%;
+}
+.banner_R span:last-of-type{
+	margin-left: 40%;
+}
+.banner_R i{
+	left: 30%;
+}
+.banner_L {
+	width: 100%;
+}
+.banner-first,.banner-second,.banner-third{
+	float: none;
+	margin: 0 auto;
+	margin-bottom: 2em;
+}
+.nav_L{
+	display: none;
+}
+.nav_R{
+	float: left;
+}
+.question_L{
+	float: none;
+	width: 90%;
+}
+.question_third .question_third_img a{
+	width: 100%;
+	float: none;
+	display: block;
+}
+.question_R{
+	float: none;
+	margin-left: 4%;
+	width: 96%;
+}
+.recomand_1, .recomand_2, .recomand_3{
+	float: none;
+	width: 100%;
+	margin: 0 auto;
+}
+.question_R img{
+	width: 50%;
+}
+.footer_B_B{
+	width: 100%;
+	float: none;
+	text-align: center;
+	
+}
+.footer_B_t{
+	width: 100%;
+	float: none;
+	text-align: center;
+}
+#section h1{
+	float: none;
+	margin: 0 auto;
+	margin-bottom: 2%;
+}
+.header_R{
+	float: none;
+	margin: 0 auto;
+	margin-top: 4%;
+	margin-bottom: 4%;
+}
+#section{
+	padding-top: 4%;
+}
+.question_second .question_second_img a{
+	display:block;
+	float: none;
+	margin: 0 auto;
+}
+.question_second_img{
+	display:block;
+}
+.question_third{
+	width: 100%;
+}

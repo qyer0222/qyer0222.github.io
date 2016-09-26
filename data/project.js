@@ -23,6 +23,15 @@ var projects = [
 			projectThumbnail:"images/icon/QQ浏览器.png"
 		},
 		{
+			projectName:"响应式布局",
+			projectWebsite:"https://qyer0222.github.io/jquery/",
+		    startTime:"2016.01.01",
+			endTime:"至今",
+			projectExplain:"主要应用：响应式布局",
+			projectLabel:["html","css3","css"],
+			projectThumbnail:"images/icon/jquery.png"
+		},
+		{
 			projectName:"firmorama",
 			projectWebsite:"https://qyer0222.github.io/firmorama/",
 		    startTime:"2016.02.02",

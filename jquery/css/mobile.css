@@ -1,0 +1,30 @@
+#nav{
+	display: none;
+}
+.section_nav_L{
+display: none;
+}
+.section_nav_R{
+	width: 90%;
+
+}
+.section_nav{
+		background: none;
+		margin-bottom: 3%;
+}
+.section_nav:before{
+	content: "";
+	
+}
+.section_select{
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	height: 26px;
+	
+}
+@media only screen and (max-width: 473px){
+	.header_R{
+		display: none;
+	}
+}
