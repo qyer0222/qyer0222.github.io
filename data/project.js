@@ -32,6 +32,15 @@ var projects = [
 			projectThumbnail:"images/icon/jquerys.png"
 		},
 		{
+			projectName:"仿京东静态布局",
+			projectWebsite:"https://qyer0222.github.io/jingdong-pc/",
+		    startTime:"2016.01.01",
+			endTime:"至今",
+			projectExplain:"主要应用：IE6、IE7浏览器兼容等",
+			projectLabel:["html","css"],
+			projectThumbnail:"images/icon/jingdong-pc.png"
+		},
+		{
 			projectName:"firmorama",
 			projectWebsite:"https://qyer0222.github.io/firmorama/",
 		    startTime:"2016.02.02",
