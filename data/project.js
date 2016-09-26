@@ -24,7 +24,7 @@ var projects = [
 		},
 		{
 			projectName:"响应式布局",
-			projectWebsite:"https://qyer0222.github.io/jquery/",
+			projectWebsite:"https://qyer0222.github.io/jquerys/",
 		    startTime:"2016.01.01",
 			endTime:"至今",
 			projectExplain:"主要应用：响应式布局",
