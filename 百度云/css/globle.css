@@ -1,0 +1,146 @@
+/*头部*/
+.header{
+	width: 100%;
+	height: 48px;
+	background: #252525;
+	z-index: 21;
+}
+.logo{
+	background: url(../img/index.jpg);
+	width: 109px;
+	height: 27px;
+	margin-left: 11px;
+	margin-top: 10px;
+	overflow: hidden;
+}
+.header h2{
+	text-indent: -999px;
+}
+.nav_L{
+	margin-left: 27px;
+}
+.nav_L li{
+	float: left;
+	width: 90px;
+	height: 48px;
+	font-weight: bold;
+	position: relative;
+	z-index: 20;
+}
+.nav_L  a{
+	color: #fff;
+	font:18px/48px "宋体";
+	float: left;
+	text-align: center;
+	width: 90px;
+	height: 48px;
+}
+.list{
+	width: 560px;
+	position: absolute;
+	top: 48px;
+	height: 110px;
+	background: #F0F0DF;
+	left:-65px;
+	z-index: 100;
+	display: none;
+}
+.nav_L .list a{
+	float: left;
+	color: black;
+	width: 80px;
+	height: 90px;
+	position: relative;
+	margin-left: 15px;
+	margin-top: 10px;
+	border: 1px solid #F0F0DF;
+}
+.nav_L .list i{
+	width: 35px;
+	height: 39px;
+	position: absolute;
+	top: 20px;
+	left: 23px;
+	z-index: 100;
+}
+.netdisc i{
+	background: url(../img/dropdown_menu.png) 0,0;
+}
+.nav_L .list span{
+	width: 50px;
+	height: 32px;
+	font-size: 10px;
+	position: absolute;
+	top:52px ;
+	left: 17px;
+}
+.Contacts i{
+	background: url(../img/dropdown_menu.png) -35px,0;
+}
+.sms i{
+	background: url(../img/dropdown_menu.png) -105px,0;
+}
+.article i{
+	background: url(../img/dropdown_menu.png) -140px,0;
+}
+.nav_R{
+	height: 38px;
+	margin-top: 5px;
+}
+.nav_R li{
+	float: left;
+	color: #d8d8d8;
+	font:12px/38px "宋体";
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.nav_R .member{
+	color: #e15f00;
+	font:12px/38px "宋体";
+	margin-right: 12px;
+}
+.nav_R .center{
+	background: #e82b1a;
+	font:12px/26px "宋体";
+	margin-top: 7px;
+}
+
+.nav_R .border{
+	color: #393939;
+}
+.nav_R em{
+	display: inline-block;
+	width:9px ;
+	height: 5px;
+	background: url(../img/index.jpg) no-repeat 0 -40px;
+}
+/*脚部*/
+.footer{
+	width: 100%;
+	height: 48px;
+	background: #252525;
+	text-align: center;
+	padding-top: 24px;
+}
+.footer div{
+	display: inline-block;
+}
+.time{
+	margin-right: 10px;
+	color: #6D6D6D;
+}
+.helpmore{
+	height: 48px;
+}
+.helpmore li{
+	float: left;
+	height: 48px;
+	color: #6D6D6D;
+	height: 20px;
+}
+.helpmore a{
+	color: #6D6D6D;
+}
+.helpmore a:hover{
+	text-decoration: underline;
+}

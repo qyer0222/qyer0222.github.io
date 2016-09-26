@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/globle.css" />
+		<link rel="stylesheet" href="css/login.css" />
+		<!--[if  IE 7]>
+			<link rel="stylesheet" href="css/fixIE.css" />
+		<![endif]-->
+		<script type="text/javascript" src="js/tool.js"></script>
+		<script type="text/javascript" src="js/header.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+	</head>
+	<body>
+		<div class="header clearfix">
+			<h2 class="logo fl">百度云</h2>
+			<ul class="nav_L fl">
+				<li>
+					<a href="#">主页</a>
+				</li>
+				<li id="list_author">
+					<a href="#">关于作者</a>
+					<div class="list" id="list" >
+						<a href="#" class="netdisc">
+							<i></i>
+							<span>简历</span>
+						</a>
+						<a href="#" class="Contacts">
+							<i></i>
+							<span>电话</span>
+						</a>
+						<a href="#" class="sms">
+							<i></i>
+							<span>邮箱</span>
+						</a>
+						<a href="#" class="article">
+							<i></i>
+							<span>博客</span>
+						</a>
+					</div>
+				</li>
+				<li>
+					<a href="#">分享</a>
+				</li>
+				<li>
+					<a href="#">应用</a>
+				</li>
+			</ul>
+			<ul class="nav_R fr">
+				<li class="member">超级会员悦享极速体验</li>
+				<li class="center">会员中心</li>
+				<li class="border">|</li>
+				<li class="Client">客户端下载</li>
+				<li class="border">|</li>
+				<li class="more">
+					<span>更多</span>
+					<em></em>
+				</li>
+			</ul>
+		</div>
+		<div id="Cover">
+			<form id="tips">
+				<div>
+					<span>手机号</span>
+					<input type="text" class="telphone"/>
+				</div>
+				<div>
+					<span>用户名</span>
+					<input type="text" class="username"/>
+				</div>
+				<div>
+					<span>验证码</span>
+					<input type="text" class="Codes"/>
+				</div>
+				<div>
+					<span>密  码</span>
+					<input type="text" class="password"/>
+				</div>
+				<div class="clearfix">
+					<input type="checkbox" value="" class="fl user_question"/>
+					<span class=" protocol fl">阅读并接受百度协议</span>
+				</div>
+				<div class="tips_footer">
+					<a href="#">立即注册</a>
+				</div>
+			</form>
+		</div>
+		<div id="banner">
+			<div class="main_top">
+				<img class="tab_1_slog" src="img/tab_1_slog.gif"></div>
+			</div>
+			<div class="main_bottom"></div>
+			<div class="login_box">
+				<div class="login_head clearfix">
+					<h3 class="fl">
+						<i class="fl"></i>
+						<span class="fl">登陆百度账号</span>
+					</h3>
+					<div class="fr">海外手机号</div>
+				</div>
+				<form>
+					<div class="user">
+						<div class="user_name clearfix">
+							<i class="fl"></i>
+							<input type="text" class="fl u_text" id="u_text"/>
+							<span class="u_hidtext">请输入账号</span>
+						</div>
+						<div class="user_password clearfix">
+							<i class="fl"></i>
+							<input type="text" class="fl u_password" id="u_password"/>
+							<span class="u_hidword">请输入密码</span>
+						</div>
+					</div>
+					<div class="recording clearfix">
+						<div class="fl">
+							<input type="checkbox" value=""class="fl"/>
+							<span class="fl">下次自动登录</span>
+						</div>
+						<div class="help fr">
+							<a href="#">登陆遇到问题</a>
+						</div>
+					</div>
+					<div class="login_button">
+						<a href="#">登陆</a>
+					</div>
+					<div class="login_way clearfix">
+						<span class="fl">可以使用以下方式登录</span>
+						<a href="#" class="wb fl"></a>
+						<a href="#" class="QQ fl"></a>
+					</div>
+					<div class="login_footer">
+						<a href="#">立即注册百度账号</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="footer">
+		<div class="clearfix">
+			<span class="time fl">©2016 Baidu</span>
+			<ul class="helpmore fl">
+				<li>
+				<a href="">移动开放平台</a>	
+				</li>
+				<li>|</li>
+				<li>
+				<a href="">服务协议</a>		
+				</li>
+				<li>|</li>
+				<li>
+					<a href="">权利声明</a>
+				</li>
+				<li>|</li>
+				<li>
+					<a href="">版本更新</a>	
+				</li>
+				<li>|</li>
+				<li>
+					<a href="">帮助中心</a>	
+				</li>
+				<li>|</li>
+				<li>
+					<a href="">问题反馈</a>	
+				</li>
+				<li>|</li>
+				<li>
+					<a href="">版本投诉</a>	
+				</li>
+			</ul>
+		</div>
+		</div>
+		<script type="text/javascript">
+			var list_author = document.getElementById('list_author');//div的父级li
+			var list= document.getElementById('list');//隐藏的div
+			var nav_a = list.getElementsByTagName('a');//简历
+			var u_text = document.getElementById('u_text');//账号
+			var u_password = document.getElementById('u_password');//密码
+			var login_footer = getClass('login_footer')[0];
+			var cover = document.getElementById('Cover');//显示遮罩层
+			var showblock = new Show(list);//构造
+			list_author.onmouseover = function(){
+				showblock.navmove();
+			};
+			list_author.onmouseout = function(){
+				showblock.navout();
+			};
+			
+			for(var i=0;i<nav_a.length;i++){
+				border(i);
+			}
+			
+			var login_text =new Login(u_text);//存储构造函数账号
+			var login_password =new Login(u_password);//存储构造函数密码*/
+			
+			//当鼠标点击text的时候触发，检查当前内容，每循环一次查找一下当前的搜索栏里面是否有内容
+			u_text.onkeydown = function(){
+				login_text.Logkeydown(u_text);
+			};
+			//鼠标点击password时触发
+			u_password.onkeydown = function(){
+				login_password.Logkeydown(u_password);
+			};
+			var showfooter = new Show(cover);//构造
+			login_footer.onclick = function(){
+				showfooter.navmove();
+			};
+			//getClass函数
+		</script>
+	</body>
+</html>

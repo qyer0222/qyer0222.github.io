@@ -14,6 +14,15 @@
 
 var projects = [
 		{
+			projectName:"仿百度云",
+			projectWebsite:"https://qyer0222.github.io/百度云/",
+		    startTime:"2016.01.01",
+			endTime:"至今",
+			projectExplain:"主要应用：面向对象语言、DOM、原生js",
+			projectLabel:["html","css3","css","js"],
+			projectThumbnail:"images/icon/baidu.png"
+		},
+		{
 			projectName:"仿QQ浏览器",
 			projectWebsite:"https://qyer0222.github.io/QQ浏览器/",
 		    startTime:"2016.01.01",

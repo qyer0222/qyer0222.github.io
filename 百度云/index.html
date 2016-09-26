@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/globle.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/tool.js"></script>
+		<script type="text/javascript" src="js/header.js"></script>
+		<script type="text/javascript" src="js/index_left.js"></script>
+		<script type="text/javascript" src="js/index_right.js"></script>
+	</head>
+	<body>
+		<div class="header clearfix">
+			<h2 class="logo fl">百度云</h2>
+			<ul class="nav_L fl">
+				<li>
+					<a href="#">主页</a>
+				</li>
+				<li id="list_author">
+					<a href="#" id="author">关于作者</a>
+					<div class="list" id="list" >
+						<a href="#" class="netdisc">
+							<i></i>
+							<span>简历</span>
+						</a>
+						<a href="#" class="Contacts">
+							<i></i>
+							<span>电话</span>
+						</a>
+						<a href="#" class="sms">
+							<i></i>
+							<span>邮箱</span>
+						</a>
+						<a href="#" class="article">
+							<i></i>
+							<span>博客</span>
+						</a>
+					</div>
+				</li>
+				<li>
+					<a href="#">分享</a>
+				</li>
+				<li>
+					<a href="#">应用</a>
+				</li>
+			</ul>
+			<ul class="nav_R fr">
+				<li class="member">超级会员悦享极速体验</li>
+				<li class="center">会员中心</li>
+				<li class="border">|</li>
+				<li class="Client">客户端下载</li>
+				<li class="border">|</li>
+				<li class="more">
+					<span>更多</span>
+					<em></em>
+				</li>
+			</ul>
+		</div>
+		<div id="content"class="clearfix">
+			<div id="con_left" class="fl">
+				<ul class="menu">
+					<li class="menu_list">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>全部文件</span>
+							</span>
+						</a>
+					</li>
+					<li class="menu_picture">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>图片</span>
+							</span>
+						</a>
+					</li>
+					<li class="menu_doc">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>文档</span>
+							</span>
+						</a>
+					</li>
+					<li class="menu_video">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>视频</span>
+							</span>
+						</a>
+					</li>
+					<li class="menu_seed">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>种子</span>
+							</span>
+						</a>
+					</li>
+					<li class="menu_music">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>音乐</span>
+							</span>
+						</a>
+					</li>
+					<li class="menu_other">
+						<a href="#">
+							<span class="menu_center">
+								<i></i>
+								<span>其他</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<div class="my_give">
+					<a href="#">
+						<span class="menu_center">
+							<i></i>
+							<span>我的分享</span>
+						</span>
+					</a>
+				</div>
+				<div class="recycle">
+					<a href="#" class="recycle_a">
+						<span class="menu_center">
+							<i></i>
+							<span>回收站</span>
+						</span>
+					</a>
+				</div>
+				<div class="side_options">
+					<span class="side_center">
+						<a href="#">
+							<em class="side_cloud"><i></i></em>
+							<span>云管家</span>
+						</a>
+						<a href="#">
+							<em class="side_Android"><i></i></em>
+							<span>Android</span>
+						</a>
+						<a href="#">
+							<em class="side_iPhone"><i></i></em>
+							<span>iPhone</span>
+						</a>
+						<a href="#">
+							<em class="side_more"><i></i></em>
+							<span>更多</span>
+						</a>
+					</span>
+				</div>
+			</div>
+			<div id="con_right" class="fl">
+				<div class="con_right_t">
+					<div class="update fl">
+						<a href="#" class="clearfix">
+							<i class="fl"></i>
+							<span class="fl">上传</span>
+						</a>
+					</div>
+					<div class="create fl">
+						<a href="#" class="clearfix" id="btn_create">
+							<i class="fl"></i>
+							<span class="fl" >新建文件夹</span>
+						</a>
+					</div>
+				</div>
+				<div class="hat clearfix">
+					<div class="hat_static">
+						<span class="fl">全部文件</span>
+						<span class="fr">已全部加载共43个</span>
+					</div>
+					<div class="hat_click clearfix">
+						<a href="#" id="back">返回上一级</a>
+						<!-- <span class="fl">|</span> -->
+						<!-- <a href="#">全部文件</a> -->
+						<!-- <b class="fl">></b> -->
+					</div>
+				</div>
+				<div id="box">
+					<div id="box_top">
+						<i id="allcheck"></i>
+						<!-- <input type="button" value="删除" id="delete"/> -->
+						<a href="javascript:;" id="delete">
+							<em></em>
+							<span>删除</span>
+						</a>
+						<a href="javascript:;" id="replaces">
+							<span>重命名</span>
+						</a>
+						<!-- <input type="button" value="重命名" id="replaces" /> -->
+					</div>
+					<div id="box_con">
+						<ul id="files">
+							<!--<li>
+								<div>
+									<i></i>
+								</div>
+								<p>
+									<input type="text">
+									<span>志鹏的学习资料</span>
+								</p>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+			var list_author = document.getElementById('list_author');//关于作者
+			var author = document.getElementById('author');//作者
+			var list= document.getElementById('list');//隐藏的div
+			var nav_a = list.getElementsByTagName('a');//简历
+			var u_text = document.getElementById('u_text');//账号
+			var u_password = document.getElementById('u_password');//密码
+			var login_footer = getClass('login_footer')[0];
+			var cover = document.getElementById('Cover');//显示遮罩层
+			var as = getClass('menu')[0].getElementsByTagName('a');
+			var recycle_a = getClass('recycle')[0].getElementsByTagName('a');
+			var my_give_a = getClass('my_give')[0].getElementsByTagName('a');
+			var side_center_a = getClass('side_center')[0].getElementsByTagName('a');
+			var files = document.getElementById('files');
+			var btn_create = document.getElementById('btn_create');
+			var back = document.getElementById('back');
+			var deletes = document.getElementById('delete');
+			var allcheck = document.getElementById('allcheck');
+			var replaces = document.getElementById('replaces');
+			var date = [
+			{
+				id:1,
+				username:'我的文件',
+				type:'file',
+				index:0
+			},
+			{
+				id:2,
+				username:'国歌',
+				type:'mp3',
+				index:1//id为1点击之后的那层
+			},
+			{
+				id:3,
+				username:'新建文件夹1',
+				type:'file',
+				index:1
+			},
+			{
+				id:4,
+				username:'新建文件夹',
+				type:'file',
+				index:1
+			},
+			{
+				id:5,
+				username:'新建文件夹2',
+				type:'file',
+				index:4
+			},
+			{
+				id:6,
+				username:'出游照片',
+				type:'jpeg',
+				index:0
+			},
+			{
+				id:7,
+				username:'我的音乐2',
+				type:'mp3',
+				index:6
+			},
+			{
+				id:8,
+				username:'私人文档',
+				type:'svg',
+				index:0
+			},
+			{
+				id:9,
+				username:'爱如潮水',
+				type:'mp3',
+				index:0
+			}
+			];
+			var goback = 0;
+			//显示出div
+			for(var i=0;i<nav_a.length;i++){
+				border(i);
+			}
+			var showblock = new Show(list,list_author,author);//构造(需要显示的元素，元素的样式，字体样式)
+			list_author.onmouseover = function(){
+				showblock.navmove();	
+			};
+			list_author.onmouseout = function(){
+				showblock.navout();
+			};
+			var showshadow = new ShowShadow(as);
+			var showshadow = new ShowShadow(recycle_a);
+			var showshadow = new ShowShadow(my_give_a);
+			var showshadow = new ShowShadow(side_center_a);
+			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces);
+
+
+	</script>
+</html>
