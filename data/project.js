@@ -63,7 +63,7 @@ var projects = [
 			projectWebsite:"https://qyer0222.github.io/jingdong_moblie",
 		    startTime:"2016.03.22",
 			endTime:"至今",
-			projectExplain:"主要应用：移动端布局/rem计算。",
+			projectExplain:"主要应用：移动端布局/rem计算。注意:打开后,请在手机模式浏览",
 			projectLabel:["html","css3"],
 			projectThumbnail:"images/icon/jingdong_mobile.png"
 		},
