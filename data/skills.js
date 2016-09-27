@@ -28,7 +28,7 @@ var skills = {
 		},
 		{
 			skillLanguage:"CSS3",
-			percent:"70%",
+			percent:"80%",
 			skillTooltip:[
 				"掌握浮动及文档流特性",
 				"精通定位、浏览器兼容性",
@@ -38,7 +38,7 @@ var skills = {
 		},
 		{
 			skillLanguage:"javascript",
-			percent:"70%",
+			percent:"80%",
 			skillTooltip:[
 				"了解数据类型、作用域闭包等语言特性",
 				"掌握定时器、数组字符串及递归、数组去重等",
@@ -50,7 +50,7 @@ var skills = {
 		},
 		{
 			skillLanguage:"canvas",
-			percent:"20%",
+			percent:"60%",
 			skillTooltip:[
 				"能熟练使用相关接口绘制各类图形",
 				"能运用canvas开发小游戏",
