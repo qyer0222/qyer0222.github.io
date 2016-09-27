@@ -31,7 +31,7 @@ function getindex(id){
     } 
     return arr;
 }
-
+//数组去重
 function clearrepeat(arr){
     var arr1 = [].concat(arr);
 
@@ -46,4 +46,25 @@ function clearrepeat(arr){
         
     }
     return arr1;
+}
+//滚动条
+function getPos(node,pos){
+                pos = pos||{x:0,y:0};
+                // debugger;
+                pos.x +=node.offsetLeft;
+                pos.y +=node.offsetTop;
+                
+                if(node.offsetParent){
+                    var p = node.offsetParent;
+                    // console.log(getComputedStyle(p).borderTopWidth);
+                    pos.x += css(p,'borderLeftWidth');
+                    pos.y += css(p,'borderTopWidth');
+                    getPos(node.offsetParent,pos);
+
+                }
+                return pos;
+            }
+//获取属性值
+function css(obj,attr){
+    return parseFloat(getComputedStyle(obj)[attr]);
 }

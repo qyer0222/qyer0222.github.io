@@ -1,11 +1,12 @@
 body{
 	background: #f0f0f0;
+    overflow: hidden;
 }
 #content{
 	width: 100%;
 }
 #con_left{
-	width: 210px;
+	width: 15%;
 	margin-top: 10px;
 	background: #f0f0f0
 }
@@ -170,7 +171,7 @@ body{
 	background: url(../img/category_341e0a6.png) -199px -64px no-repeat;
 }
 #con_right{
-	width: 1139px;
+	width: 84.9%;
 	height: 605px;
 	border-left: 1px solid gray;
 	box-shadow: 1px 0 5px 0px lightgray ;
@@ -245,6 +246,7 @@ body{
 
 #box{
 	position: relative;
+    height: 100%;
 }
 #box_top{
 	width: 1143px;
@@ -260,13 +262,14 @@ body{
 	
 }
 #box_con{
-	width: 1045px;
+	width: 91.5%;
 	height: 478px;
-	position: absolute;
-	top: 47px;
+	position: relative;
+	margin-top: 47px;
+    float: left;
 	padding-right: 100px;
 }
-#box_con ul{
+#files ul{
 	overflow: hidden;
 }
 #files>li{
@@ -398,4 +401,83 @@ background: url(../img/checkbox_8c741da.png) -30px -36px no-repeat;
 	height: 55px;
 	/*background: url(../img/gridIcon_7165cae.png) 18px -72px no-repeat;*/
 	border: 2px solid white;
+}/*
+#scroll{
+    height:100%;
+    width: 30px;
+    border: 2px solid black;
+    position: relative;
+    float: left;
+    overflow: hidden;
+}
+#bar{
+    height: 30px;
+    width: 100%;
+    background-color: red;
+    position: absolute;
+}*/
+
+#menus {
+position: absolute;
+display: none;
+z-index: 999;
+ }
+#menus ul {
+ position: absolute;
+ top: 0; 
+ left: 145px; 
+ display: none;
+ }
+
+#menus h2 {
+    font-size: 12px; 
+    font-weight: normal;
+    height: 30px; 
+    line-height: 30px;
+    width: 133px; 
+    padding-left: 15px;
+}
+#menus .active {
+    border: 1px solid #999;
+    height: 28px;
+    line-height: 28px;
+    background: #ccc;
+    cursor: default;
+}
+#menus ul,#menus {
+    width: 150px; 
+    background: #99F; 
+    border: 1px solid #888;
+}
+#menus li {
+    position: relative;
+    list-style: none; 
+    float: left;
+}
+#menus li span {
+    display: block;
+    width: 0; 
+    height: 0;
+    border-width: 4px; 
+    border-style: solid;
+    border-color: #99F #99F #99F #333;
+    font-size: 0;
+    line-height: 0; 
+    float: right; 
+    position: absolute; 
+    top: 10px;
+    right: 15px;
+}
+#menus li.active h2 {
+    border: 1px solid #999; 
+    height: 28px; 
+    line-height: 28px; 
+    background: #ccc; 
+    cursor: default;
+}
+#menus li.active span {
+    border-color: #ccc #ccc #ccc #333;
+}
+#menus li h2.active span{
+    border-color: #ccc #ccc #ccc #333;
 }

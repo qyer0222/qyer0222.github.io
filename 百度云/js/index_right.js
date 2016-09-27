@@ -1,11 +1,13 @@
 //右侧页面生成文件夹功能，构造函数，第一个参数是ul
-var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces){
+var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_delete,menus_replace){
 	this.files = obj;
 	this.btn_create = btn_createEle;
 	this.back = back;
 	this.deletes = deletes;
 	this.allcheck = allcheck;
 	this.replaces = replaces;
+	this.menus_delete = menus_delete;
+	this.menus_replace = menus_replace;
 	this.checkonOff = true;
 	this.Create(getindex(0));//初始页面显示层级为0的层级
 	this.Goback();
@@ -14,6 +16,14 @@ var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces){
 	this.Deletecheck();//删除文件夹
 	this.Allchecked();//全选按钮
 	this.Replaces();//删除按钮
+	this.menus = menus;//菜单
+	this.box_con = box_con;//大框
+	this.menus_lis = menus_lis;//菜单列表
+	this.menus_render = menus_render;//右键新建文件夹
+	this.Menus_Cre();//新建文件夹
+	this.Show();//显示右键菜单
+	this.Menus_delete();//右键删除菜单
+	this.Menus_replace();//右键重命名菜单
 };
 //生成文件夹，通过改变date数据来操控页面显示的内容
 createfiles.prototype.Create = function(date){
@@ -231,6 +241,160 @@ createfiles.prototype.Replaces = function(){
 			}
 			p.children[2].onclick = function(ev){
 				console.log(this.value)
+				p.children[1].innerHTML = p.children[0].value;
+				p.children[1].className = 'show';
+				p.children[2].className = 'hidden';
+				p.children[3].className = 'hidden';
+				p.children[0].className = 'hidden';
+				arr[0].className  = '';//清空勾选状态
+				arr[0].parentNode.style.border = '';
+				arr[0].onOff = true;
+				that.checkonOff = true;//关联全选按钮状态
+				allcheck.className = '';
+				ev.stopPropagation();//阻止冒泡
+			}
+			p.children[3].onclick = function(ev){
+				p.children[1].className = 'show';
+				p.children[2].className = 'hidden';
+				p.children[3].className = 'hidden';
+				p.children[0].className = 'hidden';
+				arr[0].className  = '';//清空
+				arr[0].parentNode.style.border = '';
+				arr[0].onOff = true;
+				that.checkonOff = true;
+				allcheck.className = '';
+				ev.stopPropagation();//阻止冒泡
+			}
+		}
+		
+	}	
+}
+//滚动条
+/*var Scroll = function(scroll,bar){
+	this.scroll = scroll;
+	this.bar = bar;
+	this.Mousedown();
+}
+Scroll.prototype.Mousedown = function(){
+	bar.onmousedown = function(ev){
+		console.log(getPos(this).y)
+		var xx = ev.clientY - getPos(this).y;
+		var disy =  getPos(bar).y;//滚动最上面的距离
+		document.onmousemove = function(ev){
+			var y = ev.clientY - disy - xx;
+			console.log(ev.clientY,disy,xx)
+			bar.style.top = y+'px';
+		}
+		
+		document.onmouseup = function(){
+			this.onmousemove = null;
+		}
+	}
+	
+}*/
+// var Rightclick = function(){
+	
+// }
+createfiles.prototype.Show = function(){
+
+	for(var i=0;i<menus_lis.length;i++){
+		menus_lis[i].onmouseover = function(){
+			this.children[0].className = 'active';
+			if(this.children[1]){
+				this.children[1].style.display='block';
+			}
+		}
+		menus_lis[i].onmouseout = function(){
+			this.children[0].className = '';
+			if(this.children[1]){
+				this.children[1].style.display='none';
+			}
+		}
+	}
+	box_con.oncontextmenu = function(ev){
+		var disy = getPos(box_con).y;
+		var disx = getPos(box_con).x;
+		var x = ev.clientX;
+		var y = ev.clientY;
+		menus.style.display = 'block';
+		menus.style.top = y-disy+'px';
+		menus.style.left = x-disx+'px';
+		return false;
+	}
+	box_con.onclick = function(){
+		menus.style.display = 'none';
+		return false;
+	}
+}
+
+createfiles.prototype.Menus_Cre = function(){
+	var that = this;
+	menus_render.onclick = function(){
+		var newdate ={
+			id:date.length+1,
+			username:'新建文件夹',
+			type:'file',
+			index:goback
+		};
+		date.push(newdate);
+		that.Create(getindex(goback));
+		that.Selectmark();
+		that.checkonOff = true;
+		allcheck.className = '';
+		menus.style.display = 'none';
+	}
+}
+createfiles.prototype.Menus_delete = function(){
+	var  is = this.files.getElementsByTagName('i');
+	var  lis = this.files.getElementsByTagName('li');
+	var that = this;
+	menus_delete.onclick = function(){
+		if(is.length==0){
+			return
+		}
+		for(var i=0;i<lis.length;i++){
+			if(is[i].className=='activeout'){
+				var values = getid(lis[i].id)
+				for(var j=0;j<date.length;j++){
+					if(date[j]==values){
+						date[j]='';
+					}
+				}
+			}
+		}
+		that.Create(getindex(goback));
+		that.Selectmark();
+		allcheck.className = '';
+		that.checkonOff = true;
+		menus.style.display = 'none';
+
+	}
+}
+createfiles.prototype.Menus_replace = function(){
+	var  is = this.files.getElementsByTagName('i');
+	var that = this;
+	menus_replace.onclick = function(){
+		var arr = [];
+		for(var i=0;i<is.length;i++){
+			if(is[i].className == 'activeout'){
+				arr.push(is[i]);//存储进数组
+			}
+		}
+		clearrepeat(arr);//数组去重
+		if(arr.length>1||arr.length==0){
+			return;
+		}else{
+			var p = arr[0].parentNode.nextElementSibling;
+			p.children[1].className = 'hidden';
+			p.children[2].className = 'show';
+			p.children[3].className = 'show';
+			p.children[0].className = 'show';
+			p.children[0].value = p.children[1].innerHTML;
+			p.children[0].select();
+			p.children[0].onclick = function(ev){
+				ev.stopPropagation();//阻止冒泡
+			}
+			p.children[2].onclick = function(ev){
 				p.children[1].innerHTML = p.children[0].value;
 				p.children[1].className = 'show';
 				p.children[2].className = 'hidden';

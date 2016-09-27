@@ -27,9 +27,9 @@ var timeAxisArr = [
 		},
 		{
 		    startTime:"2014/08",
-			endTime:"2016/03",
+			endTime:"2016/09",
 			companyLogo:'images/icon/expre_logo2.png',
-			companyNam:"明顺物流",
+			companyNam:"明顺科技有限公司",
 			companyWebsite:"http://www.miaov.com",
 			jobPost:"前端开发工程师",
 			jonTask:"前端",
