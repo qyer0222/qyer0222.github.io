@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="css/index.css" />
 		<script type="text/javascript" src="js/tool.js"></script>
 		<script type="text/javascript" src="js/header.js"></script>
-		<script type="text/javascript" src="js/index_left.js"></script>
 		<script type="text/javascript" src="js/index_right.js"></script>
+		<script type="text/javascript" src="js/index_left.js"></script>
 	</head>
 	<body>
 		<div class="header clearfix">
@@ -22,19 +22,19 @@
 				<li id="list_author">
 					<a href="#" id="author">关于作者</a>
 					<div class="list" id="list" >
-						<a href="#" class="netdisc">
+						<a href="https://qyer0222.github.io/" class="netdisc">
 							<i></i>
 							<span>简历</span>
 						</a>
-						<a href="#" class="Contacts">
+						<a href="https://qyer0222.github.io/CV/" class="Contacts">
 							<i></i>
 							<span>电话</span>
 						</a>
-						<a href="#" class="sms">
+						<a href="https://qyer0222.github.io/" class="sms">
 							<i></i>
 							<span>邮箱</span>
 						</a>
-						<a href="#" class="article">
+						<a href="https://qyer0222.github.io/" class="article">
 							<i></i>
 							<span>博客</span>
 						</a>
@@ -63,7 +63,7 @@
 			<div id="con_left" class="fl">
 				<ul class="menu">
 					<li class="menu_list">
-						<a href="#">
+						<a href="javascript:;">
 							<span class="menu_center">
 								<i></i>
 								<span>全部文件</span>
@@ -232,6 +232,7 @@
 			var deletes = document.getElementById('delete');
 			var allcheck = document.getElementById('allcheck');
 			var replaces = document.getElementById('replaces');
+			var menu_list = getClass('menu_list')[0];
 			var date = [
 			{
 				id:1,
@@ -305,7 +306,7 @@
 			var showshadow = new ShowShadow(my_give_a);
 			var showshadow = new ShowShadow(side_center_a);
 			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces);
-
+			// var click = new Click(menu_list);
 
 	</script>
 </html>

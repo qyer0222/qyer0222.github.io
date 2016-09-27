@@ -17,13 +17,13 @@ var Show = function(listEle,list_authorEle,authorEle){
 };
 Show.prototype.navmove = function(){
     this.list.style.display = 'block';
-    this.list_author.style.background = '#F0F0DF';
-    this.author.style.color = 'black';
+    list_author.style.background = '#F0F0DF';
+    list_author.children[0].style.color = 'black';
 };
 Show.prototype.navout = function(){
     this.list.style.display = '';
-    this.list_author.style.background = '';
-    this.author.style.color = '';
+    list_author.style.background = '';
+    list_author.children[0].style.color = '';
 };
 //显示出div里面每个li的边框
 var Showborder = function(nav_aEle){

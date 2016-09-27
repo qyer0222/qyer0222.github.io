@@ -16,3 +16,14 @@ ShowShadow.prototype.ShowNow = function(){
     }
     
 };
+// var Click = function(menu_list){
+//     this.menu_list = menu_list;
+//     this.Menu_list();
+// }
+// Click.prototype.Menu_list = function(){
+//     var that = this;
+//     menu_list.onclick = function(){
+//         console.log( create.Create())
+//       create.Create(1);
+//     }
+// }
