@@ -1,5 +1,5 @@
 //右侧页面生成文件夹功能，构造函数，第一个参数是ul
-var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_delete,menus_replace){
+var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_delete,menus_replace,menus_select){
 	this.files = obj;
 	this.btn_create = btn_createEle;
 	this.back = back;
@@ -8,6 +8,7 @@ var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces,menu
 	this.replaces = replaces;
 	this.menus_delete = menus_delete;
 	this.menus_replace = menus_replace;
+	this.menus_select = menus_select;
 	this.checkonOff = true;
 	this.Create(getindex(0));//初始页面显示层级为0的层级
 	this.Goback();
@@ -24,6 +25,7 @@ var createfiles = function(obj,btn_createEle,back,deletes,allcheck,replaces,menu
 	this.Show();//显示右键菜单
 	this.Menus_delete();//右键删除菜单
 	this.Menus_replace();//右键重命名菜单
+	this.Menus_Select();
 };
 //生成文件夹，通过改变date数据来操控页面显示的内容
 createfiles.prototype.Create = function(date){
@@ -295,6 +297,7 @@ Scroll.prototype.Mousedown = function(){
 // var Rightclick = function(){
 	
 // }
+// 右键显示菜单栏
 createfiles.prototype.Show = function(){
 
 	for(var i=0;i<menus_lis.length;i++){
@@ -326,7 +329,7 @@ createfiles.prototype.Show = function(){
 		return false;
 	}
 }
-
+//右键菜单新建文件夹
 createfiles.prototype.Menus_Cre = function(){
 	var that = this;
 	menus_render.onclick = function(){
@@ -344,6 +347,7 @@ createfiles.prototype.Menus_Cre = function(){
 		menus.style.display = 'none';
 	}
 }
+//右键菜单删除
 createfiles.prototype.Menus_delete = function(){
 	var  is = this.files.getElementsByTagName('i');
 	var  lis = this.files.getElementsByTagName('li');
@@ -370,6 +374,7 @@ createfiles.prototype.Menus_delete = function(){
 
 	}
 }
+//右键菜单重命名
 createfiles.prototype.Menus_replace = function(){
 	var  is = this.files.getElementsByTagName('i');
 	var that = this;
@@ -422,4 +427,33 @@ createfiles.prototype.Menus_replace = function(){
 		}
 		
 	}	
+}
+//右键全选
+createfiles.prototype.Menus_Select = function(){
+	var that = this;
+	var  divs = this.files.getElementsByTagName('div');
+	var  is = this.files.getElementsByTagName('i');
+	menus_select.onclick = function(){
+		if(is.length==0){
+			return
+		}
+		if(that.checkonOff){
+			allcheck.className = 'active';
+			for(var i=0;i<is.length;i++){
+				divs[i].style.border = '2px solid #2e80dc';
+				is[i].className = 'activeout';
+				is[i].onOff = false;
+			}
+		}else{
+			allcheck.className = '';
+			
+			for(var i=0;i<is.length;i++){
+				divs[i].style.border = '';
+				is[i].className = '';
+				is[i].onOff = true;
+			}
+		}
+		that.checkonOff = !that.checkonOff;
+	}
+	
 }

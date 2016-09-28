@@ -208,6 +208,9 @@
 							<li id="menus_delete">
 								<h2>删除</h2>
 							</li>
+							<li id="menus_select">
+								<h2>全选</h2>
+							</li>
 						</ul>
 						<ul id="files">
 							<!--<li>
@@ -237,24 +240,25 @@
 			var u_password = document.getElementById('u_password');//密码
 			var login_footer = getClass('login_footer')[0];
 			var cover = document.getElementById('Cover');//显示遮罩层
-			var as = getClass('menu')[0].getElementsByTagName('a');
-			var recycle_a = getClass('recycle')[0].getElementsByTagName('a');
-			var my_give_a = getClass('my_give')[0].getElementsByTagName('a');
-			var side_center_a = getClass('side_center')[0].getElementsByTagName('a');
-			var files = document.getElementById('files');
-			var btn_create = document.getElementById('btn_create');
-			var back = document.getElementById('back');
-			var deletes = document.getElementById('delete');
-			var allcheck = document.getElementById('allcheck');
-			var replaces = document.getElementById('replaces');
-			var scroll = document.getElementById('scroll');
-			var bar = document.getElementById('bar');
-			var box_con = document.getElementById('box_con');
-			var menus = document.getElementById('menus');
-			var menus_lis = document.querySelectorAll('#menus li');
-			var menus_render = document.getElementById('menus_render');
-			var menus_delete = document.getElementById('menus_delete');
-			var menus_replace = document.getElementById('menus_replace');
+			var as = getClass('menu')[0].getElementsByTagName('a');//左侧a
+			var recycle_a = getClass('recycle')[0].getElementsByTagName('a');//左侧回收站
+			var my_give_a = getClass('my_give')[0].getElementsByTagName('a');//我的分享
+			var side_center_a = getClass('side_center')[0].getElementsByTagName('a');//云管家、安卓、ios
+			var files = document.getElementById('files');//右侧文件存储生成父级
+			var btn_create = document.getElementById('btn_create');//点击生成文件按钮
+			var back = document.getElementById('back');//点击返回上一级按钮
+			var deletes = document.getElementById('delete');//点击删除按钮
+			var allcheck = document.getElementById('allcheck');//点击全选按钮
+			var replaces = document.getElementById('replaces');//点击重命名按钮
+			var scroll = document.getElementById('scroll');//滑轮
+			var bar = document.getElementById('bar');//滚动条
+			var box_con = document.getElementById('box_con');//右侧files的父级
+			var menus = document.getElementById('menus');//右键菜单
+			var menus_lis = document.querySelectorAll('#menus li');//右键菜单里面的每个li
+			var menus_render = document.getElementById('menus_render');//右键菜单新建文件夹
+			var menus_delete = document.getElementById('menus_delete');//右键菜单删除文件夹
+			var menus_replace = document.getElementById('menus_replace');//右键菜单重命名
+			var menus_select = document.getElementById('menus_select');//右键菜单全选
 			var date = [
 			{
 				id:1,
@@ -327,7 +331,7 @@
 			var showshadow = new ShowShadow(recycle_a);
 			var showshadow = new ShowShadow(my_give_a);
 			var showshadow = new ShowShadow(side_center_a);
-			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_render,menus_delete,menus_replace);
+			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_render,menus_delete,menus_replace,menus_select);
 			// var click = new Click(menu_list);
 			// var scroll_chrome = new Scroll(scroll,bar);
 	</script>
