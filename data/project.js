@@ -16,7 +16,7 @@ var projects = [
 		{
 			projectName:"仿百度云",
 			projectWebsite:"https://qyer0222.github.io/百度云/",
-		    startTime:"2016.01.01",
+		    startTime:"2016.09.22",
 			endTime:"至今",
 			projectExplain:"主要应用：面向对象语言、DOM、原生js",
 			projectLabel:["html","css3","css","js"],
@@ -25,7 +25,7 @@ var projects = [
 		{
 			projectName:"仿QQ浏览器",
 			projectWebsite:"https://qyer0222.github.io/QQ浏览器/",
-		    startTime:"2016.01.01",
+		    startTime:"2016.07.18",
 			endTime:"至今",
 			projectExplain:"主要应用：整屏滚动、css3、首屏出场动画、3D翻转实现",
 			projectLabel:["html","css3","css","js"],
@@ -34,7 +34,7 @@ var projects = [
 		{
 			projectName:"响应式布局",
 			projectWebsite:"https://qyer0222.github.io/jquerys/",
-		    startTime:"2016.01.01",
+		    startTime:"2015.06.16",
 			endTime:"至今",
 			projectExplain:"主要应用：响应式布局",
 			projectLabel:["html","css3","css"],
@@ -43,7 +43,7 @@ var projects = [
 		{
 			projectName:"仿京东静态布局",
 			projectWebsite:"https://qyer0222.github.io/jingdong-pc/",
-		    startTime:"2016.01.01",
+		    startTime:"2015.03.08",
 			endTime:"至今",
 			projectExplain:"主要应用：IE6、IE7浏览器兼容等",
 			projectLabel:["html","css"],
@@ -52,7 +52,7 @@ var projects = [
 		{
 			projectName:"firmorama",
 			projectWebsite:"https://qyer0222.github.io/firmorama/",
-		    startTime:"2016.02.02",
+		    startTime:"2015.09.02",
 			endTime:"至今",
 			projectExplain:"主要应用：瀑布流、BOM事件、用户观看页面的图片，其大部分内容是通过JS加载的。为了提高性能，采用了延迟加载、延迟渲染、事件代理等优化方式。此外，还通过监听页面的window.onchang事件对图片进行动态。预览版是在本地可以加载的不需跨域，完整版需要上github上下载才能看到完整内容",
 			projectLabel:["html","jQ","css","js","ajax"],
@@ -61,7 +61,7 @@ var projects = [
 		{
 			projectName:"CV",
 			projectWebsite:"https://qyer0222.github.io/CV",
-		    startTime:"2016.03.22",
+		    startTime:"2014.11.22",
 			endTime:"至今",
 			projectExplain:"主要应用：障眼法、用户观看页面的图片，其大部分内容是通过JS加载的。为了提高性能，采用了延迟加载、延迟渲染、事件代理等优化方式。此外，还通过监听页面的window.onchang事件对图片进行动态。",
 			projectLabel:["html","jQ","css3","js"],
