@@ -294,7 +294,7 @@ var casees = [
 					publishTime:"2011-11-16 22:08",
 					caseThumbnail:"images/case/5/详情介绍.gif",
 					caseDescription:"DOM元素操作、宽高计算",
-					caseWebsite:"https://qyer0222.github.io/five/手机滑动"
+					caseWebsite:"https://qyer0222.github.io/five/百度文库详情"
 				},
 				{
 					caseTitle:"拖拽div",
