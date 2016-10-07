@@ -21,6 +21,27 @@ function getid(index){
     } 
 }
 
+//usertype.找存储的类型
+function getusertype(index){
+    var arr = [];
+    for(var i=0;i<date.length;i++){
+        if(index == date[i].usertype){
+            arr.push(date[i]);
+        }
+    } 
+    return arr;
+}
+//找所有类型
+function getall(date){
+    var arr = [];
+    for(var i=0;i<date.length;i++){
+        if(date[i].index){
+            arr.push(date[i]);
+        }
+    }
+    return arr;
+}
+
 //封装函数功能:根据输入的参数可以找寻到和该参数相同的层级
 function getindex(id){
     var arr = [];
@@ -67,4 +88,30 @@ function getPos(node,pos){
 //获取属性值
 function css(obj,attr){
     return parseFloat(getComputedStyle(obj)[attr]);
+}
+
+function distinguish(that){
+    switch(that.mark){
+            case 0 :
+            that.Create(getindex(goback));
+            break;
+            case 1 :
+            that.Create(getusertype(1));
+            break;
+            case 2 :
+            that.Create(getusertype(2));
+            break;
+            case 3 :
+            that.Create(getusertype(3));
+            break;
+            case 4 :
+            that.Create(getusertype(4));
+            break;
+            case 5 :
+            that.Create(getusertype(5));
+            break;
+            case 6 :
+            that.Create(getusertype(6));
+            break;
+        }
 }

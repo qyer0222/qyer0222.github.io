@@ -189,10 +189,32 @@ body{
 	line-height: 25px;
 	margin-top: 10px;
 	border-radius: 3px;
+    position: relative;
+
 }
 .update a,.create a{
 	color: white;
+
 }
+.update_file{
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    border: 1px solid gray;
+    text-align: center;
+    opacity: 0;
+}
+#update_a{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 107px;
+    height: 28px;
+    cursor: pointer;
+}
+
 .update i{
 	display: block;
 	width: 22px;
@@ -263,14 +285,20 @@ body{
 }
 #box_con{
 	width: 91.5%;
-	height: 478px;
+	height: 470px;
 	position: relative;
 	margin-top: 47px;
     float: left;
 	padding-right: 100px;
+    overflow: hidden;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#files{
+    position: absolute;
 }
 #files ul{
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 #files>li{
     width: 142px;
@@ -298,6 +326,12 @@ body{
 #files p span{
 	font-weight: bold;
 	font-size: 14px;
+    width: 100px;
+    display: inline-block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    text-align: center;
 }
 #files i{
 	/*background: url(../img/checkbox_8c741da.png) 6px -36px no-repeat;*/
@@ -396,37 +430,46 @@ background: url(../img/checkbox_8c741da.png) -30px -36px no-repeat;
 	position: absolute;
 	margin: 0 auto;
 	top: 20px;
-	left: 16px;
-	width: 63px;
-	height: 55px;
+	left: 18px;
+	width: 54px;
+	height: 64px;
 	/*background: url(../img/gridIcon_7165cae.png) 18px -72px no-repeat;*/
 	border: 2px solid white;
-}/*
+}
 #scroll{
     height:100%;
     width: 30px;
     border: 2px solid black;
-    position: relative;
-    float: left;
+    position: absolute;
     overflow: hidden;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    -webkit-border-radius: 7px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
 }
 #bar{
-    height: 30px;
-    width: 100%;
-    background-color: red;
+    background: url(../img/scrollbar_scale_378e3d7.png) no-repeat scroll 50% 50% #F2F2F2;
+    border: 1px solid #A7A7A7;
+    border-radius: 2px;
+    cursor: default;
     position: absolute;
-}*/
+    width: 14px;
+    height: 100px;
+}
 
 #menus {
-position: absolute;
-display: none;
-z-index: 999;
+    position: absolute;
+    display: none;
+    z-index: 999;
  }
 #menus ul {
- position: absolute;
- top: 0; 
- left: 145px; 
- display: none;
+     position: absolute;
+     top: 0; 
+     left: 145px; 
+     display: none;
  }
 
 #menus h2 {
@@ -441,12 +484,12 @@ z-index: 999;
     border: 1px solid #999;
     height: 28px;
     line-height: 28px;
-    background: #ccc;
+    background: #999;
     cursor: default;
 }
 #menus ul,#menus {
     width: 150px; 
-    background: #99F; 
+    background: #ccc; 
     border: 1px solid #888;
 }
 #menus li {
@@ -480,4 +523,75 @@ z-index: 999;
 }
 #menus li h2.active span{
     border-color: #ccc #ccc #ccc #333;
+}
+#update_wrap{
+    height: 50px;
+    border: 5px solid yellow;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    font-size: 28px;
+    font-weight: bold;
+    display: none;
+}
+#update_bar{
+    height: 100%;
+    width: 0;
+    background: green;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+#bg{
+    background: url(../img/nofile_bg.jpg) no-repeat scroll 0 0 transparent;
+    margin: 0 auto;
+    padding-left: 50px;
+    padding-top: 408px;
+    width: 788px;
+    height: 40px;
+    position: relative;
+    display: none;
+}
+.bg_txt{
+    background: url(../img/emptyfile_button.png) no-repeat  11px -352px ;
+    height: 138px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 480px;
+    z-index: 1;
+}
+#photo{
+    width: 100%;
+    height: 100%;
+    background:#161616;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: none;
+    /*text-align: center;*/
+}
+#photo img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 500px;
+    max-height: 500px;
+}
+.out{
+   width: 59px;
+   height: 58px;
+   background: black;
+   color: white;
+   text-align: center;
+   font-size: 20px;
+   background: url(../img/photo1.png);
+   right: 0;
+   top: 0;
+   position: absolute;
+   cursor: pointer;
 }

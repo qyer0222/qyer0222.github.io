@@ -49,13 +49,17 @@
 			</ul>
 			<ul class="nav_R fr">
 				<li class="member">超级会员悦享极速体验</li>
-				<li class="center">会员中心</li>
+				<li class="center">
+				<a href="http://yun.baidu.com/buy/center?tag=1&from=homepage">会员中心</a>
+				</li>
 				<li class="border">|</li>
-				<li class="Client">客户端下载</li>
+				<li class="Client">
+				<a href="http://pan.baidu.com/download?from=header">客户端下载</a>
+				</li>
 				<li class="border">|</li>
 				<li class="more">
-					<span>更多</span>
-					<em></em>
+					<a href="#">点我上传皮肤</a>
+					<input class="change_bg" type="file"></input>
 				</li>
 			</ul>
 		</div>
@@ -120,7 +124,7 @@
 					</li>
 				</ul>
 				<div class="my_give">
-					<a href="#">
+					<a href="login.html">
 						<span class="menu_center">
 							<i></i>
 							<span>我的分享</span>
@@ -137,15 +141,15 @@
 				</div>
 				<div class="side_options">
 					<span class="side_center">
-						<a href="#">
+						<a href="http://issuecdn.baidupcs.com/issue/netdisk/yunguanjia/BaiduYunGuanjia_5.4.10.exe">
 							<em class="side_cloud"><i></i></em>
 							<span>云管家</span>
 						</a>
-						<a href="#">
+						<a href="http://issuecdn.baidupcs.com/issue/netdisk/apk/BaiduYun_7.14.1.apk">
 							<em class="side_Android"><i></i></em>
 							<span>Android</span>
 						</a>
-						<a href="#">
+						<a href="http://itunes.apple.com/cn/app/bai-du-wang-pan/id547166701?mt=8">
 							<em class="side_iPhone"><i></i></em>
 							<span>iPhone</span>
 						</a>
@@ -157,19 +161,25 @@
 				</div>
 			</div>
 			<div id="con_right" class="fl">
+
 				<div class="con_right_t">
-					<div class="update fl">
-						<a href="#" class="clearfix">
+					<form class="update fl">
+						<a href="#" class="clearfix" id="update_a">
 							<i class="fl"></i>
 							<span class="fl">上传</span>
 						</a>
-					</div>
+					<input class="update_file" type="file"></input>
+					</form>
 					<div class="create fl">
 						<a href="#" class="clearfix" id="btn_create">
 							<i class="fl"></i>
 							<span class="fl" >新建文件夹</span>
 						</a>
 					</div>
+				</div>
+				<div id="update_wrap">
+					<div id="update_bar"></div>
+					<span>0%</span>
 				</div>
 				<div class="hat clearfix">
 					<div class="hat_static">
@@ -183,7 +193,11 @@
 						<!-- <b class="fl">></b> -->
 					</div>
 				</div>
+				<div id="bg">
+					<div class="bg_txt"></div>
+				</div>
 				<div id="box">
+
 					<div id="box_top">
 						<i id="allcheck"></i>
 						<a href="javascript:;" id="delete">
@@ -212,7 +226,7 @@
 								<h2>全选</h2>
 							</li>
 						</ul>
-						<ul id="files">
+						<ul id="files" class="clear">
 							<!--<li>
 								<div>
 									<i></i>
@@ -223,12 +237,16 @@
 								</p>
 							</li>-->
 						</ul>
-						<!-- <div id="scroll">
+						<div id="scroll">
 							<div id="bar"></div>
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div id="photo">
+			<img src="img/life.jpg" >
+			<div class="out"></div>
 		</div>
 	</body>
 	<script type="text/javascript">
@@ -259,61 +277,122 @@
 			var menus_delete = document.getElementById('menus_delete');//右键菜单删除文件夹
 			var menus_replace = document.getElementById('menus_replace');//右键菜单重命名
 			var menus_select = document.getElementById('menus_select');//右键菜单全选
+			var update_file  = getClass('update_file')[0];//上传按钮
+			var update_wrap = document.getElementById('update_wrap');//上传进度条
+			var update_bar = document.getElementById('update_bar');//进度内容
+			var wrapSpan = update_bar.getElementsByTagName('span')[0];//进度数字百分比
+			var menu_list = getClass('menu_list')[0];//左侧全部文件
+			var menu_picture = getClass('menu_picture')[0];//全部图片
+			var menu_doc = getClass('menu_doc')[0];//全部文档
+			var menu_video = getClass('menu_video')[0];//全部视频
+			var menu_seed = getClass('menu_seed')[0];//种子
+			var menu_music = getClass('menu_music')[0];//音乐
+			var menu_other = getClass('menu_other')[0];//其他
+			var recycle = getClass('recycle')[0];//回收站
+			var bg = document.getElementById('bg');//没有文件
+			var box = document.getElementById('box');
+			var photo = document.getElementById('photo');//点击照片打开弹窗
+			var photoimg = photo.getElementsByTagName('img')[0];//图片
+			var out = photo.getElementsByTagName('div')[0];//点击离开
+			var change_bg = getClass('change_bg')[0];//换肤
 			var date = [
 			{
 				id:1,
 				username:'我的文件',
+				src:'img/file1.png',
+				index:0,
 				type:'file',
-				index:0
+				usertype:'0'
 			},
 			{
 				id:2,
 				username:'国歌',
+				src:'img/mp3.png',
+				index:1,//id为1点击之后的那层
 				type:'mp3',
-				index:1//id为1点击之后的那层
+				usertype:'5'
 			},
 			{
 				id:3,
 				username:'新建文件夹1',
+				src:'img/file.png',
+				index:1,
 				type:'file',
-				index:1
+				usertype:'0'
 			},
 			{
 				id:4,
 				username:'新建文件夹',
+				src:'img/file.png',
+				index:1,
 				type:'file',
-				index:1
+				usertype:'0'
 			},
 			{
 				id:5,
-				username:'新建文件夹2',
+				username:'新建文件夹',
+				src:'img/file.png',
+				index:4,
 				type:'file',
-				index:4
+				usertype:'0'
 			},
 			{
 				id:6,
-				username:'出游照片',
+				username:'个人头像',
+				src:'img/life.jpg',
+				index:0,
 				type:'jpeg',
-				index:0
+				usertype:'1'
 			},
 			{
 				id:7,
-				username:'我的音乐2',
+				username:'我的音乐',
+				src:'img/mp3.png',
+				index:6,
 				type:'mp3',
-				index:6
+				usertype:'5'
 			},
 			{
 				id:8,
-				username:'私人文档',
-				type:'svg',
-				index:0
+				username:'私人视频',
+				src:'img/mp4.png',
+				index:0,
+				type:'mp4',
+				usertype:'3'
 			},
 			{
 				id:9,
 				username:'爱如潮水',
+				src:'img/mp3.png',
+				index:0,
 				type:'mp3',
-				index:0
+				usertype:'5'
+			},
+			{
+				id:10,
+				username:'我的笔记',
+				src:'img/txt.png',
+				index:0,
+				type:'txt',
+				usertype:'3'
+			},
+			{
+				id:11,
+				username:'我的种子',
+				src:'img/bt.png',
+				index:0,
+				type:'bt',
+				usertype:'4'
+			},
+			{
+				id:12,
+				username:'我的工具',
+				src:'img/cad.png',
+				index:0,
+				type:'cad',
+				usertype:'6'
 			}
+
 			];
 			var goback = 0;
 			//显示出div
@@ -331,8 +410,8 @@
 			var showshadow = new ShowShadow(recycle_a);
 			var showshadow = new ShowShadow(my_give_a);
 			var showshadow = new ShowShadow(side_center_a);
-			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_render,menus_delete,menus_replace,menus_select);
+			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_render,menus_delete,menus_replace,menus_select,update_file,update_wrap,update_bar,wrapSpan,menu_list,menu_picture,menu_doc,menu_video,menu_seed,menu_music,menu_other,recycle,bg,scroll,bar,photo,photoimg,out);
 			// var click = new Click(menu_list);
-			// var scroll_chrome = new Scroll(scroll,bar);
+			var change_picture = new change_Bg(change_bg,box_con);
 	</script>
 </html>
