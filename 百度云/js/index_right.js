@@ -1,5 +1,5 @@
 //右侧页面生成文件夹功能，构造函数，第一个参数是ul
-var createfiles = function(obj,update,btn_createEle,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_delete,menus_replace,update_file,update_wrap,update_bar,wrapSpan,menu_list,menu_picture,menu_doc,menu_video,menu_seed,menu_music,menu_other,recycle,bg,box,scroll,bar,photo,photoimg,out){
+var createfiles = function(obj,update,btn_createEle,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_delete,menus_replace,update_file,update_wrap,update_bar,wrapSpan,menu_list,menu_picture,menu_doc,menu_video,menu_seed,menu_music,menu_other,recycle,bg,box,scroll,bar,photo,photoimg,out,usertext,canvas,videos,content){
 	this.files = obj;
 	this.btn_create = btn_createEle;
 	this.back = back;
@@ -25,8 +25,12 @@ var createfiles = function(obj,update,btn_createEle,back,deletes,allcheck,replac
 	this.box = box;
 	this.scroll = scroll;
 	this.bar = bar;
+	this.content = content;
 	this.recycle = recycle;
 	this.photoimg = photoimg;
+	this.usertext = usertext;
+	this.canvas = canvas;
+	this.videos = videos;
 	this.out = out;
 	this.checkonOff = true;
 	this.createonOff = true;
@@ -59,6 +63,7 @@ var createfiles = function(obj,update,btn_createEle,back,deletes,allcheck,replac
 	this.Recycle();//回收站
 	this.Scroll();//滚动条
 	this.Out();
+	this.bigmark = '';
 };
 //生成文件夹，通过改变date数据来操控页面显示的内容
 createfiles.prototype.Create = function(date){
@@ -71,6 +76,8 @@ createfiles.prototype.Create = function(date){
 		lis.type = date[i].type;
 		lis.index = date[i].index;
 		lis.src = date[i].src;
+		lis.usertype = date[i].usertype;
+		lis.con = date[i].con;
 		this.CLick(lis);
 		// var src = `img/${date[i].type}.png`;
 		lis.innerHTML = `<div>
@@ -96,6 +103,10 @@ createfiles.prototype.Create = function(date){
 		bg.style.display = '';
 		box.style.display = 'block';
 	}
+	content.style.height = document.documentElement.clientHeight-48+'px';
+	window.onresize = function(){
+		content.style.height = document.documentElement.clientHeight-48+'px';
+	}
 };
 //点击进入文件夹,参数是点击的lis
 createfiles.prototype.CLick = function(lis){
@@ -108,17 +119,35 @@ createfiles.prototype.CLick = function(lis){
 			that.Selectmark();
 			break;
 			case 'txt':
+			photo.style.display = 'block';
+			photoimg.src = '';
+			// console.log(this,this.con,this.id.this.usertype)
+			usertext.style.display = 'block';
+			usertext.innerHTML = this.con;
 			break;
-			case 'html':
+			case 'mp3':
+			 // that.song.start(0);
+			 canvas.style.display = 'block';
+			 photo.style.display = 'block';
+			 photoimg.src = '';
+			 that.bigmark = this;
+			 that.bigmark.con.start(0);
 			break;
 			case 'jpeg':
-			var divs = document.createElement('div');
-			var Img = document.createElement('img');
-			Img.src = this.src;
-			divs.appendChild(Img)
-			document.body.appendChild(divs);
+			// var divs = document.createElement('div');
+			// var Img = document.createElement('img');
+			// Img.src = this.src;
+			// divs.appendChild(Img)
+			
 			photo.style.display = 'block';
 			photoimg.src = this.src;
+			// usertext.style.display = 'none';
+			break;
+			case 'mp4':
+			photo.style.display = 'block';
+			videos.style.display = 'block';
+			photoimg.src = '';
+			videos.src = this.con;
 			break;
 		}
 		
@@ -156,7 +185,8 @@ createfiles.prototype.Btn_create = function(){
 			username:'新建文件夹',
 			src:'img/file.png',
 			index:goback,
-			type:'file'
+			type:'file',
+			usertype:1
 		};
 		date.push(newdate);
 		that.Create(getindex(goback));
@@ -428,7 +458,8 @@ createfiles.prototype.Menus_Cre = function(){
 			username:'新建文件夹',
 			src:'img/file.png',
 			index:goback,
-			type:'file'
+			type:'file',
+			usertype:0
 		};
 		date.push(newdate);
 		that.Create(getindex(goback));
@@ -600,7 +631,9 @@ createfiles.prototype.update_file = function(){
 					username:file_name,
 					type:'jpeg',
 					src:img.src,
-					index:goback
+					index:goback,
+					usertype:1
+					
 				};
 				date.push(newdate);
 				that.Create(getindex(goback));
@@ -612,17 +645,45 @@ createfiles.prototype.update_file = function(){
 			fr.readAsDataURL(f);
 			return;
 		}
-		if(f.type.indexOf('text')!=-1){
+		if(f.type.indexOf('video')!=-1){
 			fr.onload = function(){
-				console.log(fr.result);
+				console.log(fr)
 				var newdate ={
 					id:date.length+1,
 					username:file_name,
-					type:'text',
-					src:'img/txt.png',
-					index:goback
+					type:'mp4',
+					src:'img/mp4.png',
+					index:goback,
+					usertype:3,
+					con:fr.result
 				};
 				date.push(newdate);
+				console.log(date)
+				that.Create(getindex(goback));
+				that.Selectmark();
+				that.checkonOff = true;
+				allcheck.className = '';
+			};
+
+			//添加需要格式化的文本文件
+			fr.readAsDataURL(f);
+			return;
+		}
+		if(f.type.indexOf('text')!=-1){
+			fr.onload = function(){
+				var cons = fr.result;
+				console.log(cons)
+				var newdate ={
+					id:date.length+1,
+					username:file_name,
+					type:'txt',
+					src:'img/txt.png',
+					index:goback,
+					usertype:3,
+					con:cons
+				};
+				date.push(newdate);
+				console.log(date)
 				that.Create(getindex(goback));
 				that.Selectmark();
 				that.checkonOff = true;
@@ -634,25 +695,76 @@ createfiles.prototype.update_file = function(){
 			return;
 		}
 		if(f.type.indexOf('mp3')!=-1){
-			fr.onload = function(){
-				console.log(fr.result);
-				var newdate ={
+			fr.readAsArrayBuffer(f);
+			fr.onload = function(ev){
+				// console.log(fr.result);
+				// img.src = fr.result;
+			var al = confirm('上传大概需要5s,确定上传吗？');
+			if(al==false){
+				return
+			}
+			var result = ev.target.result;//上传返回的数据
+			var context = new AudioContext();//创建音频接口
+			/*
+			decodeAudioData解码文件
+				参数：
+					1、需要解码的文件。
+					2、回调函数，在解码成功之后调用。
+						回调函数有一个参数，是一个二进制数组。
+
+			*/
+			//解码文件。
+			
+			context.decodeAudioData(
+				result,//数据
+				function(buffer){//解码成功调用该函数。成功后返回数据该参数是固定的
+						//buffer 以二进制数组表示的文件。
+					//创建音频节点。	
+					var source = context.createBufferSource();
+				
+					//创建获取频谱能量值的analyser节点。
+					var analyser = context.createAnalyser();	
+					//系统扬声器的节点。
+					// console.log(context.destination);
+					//链接频谱
+					source.connect(analyser);
+					//链接系统扬声器节点。
+					analyser.connect(context.destination)
+					//添加播放数据。
+					source.buffer = buffer;
+					//开始播放
+					// source.start(0);
+					var array = new Uint8Array(analyser.frequencyBinCount);
+					var len = 70;
+					var n = Math.floor(array.length/len);
+					var cgx= canvas.getContext("2d");//创建2d视图
+					cgx.fillStyle = 'yellow';
+					(function(){
+						//获取到音频频率值。每次波动的频率
+						analyser.getByteFrequencyData(array);
+						cgx.clearRect(0, 0, 1024, 500);//清空画布所有样式
+						for(var i=0;i<len;i++){
+							cgx.fillRect(i*15, 500-array[i*n], 10, array[i*n]);//初始位置x，初始位置Y，宽度，高度
+						}
+						requestAnimationFrame(arguments.callee);//arguments.callee代表当前匿名函数
+					})();
+					var newdate ={
 					id:date.length+1,
 					username:file_name,
 					type:'mp3',
 					src:'img/mp3.png',
-					index:goback
-				};
-				date.push(newdate);
-				that.Create(getindex(goback));
-				that.Selectmark();
-				that.checkonOff = true;
-				allcheck.className = '';
-			};
+					index:goback,
+					usertype:5,
+					con:source
+					};
+					date.push(newdate);
+					that.Create(getindex(goback));
+					that.Selectmark();
+					that.checkonOff = true;
+					allcheck.className = '';
+				})
 
-			//添加需要格式化的文本文件
-			fr.readAsText(f,'UTF-8');
-			return;
+			};
 		}
 	}
 }
@@ -685,7 +797,7 @@ createfiles.prototype.Menu_doc = function(){
 	var that = this;
 	menu_doc.onclick = function(){
 		that.mark = 2;
-		that.Create(getusertype(3));
+		that.Create(getusertype(2));
 		that.Selectmark();
 		btn_create.style.opacity = '0.6';
 		that.createonOff = false;
@@ -752,8 +864,16 @@ createfiles.prototype.Recycle = function(){
 }
 //点击打开图片
 createfiles.prototype.Out = function(){
+	var that = this;
 	out.onclick = function(){
-		photo.style.display = 'none';
+		that.photo.style.display = 'none'; 
+		that.usertext.style.display = 'none';
+		that.canvas.style.display = 'none';
+		videos.style.display = 'none';
+		var lis = document.getElementsByTagName('li');
+		if(that.bigmark.type=='mp3'){
+			that.bigmark.con.stop(0);
+		}
 	}
 }
 //换肤
@@ -763,6 +883,7 @@ var change_Bg = function(change_bg,box_con){
 	this.bgcolor = '';
 	this.click();
 }
+//点击换肤
 change_Bg.prototype.click = function(){
 	var that = this;
 	change_bg.onchange = function(){
@@ -786,4 +907,21 @@ change_Bg.prototype.click = function(){
 		}
 	}
 	
+}
+//右面弹窗介绍
+var section_change = function(section,goright,section_img){
+	this.section = section;
+	this.goright = goright;
+	this.section_img = section_img;
+	mTween(section,'right',0,1000,'linear');
+	goright.onclick = function(){
+		mTween(section,'right',-500,1000,'linear')
+	}
+	section_img.onclick = function(){
+		mTween(section,'right',0,1000,'linear')
+	}
+	setTimeout(function(){
+		mTween(section,'right',-500,1000,'linear')
+	},2300)
+
 }

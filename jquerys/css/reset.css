@@ -4,6 +4,10 @@
 		font-weight: normal;
 		font-size: 12px;
 	}
+
+	body{
+		overflow: hidden;
+	}
 	
 	li{
 		list-style: none;

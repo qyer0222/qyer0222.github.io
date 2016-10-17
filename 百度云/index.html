@@ -247,6 +247,28 @@
 		<div id="photo">
 			<img src="img/life.jpg" >
 			<div class="out"></div>
+			<div class="usertext"></div>
+			<canvas width="1024" height="500" style="background:black" id="canvas"></canvas>
+			<video src="img/youxi.mp4" controls="controls" id="myvideo"></video>
+		</div>
+		<div id="section">
+			<div id="section_img">
+				<img src="img/weixin.png">
+			</div>
+			<div id="section_box">
+				<p>作者：陈磊</p>
+				<p>联系方式：474142609@qq.com</p>
+				<h3>主要实现功能：</h3>
+				<p>1、新建文件夹、全选、单选、文件重命名、进入文件夹后可以返回上层文件夹、点击图片后图片会进行展示、点击视频可以播放视频、点击文档后可以直接预览文档（仅支持英文和数字）、点击音乐会自动播放音乐、内容过多会显示自定义滚动条</p>
+				<p>2、点击左侧相关标签：点击图片可以查看所有文件中的图片、点击文档可以查看文件中所有文档、回收站显示被用户删除的内容</p>
+				<p>3、支持上传功能：包括上传图片、视频、文档、音频同样可以进行相关操作</p>
+				<p>4、右上角支持上传皮肤更换背景功能</p>
+				<h3>注意事项：</h3>
+				<p>开发周期2周、时间较短许多功能并不完善，请在最新chrome下浏览</p>
+				<div id="goright">
+				<img src="img/Right_Blue.png">
+				</div>
+			</div>
 		</div>
 	</body>
 	<script type="text/javascript">
@@ -295,6 +317,13 @@
 			var photoimg = photo.getElementsByTagName('img')[0];//图片
 			var out = photo.getElementsByTagName('div')[0];//点击离开
 			var change_bg = getClass('change_bg')[0];//换肤
+			var usertext = getClass('usertext')[0];//点击显示文章
+			var canvas = document.getElementById('canvas');//获取canvas
+			var videos = document.getElementById('myvideo');//获取视频
+			var content = document.getElementById('content');
+			var section = document.getElementById('section');
+			var goright = document.getElementById('goright');
+			var section_img = document.getElementById('section_img');
 			var date = [
 			{
 				id:1,
@@ -306,11 +335,11 @@
 			},
 			{
 				id:2,
-				username:'国歌',
-				src:'img/mp3.png',
-				index:1,//id为1点击之后的那层
-				type:'mp3',
-				usertype:'5'
+				username:'我的收藏',
+				src:'img/file1.png',
+				index:0,
+				type:'file',
+				usertype:'0'
 			},
 			{
 				id:3,
@@ -346,11 +375,11 @@
 			},
 			{
 				id:7,
-				username:'我的音乐',
-				src:'img/mp3.png',
-				index:6,
-				type:'mp3',
-				usertype:'5'
+				username:'新建文件夹',
+				src:'img/file.png',
+				index:4,
+				type:'file',
+				usertype:'0'
 			},
 			{
 				id:8,
@@ -358,15 +387,17 @@
 				src:'img/mp4.png',
 				index:0,
 				type:'mp4',
-				usertype:'3'
+				usertype:'3',
+				con:'img/youxi.mp4'
 			},
 			{
 				id:9,
-				username:'爱如潮水',
-				src:'img/mp3.png',
+				username:'随笔',
+				src:'img/txt.png',
 				index:0,
-				type:'mp3',
-				usertype:'5'
+				type:'txt',
+				usertype:'2',
+				con:'The world puts off its mask of vastness to its lover. It becomes small as one song, as one kiss of the eternal. '
 			},
 			{
 				id:10,
@@ -374,7 +405,8 @@
 				src:'img/txt.png',
 				index:0,
 				type:'txt',
-				usertype:'3'
+				usertype:'2',
+				con:'Stray birds of summer come to my window to sing and fly away. And yellow leaves of autumn, which have no songs, flutter and fall there with a sign'
 			},
 			{
 				id:11,
@@ -410,8 +442,9 @@
 			var showshadow = new ShowShadow(recycle_a);
 			var showshadow = new ShowShadow(my_give_a);
 			var showshadow = new ShowShadow(side_center_a);
-			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_render,menus_delete,menus_replace,menus_select,update_file,update_wrap,update_bar,wrapSpan,menu_list,menu_picture,menu_doc,menu_video,menu_seed,menu_music,menu_other,recycle,bg,scroll,bar,photo,photoimg,out);
+			var create = new createfiles(files,btn_create,back,deletes,allcheck,replaces,menus,box_con,menus_lis,menus_render,menus_delete,menus_replace,menus_select,update_file,update_wrap,update_bar,wrapSpan,menu_list,menu_picture,menu_doc,menu_video,menu_seed,menu_music,menu_other,recycle,bg,scroll,bar,photo,photoimg,out,usertext,canvas,videos,content);
 			// var click = new Click(menu_list);
 			var change_picture = new change_Bg(change_bg,box_con);
+			var sections = new section_change(section,goright,section_img)
 	</script>
 </html>
