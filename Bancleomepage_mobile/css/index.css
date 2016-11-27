@@ -1,0 +1,425 @@
+#header{
+	width: 100%;
+	height: 0.37rem;
+	background: #2f353e;
+}
+#header h1{
+	height: 0.12rem;
+	width: 0.69rem;
+	margin-left: 0.76rem;
+	margin-top: 0.12rem;
+}
+#header h1 img{
+	width: 100%;
+}
+.list{
+	padding-top: 0.15rem;
+}
+.list li{
+	color: #cacbcc;
+	margin-left: 0.15rem;
+	height: 0.37rem;
+	line-height: 0.07rem;
+}
+.list li img{
+	width: 100%;
+	vertical-align: middle;
+}
+
+.list li:nth-of-type(1){
+	width: 0.3rem;
+	margin-right: 0.16rem;
+	margin-left:0.16rem;
+}
+.list li:nth-of-type(2){
+	width: 0.42rem;
+	margin-right: 0.16rem;
+}
+.list li:nth-of-type(3){
+	width: 0.26rem;
+}
+#header .sign{
+	height: 0.2rem;
+	width: 0.66rem;
+	margin-right: 0.73rem;
+	border-radius: 0.05rem;
+	padding-top: 0.09rem;
+}
+#header .sign img{
+	width: 100%;
+}
+ 
+#banner{
+	width: 100%;
+	position: relative;
+	height: 3.12rem;
+}
+#banner>img{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#content{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+#content p{
+	color: #fff;
+	font-weight: bold;
+	font-family: 'khmer UI';
+}
+.tip1{
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	font-size: 0.25rem;
+	margin-top: 0.89rem;
+}
+.tip2{
+	font-size: 0.16rem;
+	margin: 0 auto;
+	width: 10%;
+	text-align: center;
+	margin-top: 0.28rem;
+}
+.tip3{
+	font-size: 0.1rem;
+	margin: 0 auto;
+	width: 1.52rem;
+	text-align: center;
+	margin-top: 0.11rem;
+}
+.tip3 img{
+	max-width: 100%;
+}
+.tip4{
+	font-size: 0.1rem;
+	margin: 0 auto;
+	width: 1.43rem;
+	height: 0.05rem;
+	text-align: center;
+	font-family: 'arial';
+	margin-top: 0.11rem;
+}
+.tip4 img{
+	width: 100%;
+}
+.down img{
+	width: 100%;
+}
+.down{
+	position: absolute;
+	left: 50%;
+	bottom: 0.17rem;
+	width: 0.31rem;
+	height: 0.31rem;
+	margin-left: -0.155rem;
+}
+#gap{
+	padding-top: 0.4rem;
+	width: 100%;
+	height: 1.72rem;
+	position: relative;
+}
+#gap h2{
+	font-size: 0.2rem;
+	color: #2f353e;
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+#gap div{
+	text-align: center;
+	margin-top: 0.15rem;
+}
+#gap_img{
+	width: 2.49rem;
+	height: 0.1rem;
+	margin: 0 auto;
+}
+#gap_img img{
+	width: 100%;
+}
+#gap_free{
+	width: 1.18rem;
+	height: 0.23rem;
+	background: #64c40b;
+	color: #fff;
+	line-height: 0.23rem;
+	margin:  0 auto;
+	border-radius: 0.03rem;
+}
+#gap>img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#work{
+	height: 3.48rem;
+	width: 100%;
+	background: #eaf0f1;
+	padding-top: 0.22rem;
+	position: relative;
+}
+#work h2{
+	font-size: 0.216rem;
+	height: 0.14rem;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+	font-family: 'Regular';
+	margin-bottom: 0.38rem;
+}
+.use{
+	width: 4.4rem;
+	height: 2rem;
+	margin: 0 auto;
+}
+.use img{
+	width: 100%;
+}
+#work>img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#shield{
+	height: 3.39rem;
+	width: 100%;
+	position: relative;
+	padding-top: 0.35rem;
+}
+#shield>img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#shield h2{
+	font-size: 0.21rem;
+	height: 0.19rem;
+	text-align: center;
+	margin-bottom: 0.24rem;
+}
+#shield p{
+	height: 0.2rem;
+	width: 5.04rem;
+	margin: 0 auto;
+	margin-bottom: 0.36rem;
+}
+#shield p img{
+	width: 100%;
+}
+.safelist{
+	margin: 0 auto;
+	width: 5rem;
+}
+.safelist li{
+	width: 1.09rem;
+	height: 1.23rem;
+}
+.safelist li img{
+	width: 100%;
+}
+.safelist_1,.safelist_2{
+	margin-right: 0.7rem;
+}
+#channel{
+	height: 3.65rem;
+	width: 100%;
+	position: relative;
+	background: #13aeb8;
+	padding-top: 0.34rem;
+}
+#channel>img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#channel h2{
+	font-size: 0.2rem;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 0.23rem;
+}
+#channel p{
+	color: #81cbd1;
+	width: 4.19rem;
+	margin: 0 auto;
+	height: 0.32rem;
+	text-align: center;
+	margin-bottom: 0.43rem;
+}
+#channel p img{
+	width: 100%;
+}
+.page4_content_list{
+	width: 80%;
+	margin: 0 auto;
+}
+.page4_content_list li{
+	width: 1.67rem;
+	height: 0.44rem;
+	margin-right: 0.3rem;
+	margin-bottom: 0.2rem;
+}
+.page4_content_list li img{
+	width: 100%;
+}
+#dream{
+	height: 1.75rem;
+	width: 100%;
+	position: relative;
+	padding-top: 0.34rem;
+}
+#dream div{
+	text-align: center;
+	margin-top: 0.15rem;
+}
+#dream h2{
+	font-size: 0.2rem;
+	color: #2f353e;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+#gap_img{
+	width: 2.49rem;
+	height: 0.1rem;
+	margin: 0 auto;
+}
+#gap_img img{
+	width: 100%;
+}
+#gap_free{
+	width: 1.18rem;
+	height: 0.23rem;
+	background: #64c40b;
+	color: #fff;
+	line-height: 0.23rem;
+	margin:  0 auto;
+	border-radius: 0.03rem;
+}
+#dream>img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#about{
+	background: #eaf0f1;
+	padding-top: 0.44rem;
+	position: relative;
+	height: 3.48rem;
+}
+.about_img{
+	width: 1.76rem;
+	height: 2.3rem;
+	position: absolute;
+	left: 50%;
+	top: 0.65rem;
+	margin-left: -0.88rem;
+}
+.about_img img{
+	width: 100%;
+	opacity: 0.4;
+}
+#about h2{
+	width: 100%;
+	font-size: 0.216rem;
+	height: 0.22rem;
+	text-align: center;
+	margin:  0 auto;
+	margin-bottom: 0.4rem;
+} 
+#about p{
+	width: 4.4rem;
+	margin:  0 auto;
+	margin-bottom: 0.45rem;
+	height: 0.6rem;
+}
+#about p img{
+	width: 100%;
+}
+#about h3{
+	font-size: 0.2rem;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 0.3rem;
+}
+.email{
+	margin: 0 auto;
+	width: 2.7rem;
+	height: 0.1rem;
+	text-align: center;
+}
+.email img{
+	width: 100%;
+}
+#about>img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#client{
+	position: relative;
+	padding-top: 0.3rem;
+	height: 2.27rem;
+	width: 100%;
+}
+#client h3{
+	width: 0.75rem;
+	height: 0.16rem;
+	font-size: 0.2rem;
+	margin:  0 auto;
+	text-align: center;
+}
+.client{
+	width: 5.34rem;
+	height: 1.4rem;
+	margin:  0 auto;
+}
+.client img{
+	width: 100%;
+}
+#footer{
+	position: relative;
+	width: 100%;
+	background: #2f353e;
+	height: 0.9rem;
+}
+.footer_logo{
+	width: 0.7rem;
+	height: 0.12rem;
+	margin-top: 0.37rem;
+	margin-left: 0.74rem;
+	margin-right: 0.15rem;
+}
+.footer_logo img{
+	width: 100%;
+}
+.reserved{
+	height: 0.1rem;
+	width: 1.5rem;
+	margin-top: 0.4rem;
+}
+.reserved img{
+	width: 100%;
+}
+.footer_right{
+	width: 2.09rem;
+	height: 0.36rem;
+	margin-top: 0.25rem;
+	margin-right: 0.7rem;
+}
+.footer_right img{
+	width: 100%;
+}

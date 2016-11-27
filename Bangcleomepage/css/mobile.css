@@ -1,0 +1,226 @@
+	.page1_header h1{
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 20px;
+	}
+	.page1_header ul{
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+		height: 65px;
+		width: 100%;
+	}
+	.page1_header{
+		height: auto;
+	}
+	.page1_header li{
+		width: 33%;
+		margin: 0 auto;
+	}
+	.sign{
+		float: none;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+	.page1_content{
+		height:calc(100% - 158px) ;
+	}
+	.page2_content .use{
+		width: 82%;
+	}
+	.page2_content .use img{
+		max-width: 100%;
+	}
+	.safelist{
+		width: 60%;
+	}
+	.safelist_1{
+		float: none;
+		width: 100%;
+		margin: 0 auto;
+	}
+	.safelist_2{
+		float: left;
+		margin-right: 2%;
+	}
+	.safelist_3{
+		float: right;
+	}
+	.safelist li{
+		width: 48%;
+	}
+	.page3_content p{
+		width: 100%;
+	}
+	.page4_content_p {
+		width: 85%;
+		font-size: 15px;
+	}
+	.page4_content_list li{
+		width: 49%;
+	}
+	.page4_list2{
+		float: left;
+	}
+	.page4_list4{
+		float: left;
+	}
+	.page5_content p{
+		width: 70%;
+	}
+	.client{
+		width: 90%;
+	}
+	.reserved{
+		float: none;
+		width: 100%;
+		text-align: center;
+	}
+	.tip1{
+		margin-top: 7%;
+		font-size: 23px;
+	}
+	.tip2{
+		font-size: 15px;
+	}
+	#gap h2{
+		font-size: 30px;
+	}
+@media only screen and (max-width: 480px){
+	.page1_header h1{
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 20px;
+	}
+	#gap_img{
+		width: 80%;
+		margin: 0 auto;
+	}
+	#gap_img img{
+		width: 100%;
+	}
+	#gap h2{
+		font-size: 20px;
+	}
+	.page1_header{
+		height: auto;
+	}
+	.page1_header ul{
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+		height: 65px;
+		width: 100%;
+	}
+	.page1_header li{
+		width: 33%;
+		margin: 0 auto;
+	}
+	.sign{
+		float: none;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+	.page1_content{
+		height:calc(100% - 158px) ;
+	}
+	.tip1{
+		font-size: 15px;
+	}
+	.page2_content h2{
+		margin-top: 10%;
+		width: 80%;
+		font-size: 20px;
+	}
+	.page2_content .use{
+		margin-top: 10%;
+		width: 92%;
+		margin-bottom: 25%;
+	}
+	.page4_content h2{
+		font-size: 20px;
+	}
+	.page2_content .use img{
+		max-width: 100%;
+	}
+	.page3_content h2{
+		width: 60%;
+		font-size: 20px;
+	}
+	.page3_content p{
+		margin-top: 4%;
+		margin-bottom: 4%;
+	}
+	.page4_content_p {
+		width: 85%;
+		font-size: 12px;
+	}
+	#dream h2{
+		font-size: 20px;
+	}
+	.safelist{
+		width: 60%;
+	}
+	.safelist_1{
+		float: none;
+		width: 100%;
+		margin: 0 auto;
+	}
+	.safelist_2{
+		float: left;
+		margin-right: 2%;
+	}
+	.safelist_3{
+		float: right;
+	}
+	.safelist li{
+		width: 48%;
+	}
+	.page4_content_list li{
+		width: 49%;
+	}
+	.page5_content p{
+		text-align: center;
+	}
+	.page6_content h3{
+		margin-top: 18%;	
+	}
+	.client{
+		width: 90%;
+		margin-top: 15%;
+	}
+	.page5_content h2{
+		font-size: 20px;
+	}
+	.page5_content h3{
+		font-size: 20px;	
+	}
+	.page5_content .email{
+		font-size: 12px;
+	}
+	.page6_content h3{
+		font-size: 20px;
+	}
+	#gap_free{
+		margin-top: 3%;
+		font-size: 12px;
+	}
+	.footer_logo{
+		margin: 0;
+		float: none;
+		margin-top: 5%;
+	}
+	.reserved{
+		float: none;
+		text-align: center;
+		margin-top: 5%;
+		width: 100%;
+	}
+	.footer_right{
+		float: none;
+		margin: 0 auto;
+		margin-top: 5%;
+	}
+}

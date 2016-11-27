@@ -658,7 +658,6 @@ createfiles.prototype.update_file = function(){
 					con:fr.result
 				};
 				date.push(newdate);
-				console.log(date)
 				that.Create(getindex(goback));
 				that.Selectmark();
 				that.checkonOff = true;
@@ -734,6 +733,7 @@ createfiles.prototype.update_file = function(){
 					source.buffer = buffer;
 					//开始播放
 					// source.start(0);
+					//创建频谱长度
 					var array = new Uint8Array(analyser.frequencyBinCount);
 					var len = 70;
 					var n = Math.floor(array.length/len);

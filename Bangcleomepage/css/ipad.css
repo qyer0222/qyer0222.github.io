@@ -1,0 +1,25 @@
+.footer_logo{
+	margin: 0;
+	float: none;
+	margin-top: 20px;
+}
+.reserved{
+	float: none;
+	text-align: center;
+	margin-top: 20px;
+	width: 100%;
+}
+.footer_right{
+	float: none;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.footer_right img{
+	max-width: 100%;
+}
+.tip1{
+	font-size: 30px;
+}
+.tip2{
+	font-size: 20px;
+}
